@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <!-- JavaScript-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.min.js" integrity="sha512-VMsZqo0ar06BMtg0tPsdgRADvl0kDHpTbugCBBrL55KmucH6hP9zWdLIWY//OTfMnzz6xWQRxQqsUFefwHuHyg==" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+  integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+  crossorigin=""></script>
+        <script src="js/underscore.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+        <!-- CSS Imports -->
+        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css" integrity="sha256-iYUgmrapfDGvBrePJPrMWQZDcObdAcStKBpjP3Az+3s=" crossorigin="anonymous" /> -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+  integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+  crossorigin=""/>
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+        <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+        <link href="./css/main.css" rel="stylesheet" />
+
+        <!-- <script src="js/setup.js"></script> -->
+        <!-- <script src="js/map_setup.js"></script> -->
+        <script src="js/main.js"></script>
+        <!-- <script src="js/leaflet.js"></script> -->
+
+
+        <title>Document</title></head>
+        <body>
+            <div class="canvas">
+            <div class="mapframe2"></div>
+            <div class="mapframe1"></div>
+            <div id="map" class="map">
+                <script>
+                    var map = L.map('map', {
+                        center: [
+                            39.981111,
+                            -75.12588500976562
+                        ],
+                        zoom: 11
+                    });
+
+                    var Stamen_TonerLite = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+                        attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+                        subdomains: 'abcd',
+                        minZoom: 0,
+                        maxZoom: 20,
+                        ext: 'png'
+                    }).addTo(map);
+                </script>
+            </div>
+
+
+
+            <!--navbar-->
+            <div class="navbar">
+                <ul class="nav flex-column"style="position:absolute; top : 6%;">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page"href="#">
+                            <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"
+                            style="background-color: rgba(0,0,0,0); border-color: rgba(0,0,0,0);">                                
+                                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="#fd783a" class="bi bi-vinyl-fill" viewBox="0 0 16 16">
+                                <path d="M8 6a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0 3a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4 8a4 4 0 1 0 8 0 4 4 0 0 0-8 0z"/></svg>
+                            </button>
+                            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                                <div class="offcanvas-header">
+                                    <h5 id="offcanvasRightLabel">Introduction</h5>
+                                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                </div>
+                                <div class="offcanvas-body" style="color: rgb(36, 36, 36);">
+                                    Every day, The Philadelphia Fire Department responds to hundreds or even thousands of locations to deal with an array of emergencies. 
+                                    Currently, the Fire Department has little ‘situational awareness’ of fire risk for a given location when an emergency call comes in. 
+                                    In this project, we aim to improve this situation by creating a new API tool, which can return two deliverables for each property in the city:<br/>
+                                    1. Parcel-level information for the building on fire and surrounding buildings <br/>
+                                    2. Parcel-level (building) fire risk assessment based on the city’s existing open datasets and past fire events<br/>
+                                    In addition, we want to let residents get a real-time update of the fire risk of their houses so they will have a situational awareness on risk for each property citywide.<br/><br/>
+                                    Instructions:<br/>
+                                    1. Input a street address and hit the "Go" button.<br/>
+                                    2. A red marker representing the parcel will show up on the map, surrounded by some grey markers, which represented nearby parcels.<br/>
+                                    3. Click on one of the grey marker and it will automatically request data of that parcel. You can also input another address for a new request.<br/><br/>
+                                    For users who are unfamiliar with street addresses in Philadelphia, try on these addresses:<br/>
+                                    1200 W VENANGO ST<br/>
+                                    4054 1/2 LANCASTER AVE<br/>
+                                    4048 LANCASTER AVE<br/>
+                                    4058 1/2 LANCASTER AVE<br/>
+                                    1140 W VENANGO ST<br/>
+                                    3548 OLD YORK RD<br/>
+                                    3545 N CAMAC ST<br/>
+                                    1911 S GALLOWAY ST<br/>
+                                    1677 W WYOMING AVE<br/>
+                                    10904 CAREY TER<br/>
+                                    3134 MECHANICSVILLE RD<br/>
+                                    9630 WISSINOMING ST<br/>
+                                    9629 WISSINOMING ST<br/>
+                                    499 FRANKLIN MILLS CIR<br/>
+                                    3118 MAUREEN DR<br/>
+                                    3626 BISCAYNE PL<br/>
+                                    Other addresses in Philadelphia also work!<br/><br/>
+                                </div>
+                            </div>        
+                        </a>              
+                    </li>
+                    <li class="nav-item2" >
+                        <button type="button" class="btn btn-lg btn-danger" style="background-color: rgba(0,0,0,0); border-color: rgba(0,0,0,0); font-size: medium;" data-toggle="popover" aria-current="page"
+                        title="Markdown" data-bs-content="<a href='https://htmlpreview.github.io/?https://github.com/sofia-hu/MUSA801/blob/main/Markdown/Fire_Response_Situational_Awareness_API.html' target='_blank'> Fire Response Situational Awareness API </a>">Codes</button>
+                    </li>
+                      <script >
+                          $(function () {
+                              $('[data-toggle="popover"]').popover({
+                                 trigger: 'click',
+                                 sanitize : false,
+                                 html:true
+                                })
+                            })
+                      </script>
+                      <div id="apilink">
+                        <button type="button" class="btn btn-lg btn-danger" data-toggle="popover" 
+                        title="IP Address" data-bs-content="<a href='http://3.22.171.167:8000/parcel_info?addr=1200%20W%20VENANGO%20ST' target='_blank'> http://3.22.171.167:8000/parcel_info?addr=1200%20W%20VENANGO%20ST </a>">API</button>
+                      </div>
+                    </li>
+                    <li class="nav-item2"  >
+                        <button type="button" class="btn btn-lg btn-danger" style="background-color: rgba(0,0,0,0); border-color: rgba(0,0,0,0); font-size: medium;" data-toggle="popover" aria-current="page"
+                        title="Data Sources" data-bs-content="<a href='https://atlas.phila.gov/' target='_blank'> Atlas </a>
+                        <br/> <a href='https://data.census.gov/cedsci/' target='_blank'> Census Data </a> <br/> <a href='https://www.opendataphilly.org/dataset' target='_blank'> OpenDataPhilly </a>">Source</button>
+                    </li>
+                    <li class="nav-item2" >
+                        <button type="button" class="btn btn-lg btn-danger" style="background-color: rgba(0,0,0,0); border-color: rgba(0,0,0,0); font-size: 15px;" data-toggle="popover" aria-current="page"
+                        title="GitHub Page" data-bs-content="<a href='https://github.com/sofia-hu' target='_blank'> Sofia Hu </a>
+                        <br/> <a href='https://github.com/zenithchen' target='_blank'> Zirui Chen </a> <br/> <a href='https://github.com/Haoheng-Tang' target='_blank'> Haoheng Tang </a>">Contact</button>
+                    </li>
+                </ul>
+            </div>
+            
+            <span class="above">Fire</span>
+            <span class="average">Risk</span>
+
+
+            <!--Search-->
+            <div class="sidebar" style="top: 21%;">
+                <div class="input-group">
+                    <div class="input-group-text search" id="btnGroupAddon" style="cursor:pointer">Go</div>
+                    <input type="text" class="form-control" placeholder="Input an address" aria-label="Input group example" aria-describedby="btnGroupAddon">
+                    <div class="btn-group" role="group">
+                        <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle " style="border: black; color: black; background-color: rgba(1, 1, 1, 0);" data-bs-toggle="dropdown" aria-expanded="false">
+                        </button>
+                        <ul class="dropdown-menu btn" aria-labelledby="btnGroupDrop1" style="font-size: smaller;">
+                          <li><a class="dropdown-item" id="addr1" >1200 W VENANGO ST</a></li>
+                          <li><a class="dropdown-item" id="addr2">4054 1/2 LANCASTER AVE</a></li>
+                          <li><a class="dropdown-item" id="addr3">4048 LANCASTER AVE</a></li>
+                          <li><a class="dropdown-item" id="addr4">4058 1/2 LANCASTER AVE</a></li>
+                          <li><a class="dropdown-item" id="addr5">1140 W VENANGO ST</a></li>
+                          <li><a class="dropdown-item" id="addr6">1677 W WYOMING AVE</a></li>
+                          <li><a class="dropdown-item" id="addr7">1911 S GALLOWAY ST</a></li>
+                          <li><a class="dropdown-item" id="addr8">10904 CAREY TER</a></li>
+                          <li><a class="dropdown-item" id="addr9">3134 MECHANICSVILLE RD</a></li>
+                          <li><a class="dropdown-item" id="addr10">12466 KNIGHTS RD</a></li>
+                          <li><a class="dropdown-item" id="addr11">9629 WISSINOMING ST</a></li>
+                          <li><a class="dropdown-item" id="addr12">499 FRANKLIN MILLS CIR</a></li>
+                          <li><a class="dropdown-item" id="addr13">3118 MAUREEN DR</a></li>
+                          <li><a class="dropdown-item" id="addr14">3626 BISCAYNE PL</a></li>
+                          
+                        </ul>
+                    </div>
+                    <div id="loader" class="lds-dual-ring hidden overlay"></div>
+                </div>
+            </div>
+            
+
+            <!-- chart -->
+            <div class="sidebarchart text" style="top: 27%;">
+                <canvas id="myChart" >
+                <script>
+                const DATA_COUNT = 6;
+                const NUMBER_CFG = {count: DATA_COUNT, min: 0, max: 100};
+                const labels = ["isbelow", "isunsafe", "iscom", "ishotel", "isCMX2", "violation_count/10"];
+                const data = {
+                    labels: labels,
+                    datasets: [
+                        {label: 'The parcel',
+                        data: [0.55,0.55,0.55,0.55,0.55,0.6],
+                        fill: true,
+                        borderColor: 'rgba(220, 53, 69,0.85)',
+                        pointBackgroundColor: 'rgba(220, 53, 69,0.85)',
+                        backgroungColor: 'rgba(220, 53, 69,0.85)'
+                    },
+                    {
+                        label: 'Average',
+                        data: [0.45,0.45,0.41,0.39,0.45,0.47],
+                        fill: true,
+                        borderColor: 'rgba(43, 23, 15,0.72)',
+                        pointBackgroundColor: 'rgba(43, 23, 15,0.72)',
+                        backgroungColor: 'rgba(43, 23, 15,0.72)'
+                    }]
+                };
+                var ctx = document.getElementById('myChart').getContext('2d');
+                var radar_Chart = new Chart(ctx, {
+                    data: data,
+                    type: 'radar',
+                    options: {
+                        responsive: true,
+                        scales: {
+                            r: {ticks: {
+                                display:false
+                                        }
+                                }
+                        },
+                        plugins: {
+                            title: {
+                                display: false,
+                                text: 'Risk Chart'
+                            },
+                            legend: {
+                            display: false,
+                            position: 'top'
+                            }
+                        }
+                    }
+                });
+                </script>
+                </canvas>
+            </div>
+
+
+
+        <div class="sidebar" style="top: 65%;">
+            <canvas id="myChart2" width="300" height="55" >
+            <script>
+            var ctx = document.getElementById('myChart2').getContext('2d');
+            var area_Chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Total area', 'Average'],
+                    datasets: [{
+                        label: 'Total area',
+                        data: [1351, 1351],
+                        backgroundColor: [
+                            'rgba(220, 53, 69,0.85)',
+                            'rgba(43, 23, 15,0.72)',
+                        ],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    },
+                    indexAxis: 'y',
+                    elements: {
+                        bar: {
+                        borderWidth: 2,
+                        }
+                    },
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        title: {
+                            display: false,
+                            text: '# of rooms'
+                        },
+                        tooltip:{
+                            position: 'nearest'
+                        }
+                     }
+                }
+            });
+            </script>
+            </canvas>
+        </div>
+
+        <div class="sidebar" style="top: 74%;">
+            <canvas id="myChart3" width="300" height="55">
+            <script>
+            var ctx = document.getElementById('myChart3').getContext('2d');
+            var frontage_Chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Frontage', 'Average'],
+                    datasets: [{
+                        label: 'Frontage',
+                        data: [30, 30],
+                        backgroundColor: [
+                        'rgba(220, 53, 69,0.85)',
+                        'rgba(43, 23, 15,0.72)',
+                        ],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    },
+                    indexAxis: 'y',
+                    elements: {
+                        bar: {
+                        borderWidth: 2,
+                        }
+                    },
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        title: {
+                            display: false,
+                            text: '# of rooms'
+                        }
+                     }
+                }
+            });
+            </script>
+            </canvas>
+        </div>
+
+
+        <div class="sidebar" style="top: 83%;">
+            <canvas id="myChart4" width="300" height="55" >
+            <script>
+            var ctx = document.getElementById('myChart4').getContext('2d');
+            var room_Chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['# of rooms', 'Average'],
+                    datasets: [{
+                        label: '# of rooms',
+                        data: [3, 3],
+                        backgroundColor: [
+                        'rgba(220, 53, 69,0.85)',
+                        'rgba(43, 23, 15,0.72)',
+                        ],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    },
+                    indexAxis: 'y',
+                    elements: {
+                        bar: {
+                        borderWidth: 2,
+                        }
+                    },
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        title: {
+                            display: false,
+                            text: '# of rooms'
+                        }
+                     }
+                }
+            });
+            </script>
+            </canvas>
+        </div>
+
+
+        
+       <div style="color: black;">
+        <div class="sidebar3" style="top: 1%;">
+            <div class="card" style="background-color: rgba(250, 250, 250, 0.333); border: rgba(1, 1, 1, 0);border-radius: 6.7%;">
+                <div class="card-body h-100" style="padding-bottom: 0.17rem; padding-top: 0.8rem;">
+                  <h5 class="card-title">CENSUS DATA</h5>
+
+                  <table class="table table-sm">
+                    <thead>
+                      <tr>
+                        <th scope="col" id="pop">0</th>
+                        <th scope="col" id="black">0</th>
+                        <th scope="col" id="white">0</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class = "fw-light" style="font-size:small;">Population</td>
+                        <td class = "fw-light" style="font-size:small;">Blacks</td>
+                        <td class = "fw-light" style="font-size:small;">Whites</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <table class="table table-sm">
+                    <thead>
+                      <tr>
+                        <th scope="col" id="income">0</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td style="font-size:small;">Median Income</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar3" style="top: 35.5%;">
+            <div class="card" style="background-color: rgba(250, 250, 250, 0.333); border: rgba(1, 1, 1, 0);
+            border-radius: 6.7%; ">
+                <div class="card-body" style="padding-bottom: 0.5rem; padding-top: 0.8rem;">
+                    <h5 class="card-title">311 REQUEST</h5>
+                    <table class="table table-sm">
+                        <thead>
+                          <tr>
+                            <th scope="col" id="311count">0</th>
+                          </tr>
+                        </thead>
+                      </table>
+                      <p class="lh-sm fw-light" id="311name">No 311 request within 100m<br/>&nbsp</p>
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="sidebar3" style="top: 65.5%;">
+            <div class="card" style="background-color: rgba(250, 250, 250, 0.333); border: rgba(1, 1, 1, 0);border-radius: 6.7%;">
+                <div class="card-body"style="padding-bottom: 0.5rem; padding-top: 0.8rem;" >
+                    <h5 class="card-title" >NEARBY PARCEL</h5>
+                    <table class="table table-sm">
+                        <thead>
+                          <tr>
+                            <th scope="col" id="parcelcount">0</th>
+                          </tr>
+                        </thead>
+                      </table>
+                      <p class="lh-sm fw-light"  id="parcelname">No parcel within 50m<br/>&nbsp<br/>&nbsp</p>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+        </div>
+        </div>
+    </body>
+</html>
