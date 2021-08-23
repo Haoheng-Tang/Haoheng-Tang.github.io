@@ -60,27 +60,27 @@ body {
 }
 
 .mapframe2 {
-  width: 79rem;
-  height: 79rem;
+  width: 63vw;
+  height: 63vw;
   background: rgba(255, 255, 255, 0.25);
   opacity: 1;
   position: absolute;
   top: 50%;
   left: 56%;
-  margin: -39.5rem 0 0 -39.5rem;
+  margin: -31.5vw 0 0 -31.5vw;
   border-radius: 50%;
 }
 
 
 .mapframe1 {
-  width: 62rem;
-  height: 62rem;
+  width: 48vw;
+  height: 48vw;
   background-image: linear-gradient(to right,#fff9dd, #f8efc6);
   opacity: 0.76;
   position: absolute;
   top: 50%;
   left: 56%;
-  margin: -31rem 0 0 -31rem;
+  margin: -24vw 0 0 -24vw;
   border-radius: 50%;
 }
 
@@ -89,14 +89,14 @@ body {
 }
 
 .map {
-  width: 51rem;
-  height: 51rem;
+  width: 40vw;
+  height: 40vw;
   background: #C4C4C4;
   opacity: 1;
   position: absolute;
   top: 50%;
   left: 56%;
-  margin: -25.5rem 0 0 -25.5rem;
+  margin: -20vw 0 0 -20vw;
   border-radius: 50%;
 }
 .navbar {
