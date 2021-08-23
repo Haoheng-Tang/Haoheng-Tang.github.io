@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 body {
-  font-size: 14px;
+  font-size: 0.95rem;
 }
 .canvas {
   width: 100%;
@@ -60,27 +60,27 @@ body {
 }
 
 .mapframe2 {
-  width: 790px;
-  height: 790px;
+  width: 79rem;
+  height: 79rem;
   background: rgba(255, 255, 255, 0.25);
   opacity: 1;
   position: absolute;
   top: 50%;
   left: 56%;
-  margin: -395px 0 0 -395px;
+  margin: -39.5rem 0 0 -39.5rem;
   border-radius: 50%;
 }
 
 
 .mapframe1 {
-  width: 590px;
-  height: 590px;
+  width: 62rem;
+  height: 62rem;
   background-image: linear-gradient(to right,#fff9dd, #f8efc6);
   opacity: 0.76;
   position: absolute;
   top: 50%;
   left: 56%;
-  margin: -295px 0 0 -295px;
+  margin: -31rem 0 0 -31rem;
   border-radius: 50%;
 }
 
@@ -89,14 +89,14 @@ body {
 }
 
 .map {
-  width: 490px;
-  height: 490px;
+  width: 51rem;
+  height: 51rem;
   background: #C4C4C4;
   opacity: 1;
   position: absolute;
   top: 50%;
   left: 56%;
-  margin: -245px 0 0 -245px;
+  margin: -25.5rem 0 0 -25.5rem;
   border-radius: 50%;
 }
 .navbar {
@@ -149,25 +149,25 @@ body {
 
 
 .above {
-  width: 249px;
+  width: 130rem;
   color: rgb(43, 23, 15);
   position: absolute;
-  top: 2%;
-  left: 8.2%;
+  top: 1%;
+  left: 7.1%;
   font-family:Arial, Helvetica, sans-serif;
   font-weight: 600;
-  font-size: 72px;
+  font-size: 7.6rem;
   opacity: 1;
 }
 
 .average {
-  width: 249px;
+  width: 130rem;
   color: rgb(136, 128, 127);
   position: absolute;
-  top: 13%;
-  left: 8.2%;
+  top: 12.5%;
+  left: 7.4%;
   font-family:Arial, Helvetica, sans-serif;
-  font-size: 37px;
+  font-size: 3.5rem;
   opacity: 1;
 }
 
