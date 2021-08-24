@@ -37,15 +37,18 @@
                 <script>
                     var map = L.map('map', {
                         center: [
-                            39.981111,
-                            -75.12588500976562
+                            39.95097777,
+                            -75.1980176562
                         ],
-                        zoom: 11
+                        zoom: 15.5
                     });
 
-                    var OpenStreetMap_Mapnik = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-	                    maxZoom: 19,
-	                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    var Stamen_TonerLite = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+                        attribution: 'Map tiles by <a href="https://stamen.com">Stamen Design</a>, <a href="https://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+                        subdomains: 'abcd',
+                        minZoom: 0,
+                        maxZoom: 20,
+                        ext: 'png'
                     }).addTo(map);
                 </script>
             </div>
@@ -57,7 +60,7 @@
                 <ul class="nav flex-column"style="position:absolute; top : 6%;">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page"href="#">
-                            <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"
+                            <button class="btn btn-primary org" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"
                             style="background-color: rgba(0,0,0,0); border-color: rgba(0,0,0,0);">                                
                                 <svg xmlns="http://www.w3.org/2000/svg" width="5.8vh" height="5.8vh" fill="#fd783a" class="bi bi-vinyl-fill" viewBox="0 0 16 16">
                                 <path d="M8 6a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0 3a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
@@ -144,7 +147,7 @@
                     <div class="btn-group" role="group">
                         <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle " style="border: black; color: black; background-color: rgba(1, 1, 1, 0);" data-bs-toggle="dropdown" aria-expanded="false">
                         </button>
-                        <ul class="dropdown-menu btn" aria-labelledby="btnGroupDrop1" style="font-size: smaller;">
+                        <ul class="dropdown-menu btn" aria-labelledby="btnGroupDrop1" style="font-size: 1vw;">
                           <li><a class="dropdown-item" id="addr1" >1200 W VENANGO ST</a></li>
                           <li><a class="dropdown-item" id="addr2">4054 1/2 LANCASTER AVE</a></li>
                           <li><a class="dropdown-item" id="addr3">4048 LANCASTER AVE</a></li>
@@ -388,9 +391,9 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <td class = "fw-light" style="font-size:1.8vh;">Population</td>
-                        <td class = "fw-light" style="font-size:1.8vh;">Blacks</td>
-                        <td class = "fw-light" style="font-size:1.8vh;">Whites</td>
+                        <td class = "fw-light" style="font-size:1.9vh;">Population</td>
+                        <td class = "fw-light" style="font-size:1.9vh;">Blacks</td>
+                        <td class = "fw-light" style="font-size:1.9vh;">Whites</td>
                       </tr>
                     </tbody>
                   </table>
@@ -423,7 +426,7 @@
                           </tr>
                         </thead>
                         <tbody>
-                            <td class = "fw-light" style="font-size:1.8vh;" id="311name">No 311 request within 100m<br/>&nbsp</td>
+                            <td class = "fw-light" style="font-size:1.9vh;" id="311name">No 311 request within 100m<br/>&nbsp</td>
                         </tbody>
                       </table>
                 </div>
@@ -442,7 +445,7 @@
                           </tr>
                         </thead>
                         <tbody>
-                            <td class = "fw-light" style="font-size:1.8vh;" id="parcelname">No parcel within 50m<br/>&nbsp<br/>&nbsp</td>
+                            <td class = "fw-light" style="font-size:1.9vh;" id="parcelname">No parcel within 50m<br/>&nbsp<br/>&nbsp</td>
                         </tbody>
                       </table>
                 </div>

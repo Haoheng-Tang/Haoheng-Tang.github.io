@@ -2,12 +2,12 @@
   box-sizing: border-box;
 }
 body {
-  font-size: 1.5vh;
+  font-size: 2vh;
 }
 .canvas {
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(to right,#fdf5f2, #e6c6bd);
+  background-image: linear-gradient(to right,#fdf7f5, #e7cac1);
   opacity: 1;
   position: absolute;
   top: 0px;
@@ -100,7 +100,7 @@ body {
   border-radius: 50%;
 }
 .navbar {
-  width: 9.55vh;
+  width: 5.79vw;
   height: 100%;
   padding: 0px;
   background: #0c0301dc;
@@ -125,7 +125,7 @@ body {
 }
 
 .btn-text {
-  font-size: 1.9vh;
+  font-size: 1.2vw;
 }
 
 .search {
@@ -150,6 +150,14 @@ body {
 .navbar-dark .navbar-nav .nav-link:focus,
 .navbar-dark .navbar-nav .nav-link:hover {
   color: #f5986d
+}
+
+.org {
+  opacity: 1;
+}
+
+.org:hover {
+  opacity: 0.8;
 }
 
 
