@@ -43,12 +43,9 @@
                         zoom: 11
                     });
 
-                    var Stamen_TonerLite = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
-                        attribution: 'Map tiles by <a href="https://stamen.com">Stamen Design</a>, <a href="https://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-                        subdomains: 'abcd',
-                        minZoom: 0,
-                        maxZoom: 20,
-                        ext: 'png'
+                    var OpenStreetMap_Mapnik = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+	                    maxZoom: 19,
+	                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     }).addTo(map);
                 </script>
             </div>
@@ -143,7 +140,7 @@
             <div class="sidebar" style="top: 21%;">
                 <div class="input-group">
                     <div class="input-group-text search" id="btnGroupAddon" style="cursor:pointer">Go</div>
-                    <input type="text" class="form-control" placeholder="Input an address" aria-label="Input group example" aria-describedby="btnGroupAddon">
+                    <input type="text" id='displayname' class="form-control" style="font-size: 0.8vw;" placeholder="Input an address/ Click on the dropdown" aria-label="Input group example" aria-describedby="btnGroupAddon">
                     <div class="btn-group" role="group">
                         <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle " style="border: black; color: black; background-color: rgba(1, 1, 1, 0);" data-bs-toggle="dropdown" aria-expanded="false">
                         </button>
@@ -162,7 +159,6 @@
                           <li><a class="dropdown-item" id="addr12">499 FRANKLIN MILLS CIR</a></li>
                           <li><a class="dropdown-item" id="addr13">3118 MAUREEN DR</a></li>
                           <li><a class="dropdown-item" id="addr14">3626 BISCAYNE PL</a></li>
-                          
                         </ul>
                     </div>
                     <div id="loader" class="lds-dual-ring hidden overlay"></div>
