@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 body {
-  font-size: 1.9vh;
+  font-size: 1.5vh;
 }
 .canvas {
   width: 100%;
@@ -38,7 +38,7 @@ body {
 }
 
 .sidebarchart {
-  position: absolute;
+  position: relative;
   left: 6.3%;
   width: 23.4%;
   top: 0;
@@ -51,7 +51,7 @@ body {
 .sidebar3 {
   position: absolute;
   right: 0.8%;
-  width: 243px;
+  width: 35vh;
   top: 0;
   bottom: 0;
   overflow-y: auto;
@@ -60,14 +60,14 @@ body {
 }
 
 .mapframe2 {
-  width: 124vh;
-  height: 124vh;
+  width: 127vh;
+  height: 127vh;
   background: rgba(255, 255, 255, 0.25);
   opacity: 1;
   position: absolute;
   top: 50%;
   left: 56%;
-  margin: -62vh 0 0 -62vh;
+  margin: -63.5vh 0 0 -63.5vh;
   border-radius: 50%;
 }
 
@@ -100,9 +100,9 @@ body {
   border-radius: 50%;
 }
 .navbar {
-  width: 10.3vh;
+  width: 9.55vh;
   height: 100%;
-  padding: 0vh;
+  padding: 0px;
   background: #0c0301dc;
   opacity: 1;
   position: absolute;
@@ -125,7 +125,7 @@ body {
 }
 
 .btn-text {
-  font-size: 2.15vh;
+  font-size: 1.9vh;
 }
 
 .search {
@@ -157,11 +157,11 @@ body {
   width: 80%;
   color: rgb(43, 23, 15);
   position: absolute;
-  top: 1%;
+  top: 1.3%;
   left: 7.1%;
   font-family:Arial, Helvetica, sans-serif;
   font-weight: 600;
-  font-size: 12vh;
+  font-size: 10.8vh;
   opacity: 1;
 }
 
@@ -169,10 +169,10 @@ body {
   width: 80%;
   color: rgb(136, 128, 127);
   position: absolute;
-  top: 12.9%;
+  top: 12.1%;
   left: 7.4%;
   font-family:Arial, Helvetica, sans-serif;
-  font-size: 5.4vh;
+  font-size: 5.1vh;
   opacity: 1;
 }
 

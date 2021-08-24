@@ -36,7 +36,7 @@ var redIcon = new L.Icon({
   shadowSize: [41, 41]
 });
 
-var blueIcon = new L.Icon({
+var blackIcon = new L.Icon({
   iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-grey.png',
  // shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
   iconSize: [15, 28],
@@ -109,7 +109,7 @@ function setMarkers(dataArr){
   marker = L.marker([lat, lng],{icon: redIcon}).bindPopup(addr);
 
   dataArr.nearby_parcel_df.forEach((item) =>{
-    var myMarker = L.marker([item.LAT, item.LNG],{icon: blueIcon}).bindPopup(item.ADDR_SOURCE).on('click', onClick);
+    var myMarker = L.marker([item.LAT, item.LNG],{icon: blackIcon}).bindPopup(item.ADDR_SOURCE).on('click', onClick);
     nearby_marker_lst.push(myMarker);
     })
 }

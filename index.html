@@ -123,7 +123,7 @@
                       </div>
                     </li>
                     <li class="nav-item2"  >
-                        <button type="button" class="btn btn-lg btn-danger btn-text" style="background-color: rgba(0,0,0,0); border-color: rgba(0,0,0,0); " data-toggle="popover" aria-current="page"
+                        <button type="button" class="btn btn-lg btn-danger btn-text" style="background-color: rgba(0,0,0,0); border-color: rgba(0,0,0,0)" data-toggle="popover" aria-current="page"
                         title="Data Sources" data-bs-content="<a href='https://atlas.phila.gov/' target='_blank'> Atlas </a>
                         <br/> <a href='https://data.census.gov/cedsci/' target='_blank'> Census Data </a> <br/> <a href='https://www.opendataphilly.org/dataset' target='_blank'> OpenDataPhilly </a>">Source</button>
                     </li>
@@ -262,11 +262,19 @@
                             display: false
                         },
                         title: {
-                            display: false,
-                            text: '# of rooms'
+                            display: false
                         },
                         tooltip:{
                             position: 'nearest'
+                        },
+                        datalabels: {
+                            font: function(context) {
+                                var width = context.chart.width;
+                                var size = Math.round(width / 32);
+                                return {
+                                    size: size
+                                };
+                            }
                         }
                      }
                 }
@@ -311,8 +319,7 @@
                             display: false
                         },
                         title: {
-                            display: false,
-                            text: '# of rooms'
+                            display: false
                         }
                      }
                 }
@@ -358,8 +365,7 @@
                             display: false
                         },
                         title: {
-                            display: false,
-                            text: '# of rooms'
+                            display: false
                         }
                      }
                 }
@@ -373,10 +379,10 @@
        <div style="color: black;">
         <div class="sidebar3" style="top: 1%;">
             <div class="card" style="background-color: rgba(250, 250, 250, 0.333); border: rgba(1, 1, 1, 0);border-radius: 6.7%;">
-                <div class="card-body h-100" style="padding-bottom: 0.17rem; padding-top: 0.8rem;">
-                  <h5 class="card-title">CENSUS DATA</h5>
+                <div class="card-body h-100">
+                  <h5 class="card-title" style="font-size: 2.6vh;">CENSUS DATA</h5>
 
-                  <table class="table table-sm">
+                  <table class="table table-sm"  style="margin-top: 2vh;">
                     <thead>
                       <tr>
                         <th scope="col" id="pop">0</th>
@@ -386,14 +392,14 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <td class = "fw-light" style="font-size:small;">Population</td>
-                        <td class = "fw-light" style="font-size:small;">Blacks</td>
-                        <td class = "fw-light" style="font-size:small;">Whites</td>
+                        <td class = "fw-light" style="font-size:1.8vh;">Population</td>
+                        <td class = "fw-light" style="font-size:1.8vh;">Blacks</td>
+                        <td class = "fw-light" style="font-size:1.8vh;">Whites</td>
                       </tr>
                     </tbody>
                   </table>
 
-                  <table class="table table-sm">
+                  <table class="table table-sm"  style="margin-top: 2vh;">
                     <thead>
                       <tr>
                         <th scope="col" id="income">0</th>
@@ -401,7 +407,7 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <td style="font-size:small;">Median Income</td>
+                        <td class = "fw-light" style="font-size:1.8vh;">Median Income</td>
                       </tr>
                     </tbody>
                   </table>
@@ -412,16 +418,18 @@
         <div class="sidebar3" style="top: 35.5%;">
             <div class="card" style="background-color: rgba(250, 250, 250, 0.333); border: rgba(1, 1, 1, 0);
             border-radius: 6.7%; ">
-                <div class="card-body" style="padding-bottom: 0.5rem; padding-top: 0.8rem;">
-                    <h5 class="card-title">311 REQUEST</h5>
-                    <table class="table table-sm">
+                <div class="card-body">
+                    <h5 class="card-title" style="font-size: 2.6vh;">311 REQUEST</h5>
+                    <table class="table table-sm"  style="margin-top: 2vh;">
                         <thead>
                           <tr>
                             <th scope="col" id="311count">0</th>
                           </tr>
                         </thead>
+                        <tbody>
+                            <td class = "fw-light" style="font-size:1.8vh;" id="311name">No 311 request within 100m<br/>&nbsp</td>
+                        </tbody>
                       </table>
-                      <p class="lh-sm fw-light" id="311name">No 311 request within 100m<br/>&nbsp</p>
                 </div>
             </div>
         </div>
@@ -429,16 +437,18 @@
 
         <div class="sidebar3" style="top: 65.5%;">
             <div class="card" style="background-color: rgba(250, 250, 250, 0.333); border: rgba(1, 1, 1, 0);border-radius: 6.7%;">
-                <div class="card-body"style="padding-bottom: 0.5rem; padding-top: 0.8rem;" >
-                    <h5 class="card-title" >NEARBY PARCEL</h5>
-                    <table class="table table-sm">
+                <div class="card-body">
+                    <h5 class="card-title" style="font-size: 2.6vh;" >NEARBY PARCEL</h5>
+                    <table class="table table-sm" style="margin-top: 2vh;">
                         <thead>
                           <tr>
                             <th scope="col" id="parcelcount">0</th>
                           </tr>
                         </thead>
+                        <tbody>
+                            <td class = "fw-light" style="font-size:1.8vh;" id="parcelname">No parcel within 50m<br/>&nbsp<br/>&nbsp</td>
+                        </tbody>
                       </table>
-                      <p class="lh-sm fw-light"  id="parcelname">No parcel within 50m<br/>&nbsp<br/>&nbsp</p>
                 </div>
             </div>
         </div>
