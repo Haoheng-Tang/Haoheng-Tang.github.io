@@ -98,7 +98,6 @@ function updateChart2(radarchart, below, unsafe, com, hotel, CMX2, vioct){
 }
 
 function setMarkers(dataArr){
-  // console.log(dataArr)
   removeGeometry();
   // removeMarkers(nearby_marker_lst);
   nearby_marker_lst=[];
@@ -114,7 +113,16 @@ function setMarkers(dataArr){
     mouseout: function() { 
             this.closePopup()
     }
-});
+  });
+
+  opa = dataArr.parcel_df[0].Opa_account_num
+  var key
+  for(let i=0;i<dataArr.nearby_parcel_df.length;i++){
+    if(dataArr.nearby_parcel_df[i].opa_account_num == opa){
+    key=i;
+    }
+  }
+  dataArr.nearby_parcel_df.splice(key,1)
 
   dataArr.nearby_parcel_df.forEach((item) =>{
     var myMarker = L.marker([item.LAT, item.LNG],{icon: blackIcon}).bindPopup(item.ADDR_SOURCE).on('click', onClick);
@@ -144,15 +152,21 @@ var new311 = function(entry){
       return (`1. ${entry[0]}<br/>2. ${entry[1]}<br/>...`)
     }
   }else if(entry.length==1 && entry[0]!=undefined){
-    console.log(1)
+    //console.log(1)
    return(`${entry[0]}<br/>&nbsp<br/>&nbsp`)
    }else{
-    console.log(2)
+    //console.log(2)
     return(`none<br/>&nbsp`)}
    }
 
 var update311 =function(req){
-  let count311= req.length
+  //311 count
+  if(req.length==1 && req[0].service_name==undefined){
+    count311= 0
+  }else{
+    count311= req.length
+  }
+  //311 names
   var names311=[]
   for(let i=0;i<count311;i++){
     name311 = req[i].service_name
