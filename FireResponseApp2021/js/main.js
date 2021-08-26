@@ -260,27 +260,25 @@ function onClick(e) {
   nearbyURL = newapi(nearby_addr)
 
   $.ajax({
-    async: false,
     url: nearbyURL ,
     dataType: 'json',
     headers:{'Access-Control-Allow-Origin':'*'}
   }).done(function(nearbyRes){
     nearby_data = nearbyRes
+    $('#loader').hide()
+    console.log(nearby_data)
+  
+    setMarkers(nearby_data);
+    plotElements();
+    getInfo(nearby_data);
+    updateChart(area_Chart, total_area);
+    updateChart(frontage_Chart, frontage);
+    updateChart(room_Chart, room);
+    updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, vioct);
+    update311(request);
+    updateparcel(nearby);
+    updateCensus(censusData);
   });
-
-  $('#loader').hide()
-  console.log(nearby_data)
-
-  setMarkers(nearby_data);
-  plotElements();
-  getInfo(nearby_data);
-  updateChart(area_Chart, total_area);
-  updateChart(frontage_Chart, frontage);
-  updateChart(room_Chart, room);
-  updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, vioct);
-  update311(request);
-  updateparcel(nearby);
-  updateCensus(censusData);
 }
 
 
@@ -303,46 +301,43 @@ $(document).ready(function() {
     //console.log(parcelURL)
 
     $.ajax({
-      async: false,
       url:parcelURL,
       dataType: 'json',
       headers:{'Access-Control-Allow-Origin':'*'}
     }).done(function(parcelRes){
       parceldata= parcelRes
+      $('#loader').hide()
+      console.log(parceldata)
+  
+      if(parceldata.parcel_df[0].Opa_account_num=="NONE FOUND"){
+        alert("Please enter an address in Philadelphia in a right format. You may click on the dropdown button to select one or try one in the following: 1200 W VENANGO ST, 4054 1/2 LANCASTER AVE, 4048 LANCASTER AVE, 4058 1/2 LANCASTER AVE, 1140 W VENANGO ST, 1677 W WYOMING AVE, 1911 S GALLOWAY ST, 10904 CAREY TER, 3134 MECHANICSVILLE RD, 12466 KNIGHTS RD, 9629 WISSINOMING ST, 499 FRANKLIN MILLS CIR, 3118 MAUREEN DR, 3626 BISCAYNE PL")
+      }
+      else{
+        setMarkers(parceldata);
+        plotElements();
+  
+        getInfo(parceldata);
+  
+        updateChart(area_Chart, total_area);
+        updateChart(frontage_Chart, frontage);
+        updateChart(room_Chart, room);
+        update311(request);
+        updateparcel(nearby);
+        updaterisk(risk);
+        updateCensus(censusData);
+        updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, vioct);
+        //api popover
+        var api = newapi(inputAddr);
+        updateapi(api)
+        $(function () {
+          $('[data-toggle="popover"]').popover({
+             trigger: 'click',
+             sanitize : false,
+             html:true
+            })
+        }) 
+      }
     });
-
-    $('#loader').hide()
-    console.log(parceldata)
-
-    if(parceldata.parcel_df[0].Opa_account_num=="NONE FOUND"){
-      alert("Please enter an address in Philadelphia in a right format. You may click on the dropdown button to select one or try one in the following: 1200 W VENANGO ST, 4054 1/2 LANCASTER AVE, 4048 LANCASTER AVE, 4058 1/2 LANCASTER AVE, 1140 W VENANGO ST, 1677 W WYOMING AVE, 1911 S GALLOWAY ST, 10904 CAREY TER, 3134 MECHANICSVILLE RD, 12466 KNIGHTS RD, 9629 WISSINOMING ST, 499 FRANKLIN MILLS CIR, 3118 MAUREEN DR, 3626 BISCAYNE PL")
-    }
-    else{
-      setMarkers(parceldata);
-      plotElements();
-
-      getInfo(parceldata);
-
-      updateChart(area_Chart, total_area);
-      updateChart(frontage_Chart, frontage);
-      updateChart(room_Chart, room);
-      update311(request);
-      updateparcel(nearby);
-      updaterisk(risk);
-      updateCensus(censusData);
-      updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, vioct);
-      //api popover
-      var api = newapi(inputAddr);
-      updateapi(api)
-      $(function () {
-        $('[data-toggle="popover"]').popover({
-           trigger: 'click',
-           sanitize : false,
-           html:true
-          })
-      })   
-
-    }
    
   });
 
@@ -361,47 +356,44 @@ $(document).ready(function() {
     console.log(parcelURL)
 
     $.ajax({
-      async: false,
       url:parcelURL,
       dataType: 'json',
       headers:{'Access-Control-Allow-Origin':'*'}
     }).done(function(parcelRes){
       parceldata= parcelRes
+      $('#loader').hide()
+      console.log(parceldata)
+  
+      if(parceldata.parcel_df[0].Opa_account_num=="NONE FOUND"){
+        alert("Please enter a valid address!")
+      }
+      else{
+        setMarkers(parceldata);
+        plotElements();
+  
+        getInfo(parceldata);
+  
+        updateChart(area_Chart, total_area);
+        updateChart(frontage_Chart, frontage);
+        updateChart(room_Chart, room);
+        update311(request);
+        updateparcel(nearby);
+        updaterisk(risk);
+        updateCensus(censusData);
+        updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, vioct);
+        //$('#inputaddr').text(inputAddr)
+        //api popover
+        var api = newapi(inputAddr);
+        updateapi(api)
+        $(function () {
+          $('[data-toggle="popover"]').popover({
+             trigger: 'click',
+             sanitize : false,
+             html:true
+            })
+        })  
+      }
     });
-
-    $('#loader').hide()
-    console.log(parceldata)
-
-    if(parceldata.parcel_df[0].Opa_account_num=="NONE FOUND"){
-      alert("Please enter a valid address!")
-    }
-    else{
-      setMarkers(parceldata);
-      plotElements();
-
-      getInfo(parceldata);
-
-      updateChart(area_Chart, total_area);
-      updateChart(frontage_Chart, frontage);
-      updateChart(room_Chart, room);
-      update311(request);
-      updateparcel(nearby);
-      updaterisk(risk);
-      updateCensus(censusData);
-      updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, vioct);
-      //$('#inputaddr').text(inputAddr)
-      //api popover
-      var api = newapi(inputAddr);
-      updateapi(api)
-      $(function () {
-        $('[data-toggle="popover"]').popover({
-           trigger: 'click',
-           sanitize : false,
-           html:true
-          })
-      })   
-
-    }
    
   });
 
@@ -420,46 +412,44 @@ $(document).ready(function() {
     console.log(parcelURL)
 
     $.ajax({
-      async: false,
       url:parcelURL,
       dataType: 'json',
       headers:{'Access-Control-Allow-Origin':'*'}
     }).done(function(parcelRes){
       parceldata= parcelRes
+      $('#loader').hide()
+      console.log(parceldata)
+  
+      if(parceldata.parcel_df[0].Opa_account_num=="NONE FOUND"){
+        alert("Please enter a valid address!")
+      }
+      else{
+        setMarkers(parceldata);
+        plotElements();
+  
+        getInfo(parceldata);
+  
+        updateChart(area_Chart, total_area);
+        updateChart(frontage_Chart, frontage);
+        updateChart(room_Chart, room);
+        update311(request);
+        updateparcel(nearby);
+        updaterisk(risk);
+        updateCensus(censusData);
+        updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, vioct);
+        //api popover
+        var api = newapi(inputAddr);
+        updateapi(api)
+        $(function () {
+          $('[data-toggle="popover"]').popover({
+             trigger: 'click',
+             sanitize : false,
+             html:true
+            })
+        })   
+  
+      }
     });
-
-    $('#loader').hide()
-    console.log(parceldata)
-
-    if(parceldata.parcel_df[0].Opa_account_num=="NONE FOUND"){
-      alert("Please enter a valid address!")
-    }
-    else{
-      setMarkers(parceldata);
-      plotElements();
-
-      getInfo(parceldata);
-
-      updateChart(area_Chart, total_area);
-      updateChart(frontage_Chart, frontage);
-      updateChart(room_Chart, room);
-      update311(request);
-      updateparcel(nearby);
-      updaterisk(risk);
-      updateCensus(censusData);
-      updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, vioct);
-      //api popover
-      var api = newapi(inputAddr);
-      updateapi(api)
-      $(function () {
-        $('[data-toggle="popover"]').popover({
-           trigger: 'click',
-           sanitize : false,
-           html:true
-          })
-      })   
-
-    }
    
   });
 
@@ -478,46 +468,43 @@ $(document).ready(function() {
     console.log(parcelURL)
 
     $.ajax({
-      async: false,
       url:parcelURL,
       dataType: 'json',
       headers:{'Access-Control-Allow-Origin':'*'}
     }).done(function(parcelRes){
       parceldata= parcelRes
+      $('#loader').hide()
+      console.log(parceldata)
+  
+      if(parceldata.parcel_df[0].Opa_account_num=="NONE FOUND"){
+        alert("Please enter a valid address!")
+      }
+      else{
+        setMarkers(parceldata);
+        plotElements();
+  
+        getInfo(parceldata);
+  
+        updateChart(area_Chart, total_area);
+        updateChart(frontage_Chart, frontage);
+        updateChart(room_Chart, room);
+        update311(request);
+        updateparcel(nearby);
+        updaterisk(risk);
+        updateCensus(censusData);
+        updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, vioct);
+        //api popover
+        var api = newapi(inputAddr);
+        updateapi(api)
+        $(function () {
+          $('[data-toggle="popover"]').popover({
+             trigger: 'click',
+             sanitize : false,
+             html:true
+            })
+        })   
+      }
     });
-
-    $('#loader').hide()
-    console.log(parceldata)
-
-    if(parceldata.parcel_df[0].Opa_account_num=="NONE FOUND"){
-      alert("Please enter a valid address!")
-    }
-    else{
-      setMarkers(parceldata);
-      plotElements();
-
-      getInfo(parceldata);
-
-      updateChart(area_Chart, total_area);
-      updateChart(frontage_Chart, frontage);
-      updateChart(room_Chart, room);
-      update311(request);
-      updateparcel(nearby);
-      updaterisk(risk);
-      updateCensus(censusData);
-      updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, vioct);
-      //api popover
-      var api = newapi(inputAddr);
-      updateapi(api)
-      $(function () {
-        $('[data-toggle="popover"]').popover({
-           trigger: 'click',
-           sanitize : false,
-           html:true
-          })
-      })   
-
-    }
    
   });
 
@@ -536,46 +523,43 @@ $(document).ready(function() {
     console.log(parcelURL)
 
     $.ajax({
-      async: false,
       url:parcelURL,
       dataType: 'json',
       headers:{'Access-Control-Allow-Origin':'*'}
     }).done(function(parcelRes){
       parceldata= parcelRes
+      $('#loader').hide()
+      console.log(parceldata)
+  
+      if(parceldata.parcel_df[0].Opa_account_num=="NONE FOUND"){
+        alert("Please enter a valid address!")
+      }
+      else{
+        setMarkers(parceldata);
+        plotElements();
+  
+        getInfo(parceldata);
+  
+        updateChart(area_Chart, total_area);
+        updateChart(frontage_Chart, frontage);
+        updateChart(room_Chart, room);
+        update311(request);
+        updateparcel(nearby);
+        updaterisk(risk);
+        updateCensus(censusData);
+        updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, vioct);
+        //api popover
+        var api = newapi(inputAddr);
+        updateapi(api)
+        $(function () {
+          $('[data-toggle="popover"]').popover({
+             trigger: 'click',
+             sanitize : false,
+             html:true
+            })
+        })   
+      }
     });
-
-    $('#loader').hide()
-    console.log(parceldata)
-
-    if(parceldata.parcel_df[0].Opa_account_num=="NONE FOUND"){
-      alert("Please enter a valid address!")
-    }
-    else{
-      setMarkers(parceldata);
-      plotElements();
-
-      getInfo(parceldata);
-
-      updateChart(area_Chart, total_area);
-      updateChart(frontage_Chart, frontage);
-      updateChart(room_Chart, room);
-      update311(request);
-      updateparcel(nearby);
-      updaterisk(risk);
-      updateCensus(censusData);
-      updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, vioct);
-      //api popover
-      var api = newapi(inputAddr);
-      updateapi(api)
-      $(function () {
-        $('[data-toggle="popover"]').popover({
-           trigger: 'click',
-           sanitize : false,
-           html:true
-          })
-      })   
-
-    }
    
   });
 
@@ -594,47 +578,42 @@ $(document).ready(function() {
     console.log(parcelURL)
 
     $.ajax({
-      async: false,
       url:parcelURL,
       dataType: 'json',
       headers:{'Access-Control-Allow-Origin':'*'}
     }).done(function(parcelRes){
       parceldata= parcelRes
-    });
+      $('#loader').hide()
+      console.log(parceldata)
 
-    $('#loader').hide()
-    console.log(parceldata)
-
-    if(parceldata.parcel_df[0].Opa_account_num=="NONE FOUND"){
-      alert("Please enter a valid address!")
-    }
-    else{
-      setMarkers(parceldata);
-      plotElements();
-
-      getInfo(parceldata);
-
-      updateChart(area_Chart, total_area);
-      updateChart(frontage_Chart, frontage);
-      updateChart(room_Chart, room);
-      update311(request);
-      updateparcel(nearby);
-      updaterisk(risk);
-      updateCensus(censusData);
-      updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, vioct);
-      //api popover
-      var api = newapi(inputAddr);
-      updateapi(api)
-      $(function () {
-        $('[data-toggle="popover"]').popover({
-           trigger: 'click',
-           sanitize : false,
-           html:true
+      if(parceldata.parcel_df[0].Opa_account_num=="NONE FOUND"){
+        alert("Please enter a valid address!")
+      }
+      else{
+        setMarkers(parceldata);
+        plotElements();
+        getInfo(parceldata);
+        updateChart(area_Chart, total_area);
+        updateChart(frontage_Chart, frontage);
+        updateChart(room_Chart, room);
+        update311(request);
+        updateparcel(nearby);
+        updaterisk(risk);
+        updateCensus(censusData);
+        updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, vioct);
+        //api popover
+        var api = newapi(inputAddr);
+        updateapi(api)
+        $(function () {
+          $('[data-toggle="popover"]').popover({
+             trigger: 'click',
+            sanitize : false,
+            html:true
           })
       })   
 
     }
-   
+    });
   });
 
 })
@@ -652,46 +631,44 @@ $(document).ready(function() {
     console.log(parcelURL)
 
     $.ajax({
-      async: false,
       url:parcelURL,
       dataType: 'json',
       headers:{'Access-Control-Allow-Origin':'*'}
     }).done(function(parcelRes){
       parceldata= parcelRes
+      $('#loader').hide()
+      console.log(parceldata)
+  
+      if(parceldata.parcel_df[0].Opa_account_num=="NONE FOUND"){
+        alert("Please enter a valid address!")
+      }
+      else{
+        setMarkers(parceldata);
+        plotElements();
+  
+        getInfo(parceldata);
+  
+        updateChart(area_Chart, total_area);
+        updateChart(frontage_Chart, frontage);
+        updateChart(room_Chart, room);
+        update311(request);
+        updateparcel(nearby);
+        updaterisk(risk);
+        updateCensus(censusData);
+        updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, vioct);
+        //api popover
+        var api = newapi(inputAddr);
+        updateapi(api)
+        $(function () {
+          $('[data-toggle="popover"]').popover({
+             trigger: 'click',
+             sanitize : false,
+             html:true
+            })
+        })   
+  
+      }
     });
-
-    $('#loader').hide()
-    console.log(parceldata)
-
-    if(parceldata.parcel_df[0].Opa_account_num=="NONE FOUND"){
-      alert("Please enter a valid address!")
-    }
-    else{
-      setMarkers(parceldata);
-      plotElements();
-
-      getInfo(parceldata);
-
-      updateChart(area_Chart, total_area);
-      updateChart(frontage_Chart, frontage);
-      updateChart(room_Chart, room);
-      update311(request);
-      updateparcel(nearby);
-      updaterisk(risk);
-      updateCensus(censusData);
-      updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, vioct);
-      //api popover
-      var api = newapi(inputAddr);
-      updateapi(api)
-      $(function () {
-        $('[data-toggle="popover"]').popover({
-           trigger: 'click',
-           sanitize : false,
-           html:true
-          })
-      })   
-
-    }
    
   });
 
@@ -710,46 +687,43 @@ $(document).ready(function() {
     console.log(parcelURL)
 
     $.ajax({
-      async: false,
       url:parcelURL,
       dataType: 'json',
       headers:{'Access-Control-Allow-Origin':'*'}
     }).done(function(parcelRes){
       parceldata= parcelRes
+      $('#loader').hide()
+      console.log(parceldata)
+  
+      if(parceldata.parcel_df[0].Opa_account_num=="NONE FOUND"){
+        alert("Please enter a valid address!")
+      }
+      else{
+        setMarkers(parceldata);
+        plotElements();
+  
+        getInfo(parceldata);
+  
+        updateChart(area_Chart, total_area);
+        updateChart(frontage_Chart, frontage);
+        updateChart(room_Chart, room);
+        update311(request);
+        updateparcel(nearby);
+        updaterisk(risk);
+        updateCensus(censusData);
+        updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, vioct);
+        //api popover
+        var api = newapi(inputAddr);
+        updateapi(api)
+        $(function () {
+          $('[data-toggle="popover"]').popover({
+             trigger: 'click',
+             sanitize : false,
+             html:true
+            })
+        })   
+      }
     });
-
-    $('#loader').hide()
-    console.log(parceldata)
-
-    if(parceldata.parcel_df[0].Opa_account_num=="NONE FOUND"){
-      alert("Please enter a valid address!")
-    }
-    else{
-      setMarkers(parceldata);
-      plotElements();
-
-      getInfo(parceldata);
-
-      updateChart(area_Chart, total_area);
-      updateChart(frontage_Chart, frontage);
-      updateChart(room_Chart, room);
-      update311(request);
-      updateparcel(nearby);
-      updaterisk(risk);
-      updateCensus(censusData);
-      updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, vioct);
-      //api popover
-      var api = newapi(inputAddr);
-      updateapi(api)
-      $(function () {
-        $('[data-toggle="popover"]').popover({
-           trigger: 'click',
-           sanitize : false,
-           html:true
-          })
-      })   
-
-    }
    
   });
 
@@ -768,47 +742,44 @@ $(document).ready(function() {
     console.log(parcelURL)
 
     $.ajax({
-      async: false,
       url:parcelURL,
       dataType: 'json',
       headers:{'Access-Control-Allow-Origin':'*'}
     }).done(function(parcelRes){
       parceldata= parcelRes
-    });
-
-    $('#loader').hide()
-    console.log(parceldata)
-
-    if(parceldata.parcel_df[0].Opa_account_num=="NONE FOUND"){
-      alert("Please enter a valid address!")
-    }
-    else{
-      setMarkers(parceldata);
-      plotElements();
-
-      getInfo(parceldata);
-
-      updateChart(area_Chart, total_area);
-      updateChart(frontage_Chart, frontage);
-      updateChart(room_Chart, room);
-      update311(request);
-      updateparcel(nearby);
-      updaterisk(risk);
-      updateCensus(censusData);
-      updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, vioct);
-      //api popover
-      var api = newapi(inputAddr);
-      updateapi(api)
-      $(function () {
-        $('[data-toggle="popover"]').popover({
-           trigger: 'click',
-           sanitize : false,
-           html:true
-          })
-      })   
-
-    }
-   
+      $('#loader').hide()
+      console.log(parceldata)
+  
+      if(parceldata.parcel_df[0].Opa_account_num=="NONE FOUND"){
+        alert("Please enter a valid address!")
+      }
+      else{
+        setMarkers(parceldata);
+        plotElements();
+  
+        getInfo(parceldata);
+  
+        updateChart(area_Chart, total_area);
+        updateChart(frontage_Chart, frontage);
+        updateChart(room_Chart, room);
+        update311(request);
+        updateparcel(nearby);
+        updaterisk(risk);
+        updateCensus(censusData);
+        updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, vioct);
+        //api popover
+        var api = newapi(inputAddr);
+        updateapi(api)
+        $(function () {
+          $('[data-toggle="popover"]').popover({
+             trigger: 'click',
+             sanitize : false,
+             html:true
+            })
+        })   
+  
+      }
+    });   
   });
 
 })
@@ -832,41 +803,39 @@ $(document).ready(function() {
       headers:{'Access-Control-Allow-Origin':'*'}
     }).done(function(parcelRes){
       parceldata= parcelRes
-    });
-
-    $('#loader').hide()
-    console.log(parceldata)
-
-    if(parceldata.parcel_df[0].Opa_account_num=="NONE FOUND"){
-      alert("Please enter a valid address!")
-    }
-    else{
-      setMarkers(parceldata);
-      plotElements();
-
-      getInfo(parceldata);
-
-      updateChart(area_Chart, total_area);
-      updateChart(frontage_Chart, frontage);
-      updateChart(room_Chart, room);
-      update311(request);
-      updateparcel(nearby);
-      updaterisk(risk);
-      updateCensus(censusData);
-      updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, vioct);
-      //api popover
-      var api = newapi(inputAddr);
-      updateapi(api)
-      $(function () {
-        $('[data-toggle="popover"]').popover({
-           trigger: 'click',
-           sanitize : false,
-           html:true
-          })
-      })   
-
-    }
-   
+      $('#loader').hide()
+      console.log(parceldata)
+  
+      if(parceldata.parcel_df[0].Opa_account_num=="NONE FOUND"){
+        alert("Please enter a valid address!")
+      }
+      else{
+        setMarkers(parceldata);
+        plotElements();
+  
+        getInfo(parceldata);
+  
+        updateChart(area_Chart, total_area);
+        updateChart(frontage_Chart, frontage);
+        updateChart(room_Chart, room);
+        update311(request);
+        updateparcel(nearby);
+        updaterisk(risk);
+        updateCensus(censusData);
+        updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, vioct);
+        //api popover
+        var api = newapi(inputAddr);
+        updateapi(api)
+        $(function () {
+          $('[data-toggle="popover"]').popover({
+             trigger: 'click',
+             sanitize : false,
+             html:true
+            })
+        })   
+  
+      }
+    });   
   });
 
 })
@@ -890,40 +859,39 @@ $(document).ready(function() {
       headers:{'Access-Control-Allow-Origin':'*'}
     }).done(function(parcelRes){
       parceldata= parcelRes
+      $('#loader').hide()
+      console.log(parceldata)
+  
+      if(parceldata.parcel_df[0].Opa_account_num=="NONE FOUND"){
+        alert("Please enter a valid address!")
+      }
+      else{
+        setMarkers(parceldata);
+        plotElements();
+  
+        getInfo(parceldata);
+  
+        updateChart(area_Chart, total_area);
+        updateChart(frontage_Chart, frontage);
+        updateChart(room_Chart, room);
+        update311(request);
+        updateparcel(nearby);
+        updaterisk(risk);
+        updateCensus(censusData);
+        updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, vioct);
+        //api popover
+        var api = newapi(inputAddr);
+        updateapi(api)
+        $(function () {
+          $('[data-toggle="popover"]').popover({
+             trigger: 'click',
+             sanitize : false,
+             html:true
+            })
+        })   
+  
+      }
     });
-
-    $('#loader').hide()
-    console.log(parceldata)
-
-    if(parceldata.parcel_df[0].Opa_account_num=="NONE FOUND"){
-      alert("Please enter a valid address!")
-    }
-    else{
-      setMarkers(parceldata);
-      plotElements();
-
-      getInfo(parceldata);
-
-      updateChart(area_Chart, total_area);
-      updateChart(frontage_Chart, frontage);
-      updateChart(room_Chart, room);
-      update311(request);
-      updateparcel(nearby);
-      updaterisk(risk);
-      updateCensus(censusData);
-      updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, vioct);
-      //api popover
-      var api = newapi(inputAddr);
-      updateapi(api)
-      $(function () {
-        $('[data-toggle="popover"]').popover({
-           trigger: 'click',
-           sanitize : false,
-           html:true
-          })
-      })   
-
-    }
    
   });
 
@@ -948,40 +916,39 @@ $(document).ready(function() {
       headers:{'Access-Control-Allow-Origin':'*'}
     }).done(function(parcelRes){
       parceldata= parcelRes
+      $('#loader').hide()
+      console.log(parceldata)
+  
+      if(parceldata.parcel_df[0].Opa_account_num=="NONE FOUND"){
+        alert("Please enter a valid address!")
+      }
+      else{
+        setMarkers(parceldata);
+        plotElements();
+  
+        getInfo(parceldata);
+  
+        updateChart(area_Chart, total_area);
+        updateChart(frontage_Chart, frontage);
+        updateChart(room_Chart, room);
+        update311(request);
+        updateparcel(nearby);
+        updaterisk(risk);
+        updateCensus(censusData);
+        updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, vioct);
+        //api popover
+        var api = newapi(inputAddr);
+        updateapi(api)
+        $(function () {
+          $('[data-toggle="popover"]').popover({
+             trigger: 'click',
+             sanitize : false,
+             html:true
+            })
+        })   
+  
+      }
     });
-
-    $('#loader').hide()
-    console.log(parceldata)
-
-    if(parceldata.parcel_df[0].Opa_account_num=="NONE FOUND"){
-      alert("Please enter a valid address!")
-    }
-    else{
-      setMarkers(parceldata);
-      plotElements();
-
-      getInfo(parceldata);
-
-      updateChart(area_Chart, total_area);
-      updateChart(frontage_Chart, frontage);
-      updateChart(room_Chart, room);
-      update311(request);
-      updateparcel(nearby);
-      updaterisk(risk);
-      updateCensus(censusData);
-      updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, vioct);
-      //api popover
-      var api = newapi(inputAddr);
-      updateapi(api)
-      $(function () {
-        $('[data-toggle="popover"]').popover({
-           trigger: 'click',
-           sanitize : false,
-           html:true
-          })
-      })   
-
-    }
    
   });
 
@@ -1000,46 +967,44 @@ $(document).ready(function() {
     console.log(parcelURL)
 
     $.ajax({
-      async: false,
       url:parcelURL,
       dataType: 'json',
       headers:{'Access-Control-Allow-Origin':'*'}
     }).done(function(parcelRes){
       parceldata= parcelRes
+      $('#loader').hide()
+      console.log(parceldata)
+  
+      if(parceldata.parcel_df[0].Opa_account_num=="NONE FOUND"){
+        alert("Please enter a valid address!")
+      }
+      else{
+        setMarkers(parceldata);
+        plotElements();
+  
+        getInfo(parceldata);
+  
+        updateChart(area_Chart, total_area);
+        updateChart(frontage_Chart, frontage);
+        updateChart(room_Chart, room);
+        update311(request);
+        updateparcel(nearby);
+        updaterisk(risk);
+        updateCensus(censusData);
+        updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, vioct);
+        //api popover
+        var api = newapi(inputAddr);
+        updateapi(api)
+        $(function () {
+          $('[data-toggle="popover"]').popover({
+             trigger: 'click',
+             sanitize : false,
+             html:true
+            })
+        })   
+  
+      }
     });
-
-    $('#loader').hide()
-    console.log(parceldata)
-
-    if(parceldata.parcel_df[0].Opa_account_num=="NONE FOUND"){
-      alert("Please enter a valid address!")
-    }
-    else{
-      setMarkers(parceldata);
-      plotElements();
-
-      getInfo(parceldata);
-
-      updateChart(area_Chart, total_area);
-      updateChart(frontage_Chart, frontage);
-      updateChart(room_Chart, room);
-      update311(request);
-      updateparcel(nearby);
-      updaterisk(risk);
-      updateCensus(censusData);
-      updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, vioct);
-      //api popover
-      var api = newapi(inputAddr);
-      updateapi(api)
-      $(function () {
-        $('[data-toggle="popover"]').popover({
-           trigger: 'click',
-           sanitize : false,
-           html:true
-          })
-      })   
-
-    }
    
   });
 
@@ -1058,46 +1023,44 @@ $(document).ready(function() {
     console.log(parcelURL)
 
     $.ajax({
-      async: false,
       url:parcelURL,
       dataType: 'json',
       headers:{'Access-Control-Allow-Origin':'*'}
     }).done(function(parcelRes){
       parceldata= parcelRes
+      $('#loader').hide()
+      console.log(parceldata)
+  
+      if(parceldata.parcel_df[0].Opa_account_num=="NONE FOUND"){
+        alert("Please enter a valid address!")
+      }
+      else{
+        setMarkers(parceldata);
+        plotElements();
+  
+        getInfo(parceldata);
+  
+        updateChart(area_Chart, total_area);
+        updateChart(frontage_Chart, frontage);
+        updateChart(room_Chart, room);
+        update311(request);
+        updateparcel(nearby);
+        updaterisk(risk);
+        updateCensus(censusData);
+        updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, vioct);
+        //api popover
+        var api = newapi(inputAddr);
+        updateapi(api)
+        $(function () {
+          $('[data-toggle="popover"]').popover({
+             trigger: 'click',
+             sanitize : false,
+             html:true
+            })
+        })   
+  
+      }
     });
-
-    $('#loader').hide()
-    console.log(parceldata)
-
-    if(parceldata.parcel_df[0].Opa_account_num=="NONE FOUND"){
-      alert("Please enter a valid address!")
-    }
-    else{
-      setMarkers(parceldata);
-      plotElements();
-
-      getInfo(parceldata);
-
-      updateChart(area_Chart, total_area);
-      updateChart(frontage_Chart, frontage);
-      updateChart(room_Chart, room);
-      update311(request);
-      updateparcel(nearby);
-      updaterisk(risk);
-      updateCensus(censusData);
-      updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, vioct);
-      //api popover
-      var api = newapi(inputAddr);
-      updateapi(api)
-      $(function () {
-        $('[data-toggle="popover"]').popover({
-           trigger: 'click',
-           sanitize : false,
-           html:true
-          })
-      })   
-
-    }
    
   });
 
