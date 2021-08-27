@@ -222,7 +222,7 @@ body {
 
 
 
-/*For Mobile Device (iPad)*/
+/*For Mobile Device (iPad)
 @media (max-width: 1170px){
   .navbar{
    width: 3.7rem;
@@ -245,9 +245,10 @@ body {
     height: 2.17rem
   }
 }
+*/
 
 /*For Mobile Device (iPhone)*/
-@media (max-width: 576px){
+@media (max-width: 1171px){
   .navbar{
    width: 100%;
    height: 3.3rem;
@@ -322,8 +323,10 @@ body {
     left: 27.8%;
     width: 51%;
     height: 6.1%;
-
     border-radius: 2rem;
+  }
+  .btnGroupDrop1{
+    background-color: rgb(255, 255, 255);
   }
   .search{
     border-radius: 2rem;
