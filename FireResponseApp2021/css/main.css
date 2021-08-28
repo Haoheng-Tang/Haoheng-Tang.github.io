@@ -59,6 +59,10 @@ body {
   text-align: right;
 }
 
+.card-body {
+  padding-bottom: 3%;
+}
+
 .mapframe2 {
   width: 127vh;
   height: 127vh;
@@ -69,6 +73,12 @@ body {
   left: 56%;
   margin: -63.5vh 0 0 -63.5vh;
   border-radius: 50%;
+}
+
+.card{
+  background-color: rgba(250, 250, 250, 0.333); 
+  border: rgba(1, 1, 1, 0);
+  border-radius: 10.7%;
 }
 
 
@@ -91,13 +101,17 @@ body {
 .map {
   width: 80vh;
   height: 80vh;
-  background: #C4C4C4;
+  background: #f0f0f0;
   opacity: 1;
   position: absolute;
   top: 50%;
   left: 56%;
   margin: -40vh 0 0 -40vh;
   border-radius: 50%;
+  -moz-border-radius: 4vh;
+  -webkit-border-radius: 40vh;
+  -khtml-border-radius: 40vh;
+  z-index: 400; 
 }
 .navbar {
   width: 5.05vw;
@@ -130,6 +144,7 @@ body {
 
 .search {
   background: white;
+  border-radius: 19.5%;
 }
 
 .search:hover {
@@ -248,10 +263,13 @@ body {
 */
 
 /*For Mobile Device (iPhone)*/
-@media (max-width: 1171px){
+@media only screen 
+    and (device-width: 390px) 
+    and (device-height: 844px) 
+    and (-webkit-device-pixel-ratio: 3) { 
   .navbar{
    width: 100%;
-   height: 3.3rem;
+   height: 6%;
    padding: 0px;
    background: #0c0301dc;
    opacity: 1;
