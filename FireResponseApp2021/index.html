@@ -40,7 +40,9 @@
                             39.95097777,
                             -75.1980176562
                         ],
-                        zoom: 15.5
+                        zoom: 15.5,
+                        dragging: !L.Browser.mobile,
+                        tap: !L.Browser.mobile
                     });
 
                     var Stamen_TonerLite = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
