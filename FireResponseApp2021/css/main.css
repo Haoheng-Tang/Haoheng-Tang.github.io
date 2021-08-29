@@ -121,6 +121,10 @@ body {
   opacity: 0.81;
 }
 
+.form-control{
+  font-size: 1vw;
+}
+
 .barchart{
   position: absolute;
   left: 6.3%;
@@ -314,7 +318,11 @@ body {
     and (device-height: 844px) 
     and (-webkit-device-pixel-ratio: 3) { 
 
-/*@media (max-width: 1170px){*/
+/*@media (max-width: 1170px){
+  body {
+    font-size: 1.29vh;
+  }*/
+
   .navbar{
    width: 100%;
    height: 4.5%;
@@ -343,10 +351,11 @@ body {
     background: rgba(255, 255, 255, 0.37);
   }
   .mapframe1{
-    width: 84vw;
-    height: 84vw;
-    margin: -74vw 0 0 -48vw;
-    background-image: linear-gradient(to top,#fff9dd, #f8efc6);
+    width: 86vw;
+    height: 86vw;
+    margin: -75vw 0 0 -49vw;
+    background-image: linear-gradient(to top,#e5e9c7, #fff9dd);
+    opacity: 0.69;
   }
   .map {
     width: 68vw;
@@ -470,6 +479,10 @@ body {
     padding: 0vh;
     margin: 0%;
     font-size: 1.0vh;
+  }
+
+  .form-control{
+    font-size: 1vh;
   }
   
   .chartposition1{
