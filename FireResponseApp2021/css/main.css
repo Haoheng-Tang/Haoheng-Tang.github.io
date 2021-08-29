@@ -30,7 +30,7 @@ body {
 .sidebarchart {
   position: relative;
   left: 6.3%;
-  width: 23.4%;
+  width: 22.4%;
   top: 0;
   bottom: 0;
   overflow-y: auto;
@@ -316,12 +316,12 @@ body {
 @media only screen 
     and (device-width: 390px) 
     and (device-height: 844px) 
-    and (-webkit-device-pixel-ratio: 3) { 
+    and (-webkit-device-pixel-ratio: 3) {
 
-/*@media (max-width: 1170px){
+/*@media (max-width: 1170px){*/
   body {
     font-size: 1.29vh;
-  }*/
+  }
 
   .navbar{
    width: 100%;
@@ -348,13 +348,13 @@ body {
     width: 128vw;
     height: 128vw;
     margin: -97vw 0 0 -70vw;
-    background: rgba(255, 255, 255, 0.37);
+    background: rgba(255, 255, 255, 0.4);
   }
   .mapframe1{
     width: 86vw;
     height: 86vw;
     margin: -75vw 0 0 -49vw;
-    background-image: linear-gradient(to top,#e5e9c7, #fff9dd);
+    background-image: linear-gradient(to bottom,#fff9dd, #f8efc6);
     opacity: 0.69;
   }
   .map {
@@ -499,7 +499,7 @@ body {
   }
 
   .dropdown-item{
-    font-size: 1.27vh;
+    font-size: 1.25vh;
   }
 
 
