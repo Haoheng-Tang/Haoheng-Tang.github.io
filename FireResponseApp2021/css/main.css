@@ -232,7 +232,7 @@ body {
   color: rgb(43, 23, 15);
   position: absolute;
   top: 1.3%;
-  left: 7.1%;
+  right: 12.79%;
   font-family:Arial, Helvetica, sans-serif;
   font-weight: 600;
   font-size: 10.8vh;
@@ -329,7 +329,7 @@ body {
   .canvas {
     width: 100%;
     height: 100%;
-    background-image: linear-gradient(to top,#fdf7f5, #e7cac1);
+    background-image: linear-gradient(to top,#fdf7f5, #dfbfb5);
     opacity: 1;
     position: absolute;
     top: 0px;
@@ -339,18 +339,19 @@ body {
   .mapframe2{
     width: 128vw;
     height: 128vw;
-    margin: -100vw 0 0 -70vw;
+    margin: -97vw 0 0 -70vw;
+    background: rgba(255, 255, 255, 0.37);
   }
   .mapframe1{
     width: 84vw;
     height: 84vw;
-    margin: -77vw 0 0 -48vw;
+    margin: -74vw 0 0 -48vw;
     background-image: linear-gradient(to top,#fff9dd, #f8efc6);
   }
   .map {
     width: 68vw;
     height: 68vw;
-    margin: -69vw 0 0 -40vw;
+    margin: -66vw 0 0 -40vw;
     z-index: 400;
   }
   .circle{
@@ -363,25 +364,26 @@ body {
     opacity: 80%;
     background-color: rgb(93, 73, 65);
     position: absolute;
-    top: 61%;
-    left: 30.1%;
+    top: 62%;
+    right: 31.01%;
     border-radius: 2rem;
     font-family:Arial, Helvetica, sans-serif;
     font-weight: 600;
-    font-size: 6.4vw;
-    padding-left: 5%;
+    font-size: 5vw;
+    padding-right: 22%;
+    padding-left: 3%;
   }
   .average {
     width: 40%;
     color: rgb(255, 255, 255);
     opacity: 80%;
     position: absolute;
-    top: 61%;
+    top: 62%;
     left: 38.1%;
     border-radius: 10%;
     font-family:Arial, Helvetica, sans-serif;
     font-weight: 600;
-    font-size: 6.4vw;
+    font-size: 5vw;
     margin-left: 5%;
     padding-left: 5%;
   }
@@ -410,13 +412,13 @@ body {
     position: absolute;
     left: 4%;
     width: 92%;
-    bottom: 2%;
+    bottom: 0%;
     padding: 0;
   }
 
   .sidebar31{
     left: 3%;
-    top: 82%;
+    top: 85%;
     height: 20%;
     padding: 0vh;
     width: 29%;
@@ -424,7 +426,7 @@ body {
 
   .sidebar32{
     left: 36%;
-    top: 82%;
+    top: 85%;
     height: 20%;
     padding: 0vh;
     width: 29%;
@@ -432,7 +434,7 @@ body {
 
   .sidebar33{
     left: 68%;
-    top: 82%;
+    top: 85%;
     height: 20%;
     padding: 0vh;
     width: 29%;
@@ -471,22 +473,22 @@ body {
   }
   
   .chartposition1{
-   top: 69%;
+   top: 70%;
    width: 50%;
   }
 
   .chartposition2{
-    top: 73%;
+    top: 74.5%;
     width: 50%;
   }
 
   .chartposition3{
-    top: 77%;
+    top: 79%;
     width: 50%;
   }
 
   .dropdown-item{
-    font-size: 0.81rem;
+    font-size: 1.27vh;
   }
 
 
