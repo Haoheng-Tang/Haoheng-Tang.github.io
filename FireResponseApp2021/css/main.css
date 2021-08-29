@@ -122,7 +122,7 @@ body {
 }
 
 .form-control{
-  font-size: 1vw;
+  font-size: 0.8vw;
 }
 
 .barchart{
@@ -410,6 +410,7 @@ body {
   }
   .form-control{
     background-color: rgba(1, 1, 1, 0);
+    font-size: 1vh;
   }
   .search{
     border-radius: 2rem;
@@ -481,9 +482,6 @@ body {
     font-size: 1.0vh;
   }
 
-  .form-control{
-    font-size: 1vh;
-  }
   
   .chartposition1{
    top: 70%;
