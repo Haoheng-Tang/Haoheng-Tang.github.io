@@ -14,6 +14,8 @@ var parcel_layer;
 var nearby_marker_lst=[];
 var addr;
 var nearby_addr;
+var cat;
+var opa;
 
 var zoning;
 var category;
@@ -105,6 +107,7 @@ function setMarkers(dataArr){
   var lat = parseFloat(dataArr.parcel_df[0].Parcel_centroid_lat);
   var lng = parseFloat(dataArr.parcel_df[0].Parcel_centroid_lng);
   addr = dataArr.parcel_geometry[0].ADDR_SOURCE
+  cat = dataArr.properties_df[0].category
   $('#displayname').val(addr)
   marker = L.marker([lat, lng],{icon: redIcon}).bindPopup(`${addr}<br/>Click on nearby markers to request data`).on({
     mouseover: function() {
@@ -114,6 +117,8 @@ function setMarkers(dataArr){
             this.closePopup()
     }
   });
+
+  $('.legend-labels').html(`<li ><span style='background:orange; opacity: 0.6;'></span>${cat}</li>`)
 
   opa = dataArr.parcel_df[0].Opa_account_num
   var key
@@ -204,6 +209,7 @@ function updateCensus(census){
   $('#black').html(parceldata.census_df[0].black_population);
   $('#white').html(parceldata.census_df[0].white_population);
   $('#income').html(parceldata.census_df[0].median_income);
+  $('#censusnum').html(parceldata.census_df[0].census_tract);
 }
 
 
@@ -294,6 +300,13 @@ function onClick(e) {
 $(document).ready(function() {
   $('#loader').hide();
 
+  $('#displayname').keydown(function(event){ 
+    var keyCode = (event.keyCode ? event.keyCode : event.which);   
+    if (keyCode == 13) {
+        $('#btnGroupAddon').trigger('click');
+    }
+});
+
   $('#btnGroupAddon').click(function() {
     $('#loader').show()
     var inputAddr = $('.form-control').val();
@@ -313,7 +326,7 @@ $(document).ready(function() {
       console.log(parceldata)
   
       if(parceldata.parcel_df[0].Opa_account_num=="NONE FOUND"){
-        alert("Please enter an address in Philadelphia in a right format. You may click on the dropdown button to select one or try one in the following: 1200 W VENANGO ST, 4054 1/2 LANCASTER AVE, 4048 LANCASTER AVE, 4058 1/2 LANCASTER AVE, 1140 W VENANGO ST, 1677 W WYOMING AVE, 1911 S GALLOWAY ST, 10904 CAREY TER, 3134 MECHANICSVILLE RD, 12466 KNIGHTS RD, 9629 WISSINOMING ST, 499 FRANKLIN MILLS CIR, 3118 MAUREEN DR, 3626 BISCAYNE PL")
+        alert("Please enter an address in Philadelphia in a right format. You may click on the dropdown button to select one or try one of the following: 1200 W VENANGO ST, 1422 MOORE ST, 3812 N PERCY ST, 4054 1/2 LANCASTER AVE, 4048 LANCASTER AVE, 4058 1/2 LANCASTER AVE, 1140 W VENANGO ST, 1677 W WYOMING AVE, 1911 S GALLOWAY ST, 10904 CAREY TER, 3134 MECHANICSVILLE RD, 12466 KNIGHTS RD, 9629 WISSINOMING ST, 3118 MAUREEN DR, 3626 BISCAYNE PL")
       }
       else{
         setMarkers(parceldata);

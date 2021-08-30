@@ -34,6 +34,13 @@
             <div class="mapframe2"></div>
             <div class="mapframe1"></div>
             <div id="map" class="map">
+                <div class='my-legend'>
+                    <div class='legend-title'>Category</div>
+                    <div class='legend-scale'>
+                      <ul class='legend-labels'>
+                      </ul>
+                    </div>
+                  </div>
                 <script>
                     var map = L.map('map', {
                         center: [
@@ -57,13 +64,14 @@
 
 
 
+
             <!--navbar-->
             <div class="navbar">
                 <ul class="nav flex-row"style="position:absolute; top : 6%;">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page"href="#">
-                            <button class="btn btn-primary org" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"
-                            style="background-color: rgba(0,0,0,0); border-color: rgba(0,0,0,0);">                                
+                            <button class="btn btn-primary org" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" title="Introduction"
+                            style="background-color: rgba(0,0,0,0); border-color: rgba(0,0,0,0); padding: 0%;">                                
                                 <svg xmlns="http://www.w3.org/2000/svg"  fill="#fd783a" class="bi circle bi-vinyl-fill" viewBox="0 0 16 16">
                                 <path d="M8 6a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0 3a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
                                 <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4 8a4 4 0 1 0 8 0 4 4 0 0 0-8 0z"/></svg>
@@ -86,6 +94,7 @@
                                     3. Click on one of the grey markers and it will automatically request data of that parcel. You can also input another address for a new request.<br/><br/>
                                     For users who are unfamiliar with street addresses in Philadelphia, try on these addresses:<br/>
                                     1200 W VENANGO ST<br/>
+                                    1422 MOORE ST<br/>
                                     3812 N PERCY ST<br/>
                                     4054 1/2 LANCASTER AVE<br/>
                                     4048 LANCASTER AVE<br/>
@@ -99,7 +108,6 @@
                                     3134 MECHANICSVILLE RD<br/>
                                     9630 WISSINOMING ST<br/>
                                     9629 WISSINOMING ST<br/>
-                                    499 FRANKLIN MILLS CIR<br/>
                                     3118 MAUREEN DR<br/>
                                     3626 BISCAYNE PL<br/>
                                     Other addresses in Philadelphia also work!<br/><br/>
@@ -152,6 +160,7 @@
                         </button>
                         <ul class="dropdown-menu btn" aria-labelledby="btnGroupDrop1" style="font-size: 0.86rem;">
                           <li><a class="dropdown-item" id="addr1" >1200 W VENANGO ST</a></li>
+                          <li><a class="dropdown-item" id="addr13">1422 MOORE ST</a></li>
                           <li><a class="dropdown-item" id="addr2" >3812 N PERCY ST</a></li>
                           <li><a class="dropdown-item" id="addr3">4054 1/2 LANCASTER AVE</a></li>
                           <li><a class="dropdown-item" id="addr4">4048 LANCASTER AVE</a></li>
@@ -163,7 +172,6 @@
                           <li><a class="dropdown-item" id="addr10">3134 MECHANICSVILLE RD</a></li>
                           <li><a class="dropdown-item" id="addr11">12466 KNIGHTS RD</a></li>
                           <li><a class="dropdown-item" id="addr12">9629 WISSINOMING ST</a></li>
-                          <li><a class="dropdown-item" id="addr13">499 FRANKLIN MILLS CIR</a></li>
                           <li><a class="dropdown-item" id="addr14">3118 MAUREEN DR</a></li>
                           <li><a class="dropdown-item" id="addr15">3626 BISCAYNE PL</a></li>
                         </ul>
@@ -383,8 +391,21 @@
         <div class="sidebar31">
             <div class="card">
                 <div class="card-body h-100">
-                  <h5 class="card-title">CENSUS DATA</h5>
-
+                  <h5 class="card-title">CENSUS TRACT</h5>
+                  <table class="table table-sm"  style="margin-top: 2vh;" id="medianInc">
+                    <thead>
+                      <tr>
+                        <th scope="col" id="censusnum">00000</th>
+                        <th scope="col" id="income">0</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class = "fw-light" >Tract#</td>
+                        <td class = "fw-light" >Med_Income</td>
+                      </tr>
+                    </tbody>
+                  </table>
                   <table class="table table-sm"  style="margin-top: 2vh;">
                     <thead>
                       <tr>
@@ -398,19 +419,6 @@
                         <td class = "fw-light" >Population</td>
                         <td class = "fw-light" >Blacks</td>
                         <td class = "fw-light" >Whites</td>
-                      </tr>
-                    </tbody>
-                  </table>
-
-                  <table class="table table-sm"  style="margin-top: 2vh;" id="medianInc">
-                    <thead>
-                      <tr>
-                        <th scope="col" id="income">0</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td class = "fw-light" >Median Income</td>
                       </tr>
                     </tbody>
                   </table>
