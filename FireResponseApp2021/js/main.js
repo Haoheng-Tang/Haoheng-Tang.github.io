@@ -89,13 +89,13 @@ function updateChart(barchart, newdata){
   barchart.update()
 }
 
-function updateChart2(radarchart, below, unsafe, com, hotel, CMX2, vioct){
+function updateChart2(radarchart, below, unsafe, com, hotel, CMX2, sealed){
   radarchart.data.datasets[0].data[0] = below
   radarchart.data.datasets[0].data[1] = unsafe
   radarchart.data.datasets[0].data[2] = com
   radarchart.data.datasets[0].data[3] = hotel
   radarchart.data.datasets[0].data[4] = CMX2
-  radarchart.data.datasets[0].data[5] = vioct/10
+  radarchart.data.datasets[0].data[5] = sealed
   radarchart.update()
 }
 
@@ -146,7 +146,7 @@ function setMarkers(dataArr){
 //Cards: 311 Request
 var new311 = function(entry){
   if(entry.length>1){
-    console.log(entry[0].length)
+    //console.log(entry[0].length)
     if(entry[0].length>24){
       return(`1. ${entry[0]}<br/>...`)
     }else if(entry[1].length>24){
@@ -161,7 +161,7 @@ var new311 = function(entry){
    return(`${entry[0]}<br/>&nbsp<br/>&nbsp`)
    }else{
     //console.log(2)
-    return(`none<br/>&nbsp`)}
+    return(`No 311 request within 100m in the past month<br/>&nbsp`)}
    }
 
 var update311 =function(req){
@@ -180,6 +180,45 @@ var update311 =function(req){
   $('#311count').html(count311)
   $('#311name').html(new311(names311))
   console.log(new311(names311))
+}
+
+//Cards: violation code
+var newvio = function(entry){
+  if(entry.length>1){
+    //console.log(entry[0].length)
+    if(entry[0].length>24){
+      return(`1. ${entry[0]}<br/>...`)
+    }else if(entry[1].length>24){
+      return(`1. ${entry[1]}<br/>...`)
+    }else if(entry.length==2){
+      return(`1. ${entry[0]}<br/>2. ${entry[1]}<br/>&nbsp`)
+    }else{
+      return (`1. ${entry[0]}<br/>2. ${entry[1]}<br/>...`)
+    }
+  }else if(entry.length==1 && entry[0]!=undefined){
+    //console.log(1)
+   return(`${entry[0]}<br/>&nbsp<br/>&nbsp`)
+   }else{
+    //console.log(2)
+    return(`none<br/>&nbsp<br/>&nbsp`)}
+   }
+
+var updatevio =function(req){
+  //vio count
+  if(req.length==1 && req[0].vio_code=="NO CODE VIOLATION"){
+    viocount= 0
+  }else{
+    viocount= req[0].viol_count
+    //vio names
+    var vionames=[]
+    for(let i=0;i<viocount;i++){
+      vioname = req[i].violationcodetitle
+      vionames.push(vioname)
+    }
+    $('#viocount').html(viocount)
+    $('#vioname').html(newvio(vionames))
+    console.log(newvio(vionames))
+  }
 }
 
 //Cards: Nearby Parcel
@@ -241,29 +280,40 @@ var updaterisk= function(risk){
 
 function getInfo(dataArr){
   zoning = dataArr.properties_df[0].zoning;
-  console.log(zoning)
+  //console.log(zoning)
   category = dataArr.properties_df[0].category;
   vio_code = dataArr.properties_df[0].vio_title;
   CMX2= dataArr.properties_df[0].isCMX2;
   below = dataArr.properties_df[0].isbelow;
   com= dataArr.properties_df[0].iscom;
   hotel= dataArr.properties_df[0].ishotel;
-  unsafe= dataArr.violation_df[0].isunsafe;
+  if(dataArr.violation_df.length==1 && dataArr.violation_df[0].vio_title=="NO CODE VIOLATION"){
+    unsafe= 0
+  }
+  else{
+    unsafe= dataArr.violation_df[0].isunsafe;
+  }
+  sealed= dataArr.properties_df[0].issealed;
   vioct = dataArr.violation_df[0].viol_count;
   year_built = dataArr.properties_df[0].year_built;
   total_area = dataArr.properties_df[0].total_area;
   story = dataArr.properties_df[0].number_stories;
   room = dataArr.properties_df[0].number_of_rooms;
   frontage = dataArr.properties_df[0].frontage;
-  request = dataArr.request311_100m
-  nearby = dataArr.nearby_parcel_df
-  risk = dataArr.prediction[0].Relative_risk
-  censusData = parceldata.census_df[0]
+  request = dataArr.request311_100m;
+  viodf = dataArr.violation_df;
+  nearby = dataArr.nearby_parcel_df;
+  risk = dataArr.prediction[0].Relative_risk;
+  censusData = parceldata.census_df[0];
 }
 
 /*click nearby marker function*/ 
 function onClick(e) {
   $('#loader').show()
+  $('#btnGroupAddon').off('click', Search);
+  $('#btnGroupAddon').attr("disabled", true);
+  $('#btnGroupDrop1').attr("disabled", true);
+
   var popup = this.getPopup();
   nearby_addr = popup.getContent();
   nearbyURL = newapi(nearby_addr)
@@ -273,6 +323,11 @@ function onClick(e) {
     dataType: 'json',
     headers:{'Access-Control-Allow-Origin':'*'}
   }).done(function(nearbyRes){
+
+    $('#btnGroupAddon').on('click', Search);
+    $('#btnGroupAddon').attr("disabled", false);
+    $('#btnGroupDrop1').attr("disabled", false);
+
     nearby_data = nearbyRes
     $('#loader').hide()
     console.log(nearby_data)
@@ -283,13 +338,72 @@ function onClick(e) {
     updateChart(area_Chart, total_area);
     updateChart(frontage_Chart, frontage);
     updateChart(room_Chart, room);
-    updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, vioct);
+    updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, sealed);
     update311(request);
+    updatevio(viodf);
     updateparcel(nearby);
     updateCensus(censusData);
   });
 }
 
+function Search() {
+  $('#loader').show()
+  $('#btnGroupAddon').off('click', Search);
+  $('#btnGroupAddon').attr("disabled", true);
+  $('#btnGroupDrop1').attr("disabled", true);
+
+  var inputAddr = $('.form-control').val();
+  if(inputAddr===""){
+    inputAddr = "1200 W VENANGO ST"
+  }
+  parcelURL = newapi(inputAddr);
+  //console.log(parcelURL)
+
+  $.ajax({
+    url:parcelURL,
+    dataType: 'json',
+    headers:{'Access-Control-Allow-Origin':'*'}
+  }).done(function(parcelRes){
+    $('#btnGroupAddon').on('click', Search);
+    $('#btnGroupAddon').attr("disabled", false);
+    $('#btnGroupDrop1').attr("disabled", false);
+
+    parceldata= parcelRes
+    $('#loader').hide()
+    console.log(parceldata)
+
+    if(parceldata.parcel_df[0].Opa_account_num=="NONE FOUND"){
+      alert("Please enter an address in Philadelphia in a right format. You may click on the dropdown button to select one or try one of the following: 1200 W VENANGO ST, 1422 MOORE ST, 3812 N PERCY ST, 4054 1/2 LANCASTER AVE, 4048 LANCASTER AVE, 4058 1/2 LANCASTER AVE, 1140 W VENANGO ST, 1677 W WYOMING AVE, 1911 S GALLOWAY ST, 10904 CAREY TER, 3134 MECHANICSVILLE RD, 12466 KNIGHTS RD, 9629 WISSINOMING ST, 3118 MAUREEN DR, 3626 BISCAYNE PL")
+    }
+    else{
+      setMarkers(parceldata);
+      plotElements();
+
+      getInfo(parceldata);
+
+      updateChart(area_Chart, total_area);
+      updateChart(frontage_Chart, frontage);
+      updateChart(room_Chart, room);
+      update311(request);
+      updatevio(viodf);
+      updateparcel(nearby);
+      updaterisk(risk);
+      updateCensus(censusData);
+      updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, sealed);
+      //api popover
+      var api = newapi(inputAddr);
+      updateapi(api)
+      $(function () {
+        $('[data-toggle="popover"]').popover({
+           trigger: 'click',
+           sanitize : false,
+           html:true
+          })
+      }) 
+    }
+  });
+ 
+}
 
 
 /* =====================
@@ -307,55 +421,7 @@ $(document).ready(function() {
     }
 });
 
-  $('#btnGroupAddon').click(function() {
-    $('#loader').show()
-    var inputAddr = $('.form-control').val();
-    if(inputAddr===""){
-      inputAddr = "1200 W VENANGO ST"
-    }
-    parcelURL = newapi(inputAddr);
-    //console.log(parcelURL)
-
-    $.ajax({
-      url:parcelURL,
-      dataType: 'json',
-      headers:{'Access-Control-Allow-Origin':'*'}
-    }).done(function(parcelRes){
-      parceldata= parcelRes
-      $('#loader').hide()
-      console.log(parceldata)
-  
-      if(parceldata.parcel_df[0].Opa_account_num=="NONE FOUND"){
-        alert("Please enter an address in Philadelphia in a right format. You may click on the dropdown button to select one or try one of the following: 1200 W VENANGO ST, 1422 MOORE ST, 3812 N PERCY ST, 4054 1/2 LANCASTER AVE, 4048 LANCASTER AVE, 4058 1/2 LANCASTER AVE, 1140 W VENANGO ST, 1677 W WYOMING AVE, 1911 S GALLOWAY ST, 10904 CAREY TER, 3134 MECHANICSVILLE RD, 12466 KNIGHTS RD, 9629 WISSINOMING ST, 3118 MAUREEN DR, 3626 BISCAYNE PL")
-      }
-      else{
-        setMarkers(parceldata);
-        plotElements();
-  
-        getInfo(parceldata);
-  
-        updateChart(area_Chart, total_area);
-        updateChart(frontage_Chart, frontage);
-        updateChart(room_Chart, room);
-        update311(request);
-        updateparcel(nearby);
-        updaterisk(risk);
-        updateCensus(censusData);
-        updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, vioct);
-        //api popover
-        var api = newapi(inputAddr);
-        updateapi(api)
-        $(function () {
-          $('[data-toggle="popover"]').popover({
-             trigger: 'click',
-             sanitize : false,
-             html:true
-            })
-        }) 
-      }
-    });
-   
-  });
+  $('#btnGroupAddon').click(Search);
 
 })
 
@@ -365,6 +431,10 @@ $(document).ready(function() {
 
   $('#addr1').click(function() {
     $('#loader').show()
+    $('#btnGroupAddon').off('click', Search);
+    $('#btnGroupAddon').attr("disabled", true);
+    $('#btnGroupDrop1').attr("disabled", true);
+
     var inputAddr = $('#addr1').text()
     console.log(inputAddr)
 
@@ -376,6 +446,10 @@ $(document).ready(function() {
       dataType: 'json',
       headers:{'Access-Control-Allow-Origin':'*'}
     }).done(function(parcelRes){
+      $('#btnGroupAddon').on('click', Search);
+      $('#btnGroupAddon').attr("disabled", false);
+      $('#btnGroupDrop1').attr("disabled", false);
+
       parceldata= parcelRes
       $('#loader').hide()
       console.log(parceldata)
@@ -393,10 +467,11 @@ $(document).ready(function() {
         updateChart(frontage_Chart, frontage);
         updateChart(room_Chart, room);
         update311(request);
+        updatevio(viodf);
         updateparcel(nearby);
         updaterisk(risk);
         updateCensus(censusData);
-        updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, vioct);
+        updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, sealed);
         //$('#inputaddr').text(inputAddr)
         //api popover
         var api = newapi(inputAddr);
@@ -421,6 +496,10 @@ $(document).ready(function() {
 
   $('#addr2').click(function() {
     $('#loader').show()
+    $('#btnGroupAddon').off('click', Search);
+    $('#btnGroupAddon').attr("disabled", true);
+    $('#btnGroupDrop1').attr("disabled", true);
+
     var inputAddr = $('#addr2').text()
     console.log(inputAddr)
 
@@ -432,6 +511,10 @@ $(document).ready(function() {
       dataType: 'json',
       headers:{'Access-Control-Allow-Origin':'*'}
     }).done(function(parcelRes){
+      $('#btnGroupAddon').on('click', Search);
+      $('#btnGroupAddon').attr("disabled", false);
+      $('#btnGroupDrop1').attr("disabled", false);
+
       parceldata= parcelRes
       $('#loader').hide()
       console.log(parceldata)
@@ -449,10 +532,11 @@ $(document).ready(function() {
         updateChart(frontage_Chart, frontage);
         updateChart(room_Chart, room);
         update311(request);
+        updatevio(viodf);
         updateparcel(nearby);
         updaterisk(risk);
         updateCensus(censusData);
-        updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, vioct);
+        updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, sealed);
         //api popover
         var api = newapi(inputAddr);
         updateapi(api)
@@ -477,6 +561,10 @@ $(document).ready(function() {
 
   $('#addr3').click(function() {
     $('#loader').show()
+    $('#btnGroupAddon').off('click', Search);
+    $('#btnGroupAddon').attr("disabled", true);
+    $('#btnGroupDrop1').attr("disabled", true);
+
     var inputAddr = $('#addr3').text()
     console.log(inputAddr)
 
@@ -488,6 +576,10 @@ $(document).ready(function() {
       dataType: 'json',
       headers:{'Access-Control-Allow-Origin':'*'}
     }).done(function(parcelRes){
+      $('#btnGroupAddon').on('click', Search);
+      $('#btnGroupAddon').attr("disabled", false);
+      $('#btnGroupDrop1').attr("disabled", false);
+
       parceldata= parcelRes
       $('#loader').hide()
       console.log(parceldata)
@@ -505,10 +597,11 @@ $(document).ready(function() {
         updateChart(frontage_Chart, frontage);
         updateChart(room_Chart, room);
         update311(request);
+        updatevio(viodf);
         updateparcel(nearby);
         updaterisk(risk);
         updateCensus(censusData);
-        updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, vioct);
+        updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, sealed);
         //api popover
         var api = newapi(inputAddr);
         updateapi(api)
@@ -532,6 +625,10 @@ $(document).ready(function() {
 
   $('#addr4').click(function() {
     $('#loader').show()
+    $('#btnGroupAddon').off('click', Search);
+    $('#btnGroupAddon').attr("disabled", true);
+    $('#btnGroupDrop1').attr("disabled", true);
+
     var inputAddr = $('#addr4').text()
     console.log(inputAddr)
 
@@ -543,6 +640,10 @@ $(document).ready(function() {
       dataType: 'json',
       headers:{'Access-Control-Allow-Origin':'*'}
     }).done(function(parcelRes){
+      $('#btnGroupAddon').on('click', Search);
+      $('#btnGroupAddon').attr("disabled", false);
+      $('#btnGroupDrop1').attr("disabled", false);
+
       parceldata= parcelRes
       $('#loader').hide()
       console.log(parceldata)
@@ -560,10 +661,11 @@ $(document).ready(function() {
         updateChart(frontage_Chart, frontage);
         updateChart(room_Chart, room);
         update311(request);
+        updatevio(viodf);
         updateparcel(nearby);
         updaterisk(risk);
         updateCensus(censusData);
-        updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, vioct);
+        updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, sealed);
         //api popover
         var api = newapi(inputAddr);
         updateapi(api)
@@ -587,6 +689,10 @@ $(document).ready(function() {
 
   $('#addr5').click(function() {
     $('#loader').show()
+    $('#btnGroupAddon').off('click', Search);
+    $('#btnGroupAddon').attr("disabled", true);
+    $('#btnGroupDrop1').attr("disabled", true);
+
     var inputAddr = $('#addr5').text()
     console.log(inputAddr)
 
@@ -598,6 +704,10 @@ $(document).ready(function() {
       dataType: 'json',
       headers:{'Access-Control-Allow-Origin':'*'}
     }).done(function(parcelRes){
+      $('#btnGroupAddon').on('click', Search);
+      $('#btnGroupAddon').attr("disabled", false);
+      $('#btnGroupDrop1').attr("disabled", false);
+
       parceldata= parcelRes
       $('#loader').hide()
       console.log(parceldata)
@@ -613,10 +723,11 @@ $(document).ready(function() {
         updateChart(frontage_Chart, frontage);
         updateChart(room_Chart, room);
         update311(request);
+        updatevio(viodf);
         updateparcel(nearby);
         updaterisk(risk);
         updateCensus(censusData);
-        updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, vioct);
+        updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, sealed);
         //api popover
         var api = newapi(inputAddr);
         updateapi(api)
@@ -640,6 +751,10 @@ $(document).ready(function() {
 
   $('#addr6').click(function() {
     $('#loader').show()
+    $('#btnGroupAddon').off('click', Search);
+    $('#btnGroupAddon').attr("disabled", true);
+    $('#btnGroupDrop1').attr("disabled", true);
+
     var inputAddr = $('#addr6').text()
     console.log(inputAddr)
 
@@ -651,6 +766,10 @@ $(document).ready(function() {
       dataType: 'json',
       headers:{'Access-Control-Allow-Origin':'*'}
     }).done(function(parcelRes){
+      $('#btnGroupAddon').on('click', Search);
+      $('#btnGroupAddon').attr("disabled", false);
+      $('#btnGroupDrop1').attr("disabled", false);
+
       parceldata= parcelRes
       $('#loader').hide()
       console.log(parceldata)
@@ -668,10 +787,11 @@ $(document).ready(function() {
         updateChart(frontage_Chart, frontage);
         updateChart(room_Chart, room);
         update311(request);
+        updatevio(viodf);
         updateparcel(nearby);
         updaterisk(risk);
         updateCensus(censusData);
-        updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, vioct);
+        updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, sealed);
         //api popover
         var api = newapi(inputAddr);
         updateapi(api)
@@ -696,6 +816,10 @@ $(document).ready(function() {
 
   $('#addr7').click(function() {
     $('#loader').show()
+    $('#btnGroupAddon').off('click', Search);
+    $('#btnGroupAddon').attr("disabled", true);
+    $('#btnGroupDrop1').attr("disabled", true);
+
     var inputAddr = $('#addr7').text()
     console.log(inputAddr)
 
@@ -707,6 +831,10 @@ $(document).ready(function() {
       dataType: 'json',
       headers:{'Access-Control-Allow-Origin':'*'}
     }).done(function(parcelRes){
+      $('#btnGroupAddon').on('click', Search);
+      $('#btnGroupAddon').attr("disabled", false);
+      $('#btnGroupDrop1').attr("disabled", false);
+
       parceldata= parcelRes
       $('#loader').hide()
       console.log(parceldata)
@@ -724,10 +852,11 @@ $(document).ready(function() {
         updateChart(frontage_Chart, frontage);
         updateChart(room_Chart, room);
         update311(request);
+        updatevio(viodf);
         updateparcel(nearby);
         updaterisk(risk);
         updateCensus(censusData);
-        updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, vioct);
+        updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, sealed);
         //api popover
         var api = newapi(inputAddr);
         updateapi(api)
@@ -751,6 +880,10 @@ $(document).ready(function() {
 
   $('#addr8').click(function() {
     $('#loader').show()
+    $('#btnGroupAddon').off('click', Search);
+    $('#btnGroupAddon').attr("disabled", true);
+    $('#btnGroupDrop1').attr("disabled", true);
+
     var inputAddr = $('#addr8').text()
     console.log(inputAddr)
 
@@ -762,6 +895,10 @@ $(document).ready(function() {
       dataType: 'json',
       headers:{'Access-Control-Allow-Origin':'*'}
     }).done(function(parcelRes){
+      $('#btnGroupAddon').on('click', Search);
+      $('#btnGroupAddon').attr("disabled", false);
+      $('#btnGroupDrop1').attr("disabled", false);
+
       parceldata= parcelRes
       $('#loader').hide()
       console.log(parceldata)
@@ -779,10 +916,11 @@ $(document).ready(function() {
         updateChart(frontage_Chart, frontage);
         updateChart(room_Chart, room);
         update311(request);
+        updatevio(viodf);
         updateparcel(nearby);
         updaterisk(risk);
         updateCensus(censusData);
-        updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, vioct);
+        updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, sealed);
         //api popover
         var api = newapi(inputAddr);
         updateapi(api)
@@ -805,7 +943,11 @@ $(document).ready(function() {
   $('#loader').hide();
 
   $('#addr9').click(function() {
-    $('#loader').show()
+    $('#loader').show();
+    $('#btnGroupAddon').off('click', Search);
+    $('#btnGroupAddon').attr("disabled", true);
+    $('#btnGroupDrop1').attr("disabled", true);
+
     var inputAddr = $('#addr9').text()
     console.log(inputAddr)
 
@@ -813,11 +955,14 @@ $(document).ready(function() {
     console.log(parcelURL)
 
     $.ajax({
-      async: false,
       url:parcelURL,
       dataType: 'json',
       headers:{'Access-Control-Allow-Origin':'*'}
     }).done(function(parcelRes){
+      $('#btnGroupAddon').on('click', Search);
+      $('#btnGroupAddon').attr("disabled", false);
+      $('#btnGroupDrop1').attr("disabled", false)
+
       parceldata= parcelRes
       $('#loader').hide()
       console.log(parceldata)
@@ -835,10 +980,11 @@ $(document).ready(function() {
         updateChart(frontage_Chart, frontage);
         updateChart(room_Chart, room);
         update311(request);
+        updatevio(viodf);
         updateparcel(nearby);
         updaterisk(risk);
         updateCensus(censusData);
-        updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, vioct);
+        updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, sealed);
         //api popover
         var api = newapi(inputAddr);
         updateapi(api)
@@ -851,17 +997,23 @@ $(document).ready(function() {
         })   
   
       }
-    });   
+    });
+   
   });
 
 })
+
 
 //dropdown click addr10
 $(document).ready(function() {
   $('#loader').hide();
 
   $('#addr10').click(function() {
-    $('#loader').show()
+    $('#loader').show();
+    $('#btnGroupAddon').off('click', Search);
+    $('#btnGroupAddon').attr("disabled", true);
+    $('#btnGroupDrop1').attr("disabled", true);
+
     var inputAddr = $('#addr10').text()
     console.log(inputAddr)
 
@@ -869,11 +1021,14 @@ $(document).ready(function() {
     console.log(parcelURL)
 
     $.ajax({
-      async: false,
       url:parcelURL,
       dataType: 'json',
       headers:{'Access-Control-Allow-Origin':'*'}
     }).done(function(parcelRes){
+      $('#btnGroupAddon').on('click', Search);
+      $('#btnGroupAddon').attr("disabled", false);
+      $('#btnGroupDrop1').attr("disabled", false)
+
       parceldata= parcelRes
       $('#loader').hide()
       console.log(parceldata)
@@ -891,10 +1046,11 @@ $(document).ready(function() {
         updateChart(frontage_Chart, frontage);
         updateChart(room_Chart, room);
         update311(request);
+        updatevio(viodf);
         updateparcel(nearby);
         updaterisk(risk);
         updateCensus(censusData);
-        updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, vioct);
+        updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, sealed);
         //api popover
         var api = newapi(inputAddr);
         updateapi(api)
@@ -918,7 +1074,11 @@ $(document).ready(function() {
   $('#loader').hide();
 
   $('#addr11').click(function() {
-    $('#loader').show()
+    $('#loader').show();
+    $('#btnGroupAddon').off('click', Search);
+    $('#btnGroupAddon').attr("disabled", true);
+    $('#btnGroupDrop1').attr("disabled", true);
+
     var inputAddr = $('#addr11').text()
     console.log(inputAddr)
 
@@ -926,11 +1086,14 @@ $(document).ready(function() {
     console.log(parcelURL)
 
     $.ajax({
-      async: false,
       url:parcelURL,
       dataType: 'json',
       headers:{'Access-Control-Allow-Origin':'*'}
     }).done(function(parcelRes){
+      $('#btnGroupAddon').on('click', Search);
+      $('#btnGroupAddon').attr("disabled", false);
+      $('#btnGroupDrop1').attr("disabled", false)
+
       parceldata= parcelRes
       $('#loader').hide()
       console.log(parceldata)
@@ -948,10 +1111,11 @@ $(document).ready(function() {
         updateChart(frontage_Chart, frontage);
         updateChart(room_Chart, room);
         update311(request);
+        updatevio(viodf);
         updateparcel(nearby);
         updaterisk(risk);
         updateCensus(censusData);
-        updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, vioct);
+        updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, sealed);
         //api popover
         var api = newapi(inputAddr);
         updateapi(api)
@@ -975,7 +1139,11 @@ $(document).ready(function() {
   $('#loader').hide();
 
   $('#addr12').click(function() {
-    $('#loader').show()
+    $('#loader').show();
+    $('#btnGroupAddon').off('click', Search);
+    $('#btnGroupAddon').attr("disabled", true);
+    $('#btnGroupDrop1').attr("disabled", true);
+
     var inputAddr = $('#addr12').text()
     console.log(inputAddr)
 
@@ -987,6 +1155,10 @@ $(document).ready(function() {
       dataType: 'json',
       headers:{'Access-Control-Allow-Origin':'*'}
     }).done(function(parcelRes){
+      $('#btnGroupAddon').on('click', Search);
+      $('#btnGroupAddon').attr("disabled", false);
+      $('#btnGroupDrop1').attr("disabled", false)
+
       parceldata= parcelRes
       $('#loader').hide()
       console.log(parceldata)
@@ -1004,10 +1176,11 @@ $(document).ready(function() {
         updateChart(frontage_Chart, frontage);
         updateChart(room_Chart, room);
         update311(request);
+        updatevio(viodf);
         updateparcel(nearby);
         updaterisk(risk);
         updateCensus(censusData);
-        updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, vioct);
+        updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, sealed);
         //api popover
         var api = newapi(inputAddr);
         updateapi(api)
@@ -1031,7 +1204,11 @@ $(document).ready(function() {
   $('#loader').hide();
 
   $('#addr13').click(function() {
-    $('#loader').show()
+    $('#loader').show();
+    $('#btnGroupAddon').off('click', Search);
+    $('#btnGroupAddon').attr("disabled", true);
+    $('#btnGroupDrop1').attr("disabled", true);
+
     var inputAddr = $('#addr13').text()
     console.log(inputAddr)
 
@@ -1043,6 +1220,10 @@ $(document).ready(function() {
       dataType: 'json',
       headers:{'Access-Control-Allow-Origin':'*'}
     }).done(function(parcelRes){
+      $('#btnGroupAddon').on('click', Search);
+      $('#btnGroupAddon').attr("disabled", false);
+      $('#btnGroupDrop1').attr("disabled", false)
+
       parceldata= parcelRes
       $('#loader').hide()
       console.log(parceldata)
@@ -1060,10 +1241,11 @@ $(document).ready(function() {
         updateChart(frontage_Chart, frontage);
         updateChart(room_Chart, room);
         update311(request);
+        updatevio(viodf);
         updateparcel(nearby);
         updaterisk(risk);
         updateCensus(censusData);
-        updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, vioct);
+        updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, sealed);
         //api popover
         var api = newapi(inputAddr);
         updateapi(api)
@@ -1087,7 +1269,11 @@ $(document).ready(function() {
   $('#loader').hide();
 
   $('#addr14').click(function() {
-    $('#loader').show()
+    $('#loader').show();
+    $('#btnGroupAddon').off('click', Search);
+    $('#btnGroupAddon').attr("disabled", true);
+    $('#btnGroupDrop1').attr("disabled", true);
+
     var inputAddr = $('#addr14').text()
     console.log(inputAddr)
 
@@ -1099,6 +1285,10 @@ $(document).ready(function() {
       dataType: 'json',
       headers:{'Access-Control-Allow-Origin':'*'}
     }).done(function(parcelRes){
+      $('#btnGroupAddon').on('click', Search);
+      $('#btnGroupAddon').attr("disabled", false);
+      $('#btnGroupDrop1').attr("disabled", false)
+
       parceldata= parcelRes
       $('#loader').hide()
       console.log(parceldata)
@@ -1116,10 +1306,11 @@ $(document).ready(function() {
         updateChart(frontage_Chart, frontage);
         updateChart(room_Chart, room);
         update311(request);
+        updatevio(viodf);
         updateparcel(nearby);
         updaterisk(risk);
         updateCensus(censusData);
-        updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, vioct);
+        updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, sealed);
         //api popover
         var api = newapi(inputAddr);
         updateapi(api)
@@ -1143,7 +1334,11 @@ $(document).ready(function() {
   $('#loader').hide();
 
   $('#addr15').click(function() {
-    $('#loader').show()
+    $('#loader').show();
+    $('#btnGroupAddon').off('click', Search);
+    $('#btnGroupAddon').attr("disabled", true);
+    $('#btnGroupDrop1').attr("disabled", true);
+
     var inputAddr = $('#addr15').text()
     console.log(inputAddr)
 
@@ -1155,6 +1350,10 @@ $(document).ready(function() {
       dataType: 'json',
       headers:{'Access-Control-Allow-Origin':'*'}
     }).done(function(parcelRes){
+      $('#btnGroupAddon').on('click', Search);
+      $('#btnGroupAddon').attr("disabled", false);
+      $('#btnGroupDrop1').attr("disabled", false)
+
       parceldata= parcelRes
       $('#loader').hide()
       console.log(parceldata)
@@ -1172,10 +1371,11 @@ $(document).ready(function() {
         updateChart(frontage_Chart, frontage);
         updateChart(room_Chart, room);
         update311(request);
+        updatevio(viodf);
         updateparcel(nearby);
         updaterisk(risk);
         updateCensus(censusData);
-        updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, vioct);
+        updateChart2(radar_Chart, below, unsafe, com, hotel, CMX2, sealed);
         //api popover
         var api = newapi(inputAddr);
         updateapi(api)

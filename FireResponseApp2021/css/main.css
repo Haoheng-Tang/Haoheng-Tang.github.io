@@ -28,9 +28,9 @@ body {
 
 
 .sidebarchart {
-  position: relative;
-  left: 6.3%;
-  width: 22.4%;
+  position: absolute;
+  left: 6.8%;
+  width: 20.4%;
   top: 0;
   bottom: 0;
   overflow-y: auto;
@@ -122,7 +122,7 @@ body {
 }
 
 .form-control{
-  font-size: 1.1vw;
+  font-size: 0.97vw;
 }
 
 .barchart{
@@ -166,7 +166,7 @@ body {
 
 .my-legend{
   position:absolute;
-  left: 32.5%;
+  left: 42.5%;
   bottom: 1.6%;
   z-index: 800;
   background-color: rgba(255, 255, 255, 0.39);
@@ -177,7 +177,7 @@ body {
   text-align: left;
   margin-bottom: 9.5%;
   font-weight: bold;
-  font-size: 115%;
+  font-size: 1.9vh;
   }
 .my-legend .legend-scale ul {
   margin: 0;
@@ -187,10 +187,10 @@ body {
   list-style: none;
   }
 .my-legend .legend-scale ul li {
-  font-size: 104%;
+  font-size: 1.57vh;
   list-style: none;
   margin-left: 0;
-  line-height: 128%;
+  line-height: 78%;
   margin-bottom: 13%;
   }
 .my-legend ul.legend-labels li span {
@@ -242,7 +242,7 @@ body {
 }
 
 .dropdown-item{
-  font-size: 1.95vh;
+  font-size: 1.82vh;
 }
 
 .search {
@@ -315,17 +315,17 @@ body {
 /*Spinner Styles*/
 .lds-dual-ring {
   display: inline-block;
-  width: 25px;
-  height: 25px;
+  width: 3.7vh;
+  height: 3.7vh;
 }
 .lds-dual-ring:after {
   content: " ";
   display: block;
-  width: 25px;
-  height: 25px;
-  margin: 5% auto;
+  width: 3.7vh;
+  height: 3.7vh;
+  margin: 18% auto;
   border-radius: 50%;
-  border: 6px solid #fff;
+  border: 0.7vh solid #fff;
   border-color: #fff transparent #fff transparent;
   animation: lds-dual-ring 1.2s linear infinite;
 }

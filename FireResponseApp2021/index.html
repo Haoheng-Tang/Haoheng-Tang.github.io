@@ -158,7 +158,7 @@
                     <div class="btn-group" role="group">
                         <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle " style="border: black; color: black; background-color: rgba(1, 1, 1, 0);" data-bs-toggle="dropdown" aria-expanded="false">
                         </button>
-                        <ul class="dropdown-menu btn" aria-labelledby="btnGroupDrop1" style="font-size: 0.86rem;">
+                        <ul class="dropdown-menu btn" aria-labelledby="btnGroupDrop1">
                           <li><a class="dropdown-item" id="addr1" >1200 W VENANGO ST</a></li>
                           <li><a class="dropdown-item" id="addr13">1422 MOORE ST</a></li>
                           <li><a class="dropdown-item" id="addr2" >3812 N PERCY ST</a></li>
@@ -186,25 +186,33 @@
                 <canvas id="myChart" >
                 <script>
                 const DATA_COUNT = 6;
-                const NUMBER_CFG = {count: DATA_COUNT, min: 0, max: 100};
-                const labels = ["isbelow", "isunsafe", "iscom", "ishotel", "isCMX2", "violation_count/10"];
+                const NUMBER_CFG = {count: DATA_COUNT, min: -1, max: 1};
+                const labels = ["isBelow", "isUnsafe", "isCom", "isHotel", "isCMX2", "isSealed"];
                 const data = {
                     labels: labels,
                     datasets: [
                         {label: 'The parcel',
-                        data: [0.55,0.55,0.55,0.55,0.55,0.6],
+                        data: [0,0,0,0,0,0],
                         fill: true,
                         borderColor: 'rgba(220, 53, 69,0.85)',
                         pointBackgroundColor: 'rgba(220, 53, 69,0.85)',
                         backgroungColor: 'rgba(220, 53, 69,0.85)'
                     },
                     {
-                        label: 'Average',
-                        data: [0.45,0.45,0.41,0.39,0.45,0.47],
+                        label: ' ',
+                        data: [-1, -1, -1, -1, -1, -1, -1],
                         fill: true,
-                        borderColor: 'rgba(43, 23, 15,0.72)',
-                        pointBackgroundColor: 'rgba(43, 23, 15,0.72)',
-                        backgroungColor: 'rgba(43, 23, 15,0.72)'
+                        borderColor: 'rgba(43, 23, 15,0)',
+                        pointBackgroundColor: 'rgba(43, 23, 15,0)',
+                        backgroungColor: 'rgba(43, 23, 15,0)'
+                    },
+                    {
+                        label: 'Yes',
+                        data: [1, 1, 1, 1, 1, 1, 1],
+                        fill: true,
+                        borderColor: 'rgba(43, 23, 15,0)',
+                        pointBackgroundColor: 'rgba(43, 23, 15,0)',
+                        backgroungColor: 'rgba(43, 23, 15,0)'
                     }]
                 };
                 var ctx = document.getElementById('myChart').getContext('2d');
@@ -215,8 +223,11 @@
                         responsive: true,
                         scales: {
                             r: {ticks: {
-                                display:false
+                                display: false
                                         }
+                                },
+                                angleLines:{
+                                    display:false
                                 }
                         },
                         plugins: {
@@ -426,6 +437,7 @@
             </div>
         </div>
 
+<!--
         <div class="sidebar32">
             <div class="card" >
                 <div class="card-body">
@@ -440,6 +452,56 @@
                             <td class = "fw-light"  id="311name">No 311 request within 100m in the past month<br/>&nbsp</td>
                         </tbody>
                       </table>
+                </div>
+            </div>
+        </div>
+-->
+
+        <div class="sidebar32">
+            <div class="card">
+                <div class="card-body">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-indicators">
+                              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                            </div>
+                       <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <h5 class="card-title">CODE VIOLATION</h5>
+                            <table class="table table-sm"  style="margin-top: 2vh;">
+                                <thead>
+                                  <tr>
+                                    <th scope="col" id="viocount">0</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                    <td class = "fw-light"  id="vioname">No code violation<br/>&nbsp<br/>&nbsp</td>
+                                </tbody>
+                              </table>                       
+                        </div>
+                       <div class="carousel-item">
+                         <h5 class="card-title">311 REQUEST</h5>
+                         <table class="table table-sm"  style="margin-top: 2vh;">
+                             <thead>
+                               <tr>
+                                 <th scope="col" id="311count">0</th>
+                               </tr>
+                             </thead>
+                             <tbody>
+                                 <td class = "fw-light"  id="311name">No 311 request within 100m in the past month<br/>&nbsp</td>
+                             </tbody>
+                           </table>                       
+                        </div>
+                       </div>
+                       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                         <span class="visually-hidden">Previous</span>
+                       </button>
+                       <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                         <span class="visually-hidden">Next</span>
+                        </button>
+                   </div>
                 </div>
             </div>
         </div>
