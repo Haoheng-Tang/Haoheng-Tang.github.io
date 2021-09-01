@@ -157,12 +157,15 @@ var new311 = function(entry){
       return (`1. ${entry[0]}<br/>2. ${entry[1]}<br/>...`)
     }
   }else if(entry.length==1 && entry[0]!=undefined){
-    //console.log(1)
-   return(`${entry[0]}<br/>&nbsp<br/>&nbsp`)
+    if(entry[0].length>24){
+      return(`${entry[0]}<br/>&nbsp`)
+    }else{
+      return(`${entry[0]}<br/>&nbsp<br/>&nbsp`)
+    }
    }else{
-    //console.log(2)
     return(`No 311 request within 100m in the past month<br/>&nbsp`)}
    }
+
 
 var update311 =function(req){
   //311 count
@@ -196,11 +199,13 @@ var newvio = function(entry){
       return (`1. ${entry[0]}<br/>2. ${entry[1]}<br/>...`)
     }
   }else if(entry.length==1 && entry[0]!=undefined){
-    //console.log(1)
-   return(`${entry[0]}<br/>&nbsp<br/>&nbsp`)
+    if(entry[0].length>24){
+      return(`${entry[0]}<br/>&nbsp`)
+    }else{
+      return(`${entry[0]}<br/>&nbsp<br/>&nbsp`)
+    }
    }else{
-    //console.log(2)
-    return(`none<br/>&nbsp<br/>&nbsp`)}
+    return(`No parcel within 50m<br/>&nbsp<br/>&nbsp`)}
    }
 
 var updatevio =function(req){
@@ -228,7 +233,7 @@ var newparcel = function(entry){
   }else if(entry.length==1){
    return(`${entry[0]}<br/>&nbsp<br/>&nbsp`)
    }else{
-    return(`none`)}
+    return(`No parcel within 50m`)}
    }
 
 var updateparcel= function(dataArr){
@@ -370,6 +375,7 @@ function Search() {
 
     parceldata= parcelRes
     $('#loader').hide()
+    $('.my-legend').show();
     console.log(parceldata)
 
     if(parceldata.parcel_df[0].Opa_account_num=="NONE FOUND"){
@@ -413,6 +419,7 @@ function Search() {
 
 $(document).ready(function() {
   $('#loader').hide();
+  $('.my-legend').hide();
 
   $('#displayname').keydown(function(event){ 
     var keyCode = (event.keyCode ? event.keyCode : event.which);   
@@ -428,6 +435,7 @@ $(document).ready(function() {
 //dropdown click addr1
 $(document).ready(function() {
   $('#loader').hide();
+  $('.my-legend').hide();
 
   $('#addr1').click(function() {
     $('#loader').show()
@@ -452,6 +460,7 @@ $(document).ready(function() {
 
       parceldata= parcelRes
       $('#loader').hide()
+      $('.my-legend').show();
       console.log(parceldata)
   
       if(parceldata.parcel_df[0].Opa_account_num=="NONE FOUND"){
@@ -493,6 +502,7 @@ $(document).ready(function() {
 //dropdown click addr2
 $(document).ready(function() {
   $('#loader').hide();
+  $('.my-legend').hide();
 
   $('#addr2').click(function() {
     $('#loader').show()
@@ -517,6 +527,7 @@ $(document).ready(function() {
 
       parceldata= parcelRes
       $('#loader').hide()
+      $('.my-legend').show();
       console.log(parceldata)
   
       if(parceldata.parcel_df[0].Opa_account_num=="NONE FOUND"){
@@ -558,6 +569,7 @@ $(document).ready(function() {
 //dropdown click addr3
 $(document).ready(function() {
   $('#loader').hide();
+  $('.my-legend').hide();
 
   $('#addr3').click(function() {
     $('#loader').show()
@@ -582,6 +594,7 @@ $(document).ready(function() {
 
       parceldata= parcelRes
       $('#loader').hide()
+      $('.my-legend').show();
       console.log(parceldata)
   
       if(parceldata.parcel_df[0].Opa_account_num=="NONE FOUND"){
@@ -622,6 +635,7 @@ $(document).ready(function() {
 //dropdown click addr4
 $(document).ready(function() {
   $('#loader').hide();
+  $('.my-legend').hide();
 
   $('#addr4').click(function() {
     $('#loader').show()
@@ -646,6 +660,7 @@ $(document).ready(function() {
 
       parceldata= parcelRes
       $('#loader').hide()
+      $('.my-legend').show();
       console.log(parceldata)
   
       if(parceldata.parcel_df[0].Opa_account_num=="NONE FOUND"){
@@ -686,6 +701,7 @@ $(document).ready(function() {
 //dropdown click addr5
 $(document).ready(function() {
   $('#loader').hide();
+  $('.my-legend').hide();
 
   $('#addr5').click(function() {
     $('#loader').show()
@@ -710,6 +726,7 @@ $(document).ready(function() {
 
       parceldata= parcelRes
       $('#loader').hide()
+      $('.my-legend').show();
       console.log(parceldata)
 
       if(parceldata.parcel_df[0].Opa_account_num=="NONE FOUND"){
@@ -748,6 +765,7 @@ $(document).ready(function() {
 //dropdown click addr6
 $(document).ready(function() {
   $('#loader').hide();
+  $('.my-legend').hide();
 
   $('#addr6').click(function() {
     $('#loader').show()
@@ -772,6 +790,7 @@ $(document).ready(function() {
 
       parceldata= parcelRes
       $('#loader').hide()
+      $('.my-legend').show();
       console.log(parceldata)
   
       if(parceldata.parcel_df[0].Opa_account_num=="NONE FOUND"){
@@ -813,6 +832,7 @@ $(document).ready(function() {
 //dropdown click addr7
 $(document).ready(function() {
   $('#loader').hide();
+  $('.my-legend').hide();
 
   $('#addr7').click(function() {
     $('#loader').show()
@@ -837,6 +857,7 @@ $(document).ready(function() {
 
       parceldata= parcelRes
       $('#loader').hide()
+      $('.my-legend').show();
       console.log(parceldata)
   
       if(parceldata.parcel_df[0].Opa_account_num=="NONE FOUND"){
@@ -877,6 +898,7 @@ $(document).ready(function() {
 //dropdown click addr8
 $(document).ready(function() {
   $('#loader').hide();
+  $('.my-legend').hide();
 
   $('#addr8').click(function() {
     $('#loader').show()
@@ -901,6 +923,7 @@ $(document).ready(function() {
 
       parceldata= parcelRes
       $('#loader').hide()
+      $('.my-legend').show();
       console.log(parceldata)
   
       if(parceldata.parcel_df[0].Opa_account_num=="NONE FOUND"){
@@ -941,6 +964,7 @@ $(document).ready(function() {
 //dropdown click addr9
 $(document).ready(function() {
   $('#loader').hide();
+  $('.my-legend').hide();
 
   $('#addr9').click(function() {
     $('#loader').show();
@@ -965,6 +989,7 @@ $(document).ready(function() {
 
       parceldata= parcelRes
       $('#loader').hide()
+      $('.my-legend').show();
       console.log(parceldata)
   
       if(parceldata.parcel_df[0].Opa_account_num=="NONE FOUND"){
@@ -1007,6 +1032,7 @@ $(document).ready(function() {
 //dropdown click addr10
 $(document).ready(function() {
   $('#loader').hide();
+  $('.my-legend').hide();
 
   $('#addr10').click(function() {
     $('#loader').show();
@@ -1031,6 +1057,7 @@ $(document).ready(function() {
 
       parceldata= parcelRes
       $('#loader').hide()
+      $('.my-legend').show();
       console.log(parceldata)
   
       if(parceldata.parcel_df[0].Opa_account_num=="NONE FOUND"){
@@ -1072,6 +1099,7 @@ $(document).ready(function() {
 //dropdown click addr11
 $(document).ready(function() {
   $('#loader').hide();
+  $('.my-legend').hide();
 
   $('#addr11').click(function() {
     $('#loader').show();
@@ -1096,6 +1124,7 @@ $(document).ready(function() {
 
       parceldata= parcelRes
       $('#loader').hide()
+      $('.my-legend').show();
       console.log(parceldata)
   
       if(parceldata.parcel_df[0].Opa_account_num=="NONE FOUND"){
@@ -1137,6 +1166,7 @@ $(document).ready(function() {
 //dropdown click addr12
 $(document).ready(function() {
   $('#loader').hide();
+  $('.my-legend').hide();
 
   $('#addr12').click(function() {
     $('#loader').show();
@@ -1161,6 +1191,7 @@ $(document).ready(function() {
 
       parceldata= parcelRes
       $('#loader').hide()
+      $('.my-legend').show();
       console.log(parceldata)
   
       if(parceldata.parcel_df[0].Opa_account_num=="NONE FOUND"){
@@ -1202,6 +1233,7 @@ $(document).ready(function() {
 //dropdown click addr13
 $(document).ready(function() {
   $('#loader').hide();
+  $('.my-legend').hide();
 
   $('#addr13').click(function() {
     $('#loader').show();
@@ -1226,6 +1258,7 @@ $(document).ready(function() {
 
       parceldata= parcelRes
       $('#loader').hide()
+      $('.my-legend').show();
       console.log(parceldata)
   
       if(parceldata.parcel_df[0].Opa_account_num=="NONE FOUND"){
@@ -1267,6 +1300,7 @@ $(document).ready(function() {
 //dropdown click addr14
 $(document).ready(function() {
   $('#loader').hide();
+  $('.my-legend').hide();
 
   $('#addr14').click(function() {
     $('#loader').show();
@@ -1291,6 +1325,7 @@ $(document).ready(function() {
 
       parceldata= parcelRes
       $('#loader').hide()
+      $('.my-legend').show();
       console.log(parceldata)
   
       if(parceldata.parcel_df[0].Opa_account_num=="NONE FOUND"){
@@ -1332,6 +1367,7 @@ $(document).ready(function() {
 //dropdown click addr15
 $(document).ready(function() {
   $('#loader').hide();
+  $('.my-legend').hide();
 
   $('#addr15').click(function() {
     $('#loader').show();
@@ -1356,6 +1392,7 @@ $(document).ready(function() {
 
       parceldata= parcelRes
       $('#loader').hide()
+      $('.my-legend').show();
       console.log(parceldata)
   
       if(parceldata.parcel_df[0].Opa_account_num=="NONE FOUND"){
