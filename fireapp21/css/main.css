@@ -18,7 +18,7 @@ body {
 .sidebar {
   position: absolute;
   left: 6.3%;
-  width: 26.4%;
+  width: 23.9%;
   bottom: 0;
   overflow-y: auto;
   padding: 2.1vh;
@@ -241,6 +241,16 @@ body {
   font-size: 0.97vw;
 }
 
+#btnGroupDrop1 {
+  border: black; 
+  color: white; 
+  background-image: linear-gradient(to top, #da3848ec, #fa685dec);
+}
+
+#btnGroupDrop1:hover{
+  background-color: #c72b3be7;
+}
+
 .dropdown-item{
   font-size: 1.82vh;
 }
@@ -317,6 +327,7 @@ body {
   display: inline-block;
   width: 3.7vh;
   height: 3.7vh;
+  padding-left: 1.1vh;
 }
 .lds-dual-ring:after {
   content: " ";
@@ -481,7 +492,7 @@ body {
   .sidebar {
     position: absolute;
     left: 4%;
-    width: 92%;
+    width: 90%;
     bottom: 0%;
     padding: 0;
   }
@@ -614,6 +625,13 @@ body {
   .my-legend a {
     color: #777;
     }
+
+  .lds-dual-ring {
+    display: inline-block;
+    width: 3.7vw;
+    height: 3.7vw;
+    padding-left: 1.1vw;
+  }
 
 
 }

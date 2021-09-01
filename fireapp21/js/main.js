@@ -457,6 +457,14 @@ $(document).ready(function() {
       $('#btnGroupAddon').on('click', Search);
       $('#btnGroupAddon').attr("disabled", false);
       $('#btnGroupDrop1').attr("disabled", false);
+      $('#btnGroupDrop1').css( {'color': 'black','background-image': 'linear-gradient(to top, rgb(235,235,235), rgb(248,248,248))','background-color': 'rgba(200,200,200,0)'});
+      $('#btnGroupDrop1').hover(function(){
+        $('#btnGroupDrop1').css( {'color': 'black','background-image': 'linear-gradient(to top, rgb(234,234,234), rgb(241,241,241))'})
+          },
+        function(){
+        $('#btnGroupDrop1').css( {'color': 'black','background-image': 'linear-gradient(to top, rgb(235,235,235), rgb(248,248,248))'})
+          });
+
 
       parceldata= parcelRes
       $('#loader').hide()
@@ -524,6 +532,14 @@ $(document).ready(function() {
       $('#btnGroupAddon').on('click', Search);
       $('#btnGroupAddon').attr("disabled", false);
       $('#btnGroupDrop1').attr("disabled", false);
+      $('#btnGroupDrop1').css( {'color': 'black','background-image': 'linear-gradient(to top, rgb(235,235,235), rgb(248,248,248))','background-color': 'rgba(200,200,200,0)'});
+      $('#btnGroupDrop1').hover(function(){
+        $('#btnGroupDrop1').css( {'color': 'black','background-image': 'linear-gradient(to top, rgb(234,234,234), rgb(241,241,241))'})
+          },
+        function(){
+        $('#btnGroupDrop1').css( {'color': 'black','background-image': 'linear-gradient(to top, rgb(235,235,235), rgb(248,248,248))'})
+          });
+
 
       parceldata= parcelRes
       $('#loader').hide()
@@ -591,6 +607,14 @@ $(document).ready(function() {
       $('#btnGroupAddon').on('click', Search);
       $('#btnGroupAddon').attr("disabled", false);
       $('#btnGroupDrop1').attr("disabled", false);
+      $('#btnGroupDrop1').css( {'color': 'black','background-image': 'linear-gradient(to top, rgb(235,235,235), rgb(248,248,248))','background-color': 'rgba(200,200,200,0)'});
+      $('#btnGroupDrop1').hover(function(){
+        $('#btnGroupDrop1').css( {'color': 'black','background-image': 'linear-gradient(to top, rgb(234,234,234), rgb(241,241,241))'})
+          },
+        function(){
+        $('#btnGroupDrop1').css( {'color': 'black','background-image': 'linear-gradient(to top, rgb(235,235,235), rgb(248,248,248))'})
+          });
+
 
       parceldata= parcelRes
       $('#loader').hide()
@@ -657,6 +681,14 @@ $(document).ready(function() {
       $('#btnGroupAddon').on('click', Search);
       $('#btnGroupAddon').attr("disabled", false);
       $('#btnGroupDrop1').attr("disabled", false);
+      $('#btnGroupDrop1').css( {'color': 'black','background-image': 'linear-gradient(to top, rgb(235,235,235), rgb(248,248,248))','background-color': 'rgba(200,200,200,0)'});
+      $('#btnGroupDrop1').hover(function(){
+        $('#btnGroupDrop1').css( {'color': 'black','background-image': 'linear-gradient(to top, rgb(234,234,234), rgb(241,241,241))'})
+          },
+        function(){
+        $('#btnGroupDrop1').css( {'color': 'black','background-image': 'linear-gradient(to top, rgb(235,235,235), rgb(248,248,248))'})
+          });
+
 
       parceldata= parcelRes
       $('#loader').hide()
@@ -723,6 +755,14 @@ $(document).ready(function() {
       $('#btnGroupAddon').on('click', Search);
       $('#btnGroupAddon').attr("disabled", false);
       $('#btnGroupDrop1').attr("disabled", false);
+      $('#btnGroupDrop1').css( {'color': 'black','background-image': 'linear-gradient(to top, rgb(235,235,235), rgb(248,248,248))','background-color': 'rgba(200,200,200,0)'});
+      $('#btnGroupDrop1').hover(function(){
+        $('#btnGroupDrop1').css( {'color': 'black','background-image': 'linear-gradient(to top, rgb(234,234,234), rgb(241,241,241))'})
+          },
+        function(){
+        $('#btnGroupDrop1').css( {'color': 'black','background-image': 'linear-gradient(to top, rgb(235,235,235), rgb(248,248,248))'})
+          });
+
 
       parceldata= parcelRes
       $('#loader').hide()
@@ -787,6 +827,14 @@ $(document).ready(function() {
       $('#btnGroupAddon').on('click', Search);
       $('#btnGroupAddon').attr("disabled", false);
       $('#btnGroupDrop1').attr("disabled", false);
+      $('#btnGroupDrop1').css( {'color': 'black','background-image': 'linear-gradient(to top, rgb(235,235,235), rgb(248,248,248))','background-color': 'rgba(200,200,200,0)'});
+      $('#btnGroupDrop1').hover(function(){
+        $('#btnGroupDrop1').css( {'color': 'black','background-image': 'linear-gradient(to top, rgb(234,234,234), rgb(241,241,241))'})
+          },
+        function(){
+        $('#btnGroupDrop1').css( {'color': 'black','background-image': 'linear-gradient(to top, rgb(235,235,235), rgb(248,248,248))'})
+          });
+
 
       parceldata= parcelRes
       $('#loader').hide()
@@ -854,6 +902,14 @@ $(document).ready(function() {
       $('#btnGroupAddon').on('click', Search);
       $('#btnGroupAddon').attr("disabled", false);
       $('#btnGroupDrop1').attr("disabled", false);
+      $('#btnGroupDrop1').css( {'color': 'black','background-image': 'linear-gradient(to top, rgb(235,235,235), rgb(248,248,248))','background-color': 'rgba(200,200,200,0)'});
+      $('#btnGroupDrop1').hover(function(){
+        $('#btnGroupDrop1').css( {'color': 'black','background-image': 'linear-gradient(to top, rgb(234,234,234), rgb(241,241,241))'})
+          },
+        function(){
+        $('#btnGroupDrop1').css( {'color': 'black','background-image': 'linear-gradient(to top, rgb(235,235,235), rgb(248,248,248))'})
+          });
+
 
       parceldata= parcelRes
       $('#loader').hide()
@@ -920,6 +976,14 @@ $(document).ready(function() {
       $('#btnGroupAddon').on('click', Search);
       $('#btnGroupAddon').attr("disabled", false);
       $('#btnGroupDrop1').attr("disabled", false);
+      $('#btnGroupDrop1').css( {'color': 'black','background-image': 'linear-gradient(to top, rgb(235,235,235), rgb(248,248,248))','background-color': 'rgba(200,200,200,0)'});
+      $('#btnGroupDrop1').hover(function(){
+        $('#btnGroupDrop1').css( {'color': 'black','background-image': 'linear-gradient(to top, rgb(234,234,234), rgb(241,241,241))'})
+          },
+        function(){
+        $('#btnGroupDrop1').css( {'color': 'black','background-image': 'linear-gradient(to top, rgb(235,235,235), rgb(248,248,248))'})
+          });
+
 
       parceldata= parcelRes
       $('#loader').hide()
@@ -985,7 +1049,15 @@ $(document).ready(function() {
     }).done(function(parcelRes){
       $('#btnGroupAddon').on('click', Search);
       $('#btnGroupAddon').attr("disabled", false);
-      $('#btnGroupDrop1').attr("disabled", false)
+      $('#btnGroupDrop1').attr("disabled", false);
+      $('#btnGroupDrop1').css( {'color': 'black','background-image': 'linear-gradient(to top, rgb(235,235,235), rgb(248,248,248))','background-color': 'rgba(200,200,200,0)'});
+      $('#btnGroupDrop1').hover(function(){
+        $('#btnGroupDrop1').css( {'color': 'black','background-image': 'linear-gradient(to top, rgb(234,234,234), rgb(241,241,241))'})
+          },
+        function(){
+        $('#btnGroupDrop1').css( {'color': 'black','background-image': 'linear-gradient(to top, rgb(235,235,235), rgb(248,248,248))'})
+          });
+
 
       parceldata= parcelRes
       $('#loader').hide()
@@ -1053,7 +1125,15 @@ $(document).ready(function() {
     }).done(function(parcelRes){
       $('#btnGroupAddon').on('click', Search);
       $('#btnGroupAddon').attr("disabled", false);
-      $('#btnGroupDrop1').attr("disabled", false)
+      $('#btnGroupDrop1').attr("disabled", false);
+      $('#btnGroupDrop1').css( {'color': 'black','background-image': 'linear-gradient(to top, rgb(235,235,235), rgb(248,248,248))','background-color': 'rgba(200,200,200,0)'});
+      $('#btnGroupDrop1').hover(function(){
+        $('#btnGroupDrop1').css( {'color': 'black','background-image': 'linear-gradient(to top, rgb(234,234,234), rgb(241,241,241))'})
+          },
+        function(){
+        $('#btnGroupDrop1').css( {'color': 'black','background-image': 'linear-gradient(to top, rgb(235,235,235), rgb(248,248,248))'})
+          });
+
 
       parceldata= parcelRes
       $('#loader').hide()
@@ -1120,7 +1200,15 @@ $(document).ready(function() {
     }).done(function(parcelRes){
       $('#btnGroupAddon').on('click', Search);
       $('#btnGroupAddon').attr("disabled", false);
-      $('#btnGroupDrop1').attr("disabled", false)
+      $('#btnGroupDrop1').attr("disabled", false);
+      $('#btnGroupDrop1').css( {'color': 'black','background-image': 'linear-gradient(to top, rgb(235,235,235), rgb(248,248,248))','background-color': 'rgba(200,200,200,0)'});
+      $('#btnGroupDrop1').hover(function(){
+        $('#btnGroupDrop1').css( {'color': 'black','background-image': 'linear-gradient(to top, rgb(234,234,234), rgb(241,241,241))'})
+          },
+        function(){
+        $('#btnGroupDrop1').css( {'color': 'black','background-image': 'linear-gradient(to top, rgb(235,235,235), rgb(248,248,248))'})
+          });
+
 
       parceldata= parcelRes
       $('#loader').hide()
@@ -1187,7 +1275,15 @@ $(document).ready(function() {
     }).done(function(parcelRes){
       $('#btnGroupAddon').on('click', Search);
       $('#btnGroupAddon').attr("disabled", false);
-      $('#btnGroupDrop1').attr("disabled", false)
+      $('#btnGroupDrop1').attr("disabled", false);
+      $('#btnGroupDrop1').css( {'color': 'black','background-image': 'linear-gradient(to top, rgb(235,235,235), rgb(248,248,248))','background-color': 'rgba(200,200,200,0)'});
+      $('#btnGroupDrop1').hover(function(){
+        $('#btnGroupDrop1').css( {'color': 'black','background-image': 'linear-gradient(to top, rgb(234,234,234), rgb(241,241,241))'})
+          },
+        function(){
+        $('#btnGroupDrop1').css( {'color': 'black','background-image': 'linear-gradient(to top, rgb(235,235,235), rgb(248,248,248))'})
+          });
+
 
       parceldata= parcelRes
       $('#loader').hide()
@@ -1254,7 +1350,15 @@ $(document).ready(function() {
     }).done(function(parcelRes){
       $('#btnGroupAddon').on('click', Search);
       $('#btnGroupAddon').attr("disabled", false);
-      $('#btnGroupDrop1').attr("disabled", false)
+      $('#btnGroupDrop1').attr("disabled", false);
+      $('#btnGroupDrop1').css( {'color': 'black','background-image': 'linear-gradient(to top, rgb(235,235,235), rgb(248,248,248))','background-color': 'rgba(200,200,200,0)'});
+      $('#btnGroupDrop1').hover(function(){
+        $('#btnGroupDrop1').css( {'color': 'black','background-image': 'linear-gradient(to top, rgb(234,234,234), rgb(241,241,241))'})
+          },
+        function(){
+        $('#btnGroupDrop1').css( {'color': 'black','background-image': 'linear-gradient(to top, rgb(235,235,235), rgb(248,248,248))'})
+          });
+
 
       parceldata= parcelRes
       $('#loader').hide()
@@ -1321,7 +1425,15 @@ $(document).ready(function() {
     }).done(function(parcelRes){
       $('#btnGroupAddon').on('click', Search);
       $('#btnGroupAddon').attr("disabled", false);
-      $('#btnGroupDrop1').attr("disabled", false)
+      $('#btnGroupDrop1').attr("disabled", false);
+      $('#btnGroupDrop1').css( {'color': 'black','background-image': 'linear-gradient(to top, rgb(235,235,235), rgb(248,248,248))','background-color': 'rgba(200,200,200,0)'});
+      $('#btnGroupDrop1').hover(function(){
+        $('#btnGroupDrop1').css( {'color': 'black','background-image': 'linear-gradient(to top, rgb(234,234,234), rgb(241,241,241))'})
+          },
+        function(){
+        $('#btnGroupDrop1').css( {'color': 'black','background-image': 'linear-gradient(to top, rgb(235,235,235), rgb(248,248,248))'})
+          });
+
 
       parceldata= parcelRes
       $('#loader').hide()
@@ -1388,8 +1500,16 @@ $(document).ready(function() {
     }).done(function(parcelRes){
       $('#btnGroupAddon').on('click', Search);
       $('#btnGroupAddon').attr("disabled", false);
-      $('#btnGroupDrop1').attr("disabled", false)
+      $('#btnGroupDrop1').attr("disabled", false);
+      $('#btnGroupDrop1').css( {'color': 'black','background-image': 'linear-gradient(to top, rgb(235,235,235), rgb(248,248,248))','background-color': 'rgba(200,200,200,0)'});
+      $('#btnGroupDrop1').hover(function(){
+        $('#btnGroupDrop1').css( {'color': 'black','background-image': 'linear-gradient(to top, rgb(234,234,234), rgb(241,241,241))'})
+          },
+        function(){
+        $('#btnGroupDrop1').css( {'color': 'black','background-image': 'linear-gradient(to top, rgb(235,235,235), rgb(248,248,248))'})
+          });
 
+          
       parceldata= parcelRes
       $('#loader').hide()
       $('.my-legend').show();
