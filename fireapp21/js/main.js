@@ -278,8 +278,10 @@ var updaterisk= function(risk){
     $(".above").html("Below");
     $(".average").html("Average");
   }else{
-    $(".above").html("Unpredictable");
-    $(".average").html(" ");
+    //$(".above").html("Unpredictable");
+    //$(".average").html(" ");
+    $(".above").html("Above");
+    $(".average").html("Average");
   }
 }
 
