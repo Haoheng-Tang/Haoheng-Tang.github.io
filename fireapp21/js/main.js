@@ -107,7 +107,8 @@ function setMarkers(dataArr){
   var lat = parseFloat(dataArr.parcel_df[0].Parcel_centroid_lat);
   var lng = parseFloat(dataArr.parcel_df[0].Parcel_centroid_lng);
   addr = dataArr.parcel_geometry[0].ADDR_SOURCE
-  cat = dataArr.properties_df[0].category
+  //cat = dataArr.properties_df[0].category
+  cat = 'residence'
   $('#displayname').val(addr)
   marker = L.marker([lat, lng],{icon: redIcon}).bindPopup(`${addr}<br/>Click on nearby markers to request data`).on({
     mouseover: function() {
@@ -280,7 +281,7 @@ var updaterisk= function(risk){
   }else{
     //$(".above").html("Unpredictable");
     //$(".average").html(" ");
-    $(".above").html("Above");
+    $(".above").html("Below");
     $(".average").html("Average");
   }
 }
