@@ -281,7 +281,7 @@ var updaterisk= function(risk){
   }else{
     //$(".above").html("Unpredictable");
     //$(".average").html(" ");
-    $(".above").html("Below");
+    $(".above").html("Above");
     $(".average").html("Average");
   }
 }
