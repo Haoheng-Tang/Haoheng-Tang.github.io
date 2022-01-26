@@ -92,8 +92,10 @@ function updateChart(barchart, newdata){
 function updateChart2(radarchart, below, unsafe, com, hotel, CMX2, sealed){
   radarchart.data.datasets[0].data[0] = below
   radarchart.data.datasets[0].data[1] = unsafe
-  radarchart.data.datasets[0].data[2] = com
-  radarchart.data.datasets[0].data[3] = hotel
+  //radarchart.data.datasets[0].data[2] = com
+  radarchart.data.datasets[0].data[2] = 0
+  //radarchart.data.datasets[0].data[3] = hotel
+  radarchart.data.datasets[0].data[3] = 0
   radarchart.data.datasets[0].data[4] = CMX2
   radarchart.data.datasets[0].data[5] = sealed
   radarchart.update()
@@ -106,9 +108,9 @@ function setMarkers(dataArr){
   parcel_geo = dataArr.parcel_geometry[0].geometry;
   var lat = parseFloat(dataArr.parcel_df[0].Parcel_centroid_lat);
   var lng = parseFloat(dataArr.parcel_df[0].Parcel_centroid_lng);
-  addr = dataArr.parcel_geometry[0].ADDR_SOURCE
+  addr = dataArr.parcel_geometry[0].ADDR_SOURCE;
   //cat = dataArr.properties_df[0].category
-  cat = 'residence'
+  cat = dataArr.properties_df[0].zoning;
   $('#displayname').val(addr)
   marker = L.marker([lat, lng],{icon: redIcon}).bindPopup(`${addr}<br/>Click on nearby markers to request data`).on({
     mouseover: function() {
@@ -281,8 +283,15 @@ var updaterisk= function(risk){
   }else{
     //$(".above").html("Unpredictable");
     //$(".average").html(" ");
-    $(".above").html("Above");
-    $(".average").html("Average");
+    if (parceldata.census_df[0].population>3000){
+      $(".above").html("Above");
+      $(".average").html("Average");
+    }
+    else{
+      $(".above").html("Below");
+      $(".average").html("Average");
+    }
+
   }
 }
 
