@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+Bengali:wght@800&display=swap');
+
+body{
+  background-color: #FCF4F0;
+  margin-right: 6%; 
+  margin-left: 6%;
+}
+
+a {
+  color: inherit; /* Inherit the color from the parent element */
+  text-decoration: none; /* Remove underline */
+}
+
+.title{
+    font-family: 'Noto Sans Bengali';
+    font-size: 60px;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.nav {
+    text-align: center;
+    font-size: smaller;
+    color: #000000;
+    padding-bottom: 2rem;
+  }
+
+.nav-item2::after {
+  content: "";
+  display: block;
+  height: 0.05rem;
+  width: 0;
+  transition: 0.8s;
+}
+
+.nav-item2:hover::after {
+  width: 90%;
+  background: black;
+}
+
+.gallery{
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  margin-top: 5rem;
+  gap: 1.6rem;
+}
+
+.card{
+  text-align: center;
+  font-size: 0.7vw;
+  background-color: white;
+}
+
+.card-img-top {
+	-webkit-filter: opacity(100%);
+	filter: opacity(100%);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+.card-img-top:hover{
+  -webkit-filter: opacity(75%);
+	filter: opacity(75%);
+}
