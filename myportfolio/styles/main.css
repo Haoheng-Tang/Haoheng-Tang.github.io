@@ -1,28 +1,53 @@
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+Bengali:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
 
-body{
-  background-color: #FCF4F0;
-  margin-right: 6%; 
-  margin-left: 6%;
+
+
+
+article{
+  padding-left: 21vw; 
+  padding-right: 21vw;
+  font-size: 0.9vw;
 }
 
-a {
+a{
+  color: inherit; /* Inherit the color from the parent element */
+  text-decoration: none; /* Remove underline */
+}
+
+a:hover{
   color: inherit; /* Inherit the color from the parent element */
   text-decoration: none; /* Remove underline */
 }
 
 .title{
     font-family: 'Noto Sans Bengali';
-    font-size: 60px;
+    font-size: 3.5vw;
     text-align: center;
     margin-top: 3rem;
 }
 
+.titlename{
+  font-family: 'Noto Sans Bengali';
+  font-size: 1.5vw;
+  margin-top: 3rem;
+}
+
+.subtitle{
+  font-size: 1vw;
+  color: #959595;
+}
+
+figcaption{
+  color: #434343;
+  font-size: 0.9vw;
+}
+
 .nav {
     text-align: center;
-    font-size: smaller;
+    font-size: 1vw;
     color: #000000;
-    padding-bottom: 2rem;
+    padding-bottom: 1.5vw;
   }
 
 .nav-item2::after {
@@ -60,4 +85,45 @@ a {
 .card-img-top:hover{
   -webkit-filter: opacity(75%);
 	filter: opacity(75%);
+}
+
+.cardtitle{
+  font-size: 1.25vw;
+}
+
+.imgholder{
+  margin-top: 2rem; 
+  margin-bottom: 2rem;
+}
+
+.project-name{
+  font-size: 1.05vw;
+  font-weight:600;
+}
+
+#myBtn {
+  display: none; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  bottom: 20px; /* Place the button at the bottom of the page */
+  right: 30px; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  background-color: rgba(0, 0, 0, 0); /* Set a background color */
+  color: rgb(200, 200, 200); /* Text color */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  padding: 15px; /* Some padding */
+  border-radius: 10px; /* Rounded corners */
+  font-size: 56px; /* Increase font size */
+  font-weight: 50;
+
+  -webkit-transform: scale(1);
+	transform: scale(1);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+
+#myBtn:hover {
+	-webkit-transform: scale(1.2);
+	transform: scale(1.2);
 }
