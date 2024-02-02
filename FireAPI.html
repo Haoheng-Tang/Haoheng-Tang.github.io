@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <title>Fire Response API & App by Haoheng</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+      <link rel="stylesheet" type="text/css" href="styles/main.css">
+  </head>
+  <body>
+      <header class="title">
+          H______T
+      </header>
+
+      <nav class="nav navbar-light justify-content-center">
+          <li class="nav-item nav-item2">
+            <a class="nav-link" aria-current="page" href="index.html" style="color: rgb(110, 110, 110);">Home</a>
+          </li>
+          <li class="nav-item nav-item2">
+            <a class="nav-link" href="aboutme.html" style="color: rgb(110, 110, 110);">About</a>
+          </li>
+          <li class="nav-item nav-item2">
+            <a class="nav-link" href="#" style="color: rgb(110, 110, 110);">Contact</a>
+          </li>
+      </nav>
+
+      <video autoplay muted loop style="width: 100%;">
+          <source src="images/Fire Response API and App/FireResponse_HaohengTang.MOV" type="video/mp4">
+      </video>
+    
+    <main>
+      <article style="width: 91%; margin-left: auto; margin-right: auto;">
+        <header class="titlename">Fire Response</br>
+          API and App</header>
+        <p class="subtitle">
+          Academic Project in Collaboration with</br>
+          Philadelphia Fire Department</br>
+          Instructor: Ken Steif, Michael Fichman</br>
+          Jan 2021 to May 2021</br>
+          Access to the web app: <a href="https://haoheng-tang.github.io/fireapp21/" target="_blank"><i>https://haoheng-tang.github.io/fireapp21/</i></a>
+        </p>
+        <section class="imgholder">
+          <h3 class="project-name">
+            1. Background
+          </h3>
+          <img src="images/Fire Response API and App/Portfolio_Haoheng_2022Fall23_edited(1).jpg" style="width: 100%;">
+          <h3 class="project-name">
+          </br></br></br>
+            2. Framework
+          </h3>
+          <img src="images/Fire Response API and App/Portfolio_Haoheng_2022Fall23_edited.jpg" style="width: 100%;">
+          <p>We trained a model to predict whether the relative fire risk is high or not for any property in the city. Additionally, we built an API tool that demands an address as an input, requests relative data from other sources, parse all  the data, make a prediction out the fire risk and output all this information in a clean format. We also created an app as the front end of the API tool.</p>
+          <h3 class="project-name">
+          </br></br>3. Algorithms
+          </h3>
+          <p><strong>3.1 Exploratory Data Analysis</strong></p>
+          <img src="images/Fire Response API and App/fire_EDA.jpg" style="width: 100%;">
+          <img src="images/Fire Response API and App/fire_EDA2.jpg" style="width: 100%;">
+        </section>
+
+      </article>
+    </main>
+
+    <main  style="background-color: black; color: white;">
+      <article style="width: 91%; margin-left: auto; margin-right: auto; padding-top: 2.5rem;">
+        <section class="imgholder">
+          <img src="images/Fire Response API and App/fire_EDA3.jpg" style="width: 100%;">
+        </section>
+      </article>
+    </main>
+
+
+    <main>
+      <article style="width: 91%; margin-left: auto; margin-right: auto;">
+        <section class="imgholder">
+          <p><strong>3.2 Feature Engineering</strong></p>
+          <img src="images/Fire Response API and App/FeatureEngineering.jpg" style="width: 100%;">
+        </section>
+        
+        <section style="display: grid; grid-template-columns: repeat(3, 1fr);">
+          <figcaption style="grid-column: 1/span 1;">
+          </br></br>
+          We resampled the dataset until the catching-fire percentage raised to 20%, i.e., once in every 5 properties. This resampling processed helped to improve the model accuracy. However, it also distorted the probability of buildings catching fire. In other words, our model tends to predict more buildings fires than in reality. With our final predictor variables determined and training set resampled, we proceeded to test different algorithms to identify which would be the best in predicting property fire risk in Philadelphia. We developed a generalized linear regression model (GLM) and a random forest model (RF). As we compared the model criteria, we found that the RF model showed no significant superiority compared to the GLM model in terms of sensitivity and specificity. Thus, we decided to adopt GLM as our final model, for its relative simplicity ensured higher interpretability.
+          </figcaption>
+          <img src="images/Fire Response API and App/FeatureEngineering2.jpg" style="width: 100%;grid-column: 2/span 2;">
+        </section>
+      </article>
+    </main>
+
+    
+    <main  style="background-color: black; color: white;">
+      <article style="width: 91%; margin-left: auto; margin-right: auto;">
+        <section class="imgholder">
+          <img src="images/Fire Response API and App/Prediction.jpg" style="width: 100%;">
+        </section>
+      </article>
+    </main>
+
+
+    <main>
+      <article style="width: 91%; margin-left: auto; margin-right: auto;">
+        <section class="imgholder">          
+          <h3 class="project-name">
+            4. API Construction
+          </h3>
+          <p><strong>4.1 Introduction to API</strong></p>
+          <img src="images/Fire Response API and App/API Intro-01.jpg" style="width: 100%;">
+          <p>
+            An API is an interface that defines interactions between multiple software applications. When someone uses an application on his or her device, the application connects to the Internet and sends data to a server. The server then retrieves that data, interprets it, performs the necessary actions and sends it back to the device. The application then interprets that data and presents the information in a readable way.
+          </br></br>
+          <strong>4.2 Local & Cloud Construction</strong>
+          </p>
+        </section>
+        <section style="display: grid; grid-template-columns: repeat(5, 1fr)";class="imgholder">
+          <img src="images/Fire Response API and App/build API_画板 1.jpg" style="width: 100%; grid-column: 1/span 3;">
+          <img src="images/Fire Response API and App/APIexample.jpg" style="width: 100%; grid-column: 4/span 2;">
+        </section>
+        <section class="imgholder">
+          <p>First, the API we built can provide real-time data. It requests the latest data only when getting an input.
+          </br>
+            Second, the API integrates data from diffuse data sources of the city. It’s convenient to use it because it gives us all the information we want in only one request.
+          </br>  
+            Third, the API provided clean and consistent data for us. It means the API gives back data without redundant or irrelevant information. It also structures it to make the response highly readable.
+          </br>  
+            Last but not least, the API can be used for developments of multiple apps without causing any conflict. Apps in different usages can use the same API to get data/</p>
+        </section>
+      </article>
+    </main>
+
+
+    <main  style="background-color: #08131D; color: white;">
+      <article style="width: 91%; margin-left: auto; margin-right: auto;">
+        <section class="imgholder">
+          <img src="images/Fire Response API and App/API Structure_画板 1.jpg" style="width: 100%;">
+          <p>
+          </br></br>
+            The API get an address as input, request basic information and data needed for prediction. It outputs all the integrated data and the relative fire risk prediction in a clean format.
+          </br>
+            We created a web app which serves as a front end of the API tool. Here is the access to it:
+          </br>  
+            <a href="https://haoheng-tang.github.io/fireapp21/" target="_blank">https://haoheng-tang.github.io/fireapp21/</a>
+          </p>
+          <img src="images/Fire Response API and App/web app.jpg" style="width: 100%;">
+        </section>
+      </article>
+    </main>
+
+    <main>
+      <article style="width: 91%; margin-left: auto; margin-right: auto;">
+        <section style="display: grid; grid-template-columns: repeat(2, 1fr);" class="imgholder">
+          <img src="images/Fire Response API and App/mobile_demo.jpg" style="width: 100%; grid-column: 1/span 1;">
+          <img src="images/Fire Response API and App/desktop_demo.jpg" style="width: 100%; grid-column: 2/span 1;">
+          <img src="images/Fire Response API and App/pad_demo.jpg" style="width: 100%; grid-column: 2/span 1;">
+
+          <img src="images/Fire Response API and App/firefighter.jpg" style="width: 100%; grid-column: 1/span 1;">
+          <img src="images/Fire Response API and App/UI.jpg" style="width: 100%; grid-column: 2/span 1;">
+        </section>
+        <p>
+          Besides the input address, the parcels within 50 meters also show up on the map. It’s important to know whether the fire will spread to these parcels, and which of these parcels are likely to catch fire. Click on one of these markers, the web page will change and provide information for that parcel. By doing so, you will know the risk assessment of those parcels close to the one on fire and decide whether to pay more attention on them. You see, all the information changed to that parcel’s, and as is shown, its relative risk is also above average.
+        </p>
+      </article>
+    </main>
+
+    <footer class="nav navbar-light justify-content-center" style="padding-top: 6rem;">
+      <li class="nav-item nav-item2">
+        <a class="nav-link" aria-current="page" href="index.html" style="color: rgb(110, 110, 110);">Home</a>
+      </li>
+      <li class="nav-item nav-item2">
+        <a class="nav-link" href="aboutme.html" style="color: rgb(110, 110, 110);">About</a>
+      </li>
+      <li class="nav-item nav-item2">
+        <a class="nav-link" href="#" style="color: rgb(110, 110, 110);">Contact</a>
+      </li>
+    </footer>
+
+    <button onclick="topFunction()" id="myBtn" title="Go to top">↑</button> 
+          
+    <script>
+      // Get the button:
+      let mybutton = document.getElementById("myBtn");
+
+      // When the user scrolls down 20px from the top of the document, show the button
+      window.onscroll = function() {scrollFunction()};
+
+      function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+          mybutton.style.display = "block";
+        } else {
+          mybutton.style.display = "none";
+        }
+      }
+
+      // When the user clicks on the button, scroll to the top of the document
+      function topFunction() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+      } 
+    </script>
+  </body>
+</html>
