@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <title>Peashooter Showdown by Haoheng</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+      <link rel="stylesheet" type="text/css" href="styles/main.css">
+  </head>
+  <body>
+      <header class="title">
+          H______T
+      </header>
+
+      <nav class="nav navbar-light justify-content-center">
+          <li class="nav-item nav-item2">
+            <a class="nav-link" aria-current="page" href="index.html" style="color: rgb(110, 110, 110);">Home</a>
+          </li>
+          <li class="nav-item nav-item2">
+            <a class="nav-link" href="aboutme.html" style="color: rgb(110, 110, 110);">About</a>
+          </li>
+          <li class="nav-item nav-item2">
+            <a class="nav-link" href="#" style="color: rgb(110, 110, 110);">Contact</a>
+          </li>
+      </nav>
+
+      <video autoplay muted loop style="width: 100%;">
+          <source src="images/Peashooter Showdown/Peashooter Showdown_Compressed.mp4" type="video/mp4">
+      </video>
+    
+    <main>
+      <article>
+        <header class="titlename">Peashooter Showdown</header>
+        <p class="subtitle">
+          Collaborative Project</br>
+          Feb 2022 to Mar 2022</br>
+          Instructor: Marcelo Coelho</br>
+          Teammate: Mrinalini Singha</br>
+        </p>
+        <p>
+          Peashooter Showdown is a 1D-interface two-player video game made with p5js and Arduino.
+        </br>The code for it can be found <a href="https://github.com/Haoheng-Tang/Interaction-Intelligence-1D-Game/tree/main/Peashooter"><i>here.</i></a>
+        </p>
+
+        <section  class="imgholder">
+          <img src="images/Peashooter Showdown/front_view.jpg" style="width: 100%;">
+          <img src="images/Peashooter Showdown/right_view.jpg" style="width: 100%;">
+        </section>
+
+
+      </article>
+    </main>
+
+    <footer class="nav navbar-light justify-content-center" style="padding-top: 6rem;">
+      <li class="nav-item nav-item2">
+        <a class="nav-link" aria-current="page" href="index.html" style="color: rgb(110, 110, 110);">Home</a>
+      </li>
+      <li class="nav-item nav-item2">
+        <a class="nav-link" href="aboutme.html" style="color: rgb(110, 110, 110);">About</a>
+      </li>
+      <li class="nav-item nav-item2">
+        <a class="nav-link" href="#" style="color: rgb(110, 110, 110);">Contact</a>
+      </li>
+    </footer>
+
+    <button onclick="topFunction()" id="myBtn" title="Go to top">↑</button> 
+          
+    <script>
+      // Get the button:
+      let mybutton = document.getElementById("myBtn");
+
+      // When the user scrolls down 20px from the top of the document, show the button
+      window.onscroll = function() {scrollFunction()};
+
+      function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+          mybutton.style.display = "block";
+        } else {
+          mybutton.style.display = "none";
+        }
+      }
+
+      // When the user clicks on the button, scroll to the top of the document
+      function topFunction() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+      } 
+    </script>
+  </body>
+</html>
