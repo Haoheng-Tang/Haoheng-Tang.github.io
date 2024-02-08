@@ -127,3 +127,25 @@ figcaption{
 	-webkit-transform: scale(1.2);
 	transform: scale(1.2);
 }
+
+#myLink {
+  position: fixed; /* Fixed/sticky position */
+  left: 2.2vw; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  background-color: rgba(0, 0, 0, 0); /* Set a background color */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  font-size: 1.5vw; /* Increase font size */
+  font-weight: 50;
+
+  -webkit-transform: scale(1);
+	transform: scale(1);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+
+#myLink:hover {
+	-webkit-transform: scale(1.2);
+	transform: scale(1.2);
+}
