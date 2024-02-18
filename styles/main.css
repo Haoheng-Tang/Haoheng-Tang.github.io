@@ -155,7 +155,9 @@ figcaption{
 @media (max-aspect-ratio:1){
 
   article{
-    font-size: 1.9vh;
+    padding-left: 4vw; 
+    padding-right: 4vw;
+    font-size: 1.2vh;
   }
 
   .title{
@@ -172,12 +174,32 @@ figcaption{
     padding-bottom: 1.5vw;
   }
 
+  .titlename{
+    font-family: 'Noto Sans Bengali';
+    font-size: 1.6vh;
+    margin-top: 3rem;
+  }
+  
+  .subtitle{
+    font-size: 1.2vh;
+    color: #959595;
+  }
+
+  figcaption{
+    color: #434343;
+    font-size: 1.2vh;
+  }
+
   .cardtitle{
     font-size: 1.65vh;
   }
 
   .card{
     font-size: 1vh;
+  }
+
+  .project-name{
+    font-size: 1.25vh;
   }
 
   .gallery{
@@ -187,4 +209,9 @@ figcaption{
     padding-right: 10%;
     gap: 1vh;
   }
+
+  #myLink {
+    font-size: 2vh; /* Increase font size */
+  }
+
 }
