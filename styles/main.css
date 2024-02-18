@@ -149,3 +149,42 @@ figcaption{
 	-webkit-transform: scale(1.2);
 	transform: scale(1.2);
 }
+
+/*For Mobile Device (iPhone)*/
+
+@media (max-aspect-ratio:1){
+
+  article{
+    font-size: 1.9vh;
+  }
+
+  .title{
+    font-family: 'Noto Sans Bengali';
+    font-size: 4vh;
+    text-align: center;
+    margin-top: 3rem;
+  }
+  
+  .nav {
+    text-align: center;
+    font-size: 1.3vh;
+    color: #000000;
+    padding-bottom: 1.5vw;
+  }
+
+  .cardtitle{
+    font-size: 1.65vh;
+  }
+
+  .card{
+    font-size: 1vh;
+  }
+
+  .gallery{
+    display:inline-block;
+    margin-top: 5rem;
+    padding-left: 10%;
+    padding-right: 10%;
+    gap: 1vh;
+  }
+}
