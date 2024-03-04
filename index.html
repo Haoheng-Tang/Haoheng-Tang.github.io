@@ -12,9 +12,56 @@
   
   <body style="background-color: #FCF4F0;">
     <main style="padding-left: 6vw; padding-right: 6vw;">
-      <header class="title">
+      <header class="title" id="ht">
           H______T
       </header>
+      <script>
+        let ht = document.getElementById('ht');
+        let cur_word = 0;
+        let cur_char = 0;
+        let words = [
+          "HaohengT",
+          "Heart",
+          "Heat",
+          "HaohengT",
+          "Hint",
+          "Height",
+          "Hat",
+          "Hoot",
+          "HaohengT",
+          "Hit",
+          "Hait",
+          "Hurt",
+          "Hindsight",
+          "HaohengT",
+          "Helmet",
+          "HIIT",
+          "HREF",
+          "Hut",
+          "HaohengT",
+          "Hamlet",
+          "Hot",
+          "HaohengT",
+          "Hesitant",
+          "Hunt",
+          "Halt",
+          "HaohengT",
+          "Habit"
+        ].map(x=>x.slice(1,-1));
+        function loop(){
+
+          if (cur_char == words[cur_word].length){
+            cur_char = 0;
+            cur_word = (cur_word + 1) % words.length;
+          }
+          ht.innerHTML = `H<span style="text-decoration:underline">${words[cur_word].slice(0,cur_char+1)}</span>T`;
+          cur_char ++; 
+          setTimeout(loop,500);
+        }
+        loop();
+
+
+      </script>
 
       <nav class="nav navbar-light justify-content-center">
           <li class="nav-item nav-item2">
