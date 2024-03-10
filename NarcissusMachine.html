@@ -39,49 +39,85 @@
         </p>
         <section class="imgholder">
           <h3 class="project-name">
-            1. Background
+            1. Concept
           </h3>
-          <img src="images/Narcissus Machine/Narcissus.png" style="width: 100%;">
-          <figcaption style="text-align: center;">Caravaggio - Narcissus (1597)</figcaption>
-          <p>Narcissus and the Machine explores various water forms through a machine learning model, translating these nuanced expressions into a captivating visual projection. To achieve this, the model is trained on different water motions, including rainfall, waterfalls, ocean waves, and water ripples. The process involves extracting frames from video footage of distinct water forms, followed by training a classifier model to discern and identify their intricate movement patterns as they manifest in the natural world. Once trained, the model interfaces with a webcam, dynamically analyzing real-time video footage of human body movements, classifying them as the individual forms of water. This interpolation is then visually expressed through an abstract graphical display.
-          </br>
-            The ambition of this concept lies in the intention to illustrate how the natural world can be interpreted through the lens of machine learning. In doing so, the project aims to juxtapose the influence of digital technologies and generative AI with the enduring presence of our natural environment on Earth. Water, as our fundamental life force and reflective medium, serves as the focal point. The project draws inspiration from the myth of Narcissus, riffing on the title’s canonical fascination with appearance, reflection, and embodiment through water. In the age of generative AI, the project provocatively asks how our selves and bodies perpetually generate and recreate expressive forms in this evolving interplay between human creativity and technological innovation.</p>
+          <img src="images/Narcissus Machine/human_AI_mirror.jpg" style="width: 100%;">
+          <figcaption style="text-align: center;">AI As a Mirror</figcaption>
+          <p>
+            "Narcissus and the Machine" is an interactive art installation that creates a dialogue between humans and artificial intelligence (AI) not through the medium of language, but through the language of movement.
+          </br></br>
+            This project is born from a provocative inquiry: if AI has its own consciousness, how would it perceive humans? By envisioning AI as a "mirror", can we gain a deeper insight into our own selves by observing our "reflections" through the AI's perspective?
+          </br></br>
+            In response, we have breathed life into such an AI entity. Though in its nascent stage, this AI can observe human movements and translate them into various water motion expressions, encompassing the majesty of ocean waves, the descent of waterfalls, the gentle patter of rainfall, and the serene spread of ripples.
+          </p>
         </section>
-        <section class="imgholder">
-          <img src="images/Trees Breath/typical_activities.jpg" style="width: 100%;">
-          <p style="text-align: center;">Typical Activities Under the Banyans Trees in Guangzhous</p>
-          <figcaption style="text-align: center;">For centuries, banyan tree has become a symbol of Guangzhou culture. As the climate in Guangzhou is hot all year, people like staying under the shadows of banyan trees and have a strong bond with the trees.</figcaption>
-        </section>
-        <section class="imgholder">
-          <img src="images/Trees Breath/system design.jpg" style="width: 100%;">
-          <p style="text-align: center;">Collect data of activities under the banyan trees and describe it visually or with words to demonstrate the irreplaceable roles of banyan trees</p>
-          <figcaption style="text-align: center;">The government cut banyan trees because they assumed the banyan trees are not so important to citizens and could be replaced by other kind of trees that look nicer. However, once the banyan trees at a place are cut, citizens cannot enjoy the shading by them and spend substantially less time at the place.</figcaption>
+
+        <section style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;" class="imgholder">
+          <img src="images/Narcissus Machine/oceanwave.jpg" style="width: 100%; grid-column: 1/span 1;">
+          <img src="images/Narcissus Machine/waterfall.jpg" style="width: 100%; grid-column: 2/span 1;">
+          <figcaption style="width: 100%; grid-column: 1/span 1; text-align: center;">Ocean wave</figcaption>
+          <figcaption style="width: 100%; grid-column: 2/span 1; text-align: center;">Waterfall</figcaption>
+          <img src="images/Narcissus Machine/ripple.jpg" style="width: 100%; grid-column: 1/span 1;">
+          <img src="images/Narcissus Machine/maxresdefault.jpg" style="width: 100%; grid-column: 2/span 1;">
+          <figcaption style="width: 100%; grid-column: 1/span 1; text-align: center;">Ripple</figcaption>
+          <figcaption style="width: 100%; grid-column: 2/span 1; text-align: center;">Rainfall</figcaption>
         </section>
 
         <section class="imgholder">
-          <figcaption style="text-align: center;"></br></br>Several Ways to Attach a Device to Aerial Roots</figcaption>
-          <img src="images/Trees Breath/detail.jpg" style="width: 100%;">
+          <p>
+            Water mirrors the reflection of the individual gazing upon its surface. The AI-powered machine is able to do the same work, which explains the reason why we use water as the main element of our project. The project draws inspiration from the myth of Narcissus, riffing on the title’s canonical fascination with appearance, reflection, and embodiment through water.
+          </p>
+          <img src="images/Narcissus Machine/Narcissus.png" style="width: 100%; grid-column: 1/span 1;">
+          <figcaption>Caravaggio depicted a young page dressed in a elegant brocade doublet, leaning over the water with his hands, as he looks at his own distorted reflection.</figcaption>
+        </section>
+
+        <section class="imgholder">
+          <h3 class="project-name">
+            2. Model Training
+          </h3>
+          <section style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;" class="imgholder">
+            <img src="images/Narcissus Machine/opticalFlow_openCV.jpg" style="width: 100%; grid-column: 1/span 1;">
+            <p style="width: 100%; grid-column: 2/span 1;"> 
+              Optical flow is a task of per-pixel motion estimation between two  consecutive frames in one video. Basically, the Optical Flow task implies the calculation of the shift vector for pixel  as an object displacement difference between two neighboring images. The  main idea of Optical Flow is to estimate the object’s displacement vector caused by it’s motion or camera movements.[1]
+            </p>
+            <figcaption style="width: 100%; grid-column: 1/span 1; text-align: center;"><a href="https://learnopencv.com/optical-flow-in-opencv/">Image source</a></figcaption>
+          </section>
+
+          <section style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;" class="imgholder">
+            <img src="images/Narcissus Machine/ocean_waves_97.png" style="width: 100%; grid-column: 1/span 1;">
+            <img src="images/Narcissus Machine/waterfall_223.png" style="width: 100%; grid-column: 2/span 1;">
+            <figcaption style="width: 100%; grid-column: 1/span 1; text-align: center;">Ocean wave</figcaption>
+            <figcaption style="width: 100%; grid-column: 2/span 1; text-align: center;">Waterfall</figcaption>
+            <img src="images/Narcissus Machine/waterripples_57.png" style="width: 100%; grid-column: 1/span 1;">
+            <img src="images/Narcissus Machine/rainfall_154.png" style="width: 100%; grid-column: 2/span 1;">
+            <figcaption style="width: 100%; grid-column: 1/span 1; text-align: center;">Ripple</figcaption>
+            <figcaption style="width: 100%; grid-column: 2/span 1; text-align: center;">Rainfall</figcaption>
+          </section>
+
+          <section>
+            <p>
+              For each category of water movements, we curated one or two videos and analyzed them using Optical Flow in OpenCV (Python). This analysis allows us to determine the length and direction of an object's movement between consecutive frames by the color of a pixel:
+            </br>
+              <li>Cyan represents movement to the left.</li>
+              <li>Light Coral represents movement to the right.</li>
+              <li>Midnight Blue represents movement upwards.</li>
+              <li>Light Green represents movement downwards.</li>
+            </br>  
+              The provided screenshots showcase examples of ocean waves, waterfalls, rainfall, and ripples that have been processed with optical flow. We converted video frames into .jpg format to serve as the training set, with each category containing between 700 and 1000 images. A significant consideration was deciding whether to focus on learning the global or local features of the water patterns. This was especially relevant for categories like ripples and rainfalls, where the images featured large blank areas. To address this, we implemented random cropping (512x512 pixels) during the training. This technique aims to train the model to focus more on the characteristics of water movements, such as smooth curves, short vertical lines, and concentric circles, rather than the sparsity level. It not only enabled the use of high-resolution images (1852x1480 pixels) for training to prevent loss of detail but also allowed us to use low-resolution webcam videos as inputs to ensure smoothness.
+            </br></br>
+              We trained a VGG model on this dataset for 99 epochs, achieving an accuracy of 0.9753 and a loss of 0.0890 on the training set. When tested on a test set of 356 images, the model achieved 100% accuracy in classification.
+            </p>
+          </section>
+        </section>
+
+        <section class="imgholder">
+          <h3 class="project-name">
+            3. Real-time Classifier
+          </h3>
+
         </section>
 
       </article>
-    </main>
-
-    <main  style="background-color: black; color: white; padding-left: 8%; padding-right: 8%;">
-      <section class="imgholder">
-        <img src="images/Trees Breath/Portfolio_Haoheng_2022Fall6.jpg" style="width: 100%;">
-      </section>
-      <article style="width: 100%;">
-        <section class="imgholder">
-          <img src="images/Trees Breath/internal components.jpg" style="width: 100%;">
-        </section>
-      </article>
-      <section class="imgholder">
-        <img src="images/Trees Breath/Portfolio_Haoheng_2022Fall8.jpg" style="width: 100%;">
-      </section>
-
-      <section class="imgholder">
-        <img src="images/Trees Breath/Portfolio_Haoheng_2022Fall9.jpg" style="width: 100%;">
-      </section>
     </main>
 
 
