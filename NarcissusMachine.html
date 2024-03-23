@@ -104,17 +104,72 @@
               <li>Light Green represents movement downwards.</li>
             </br>  
               The provided screenshots showcase examples of ocean waves, waterfalls, rainfall, and ripples that have been processed with optical flow. We converted video frames into .jpg format to serve as the training set, with each category containing between 700 and 1000 images. A significant consideration was deciding whether to focus on learning the global or local features of the water patterns. This was especially relevant for categories like ripples and rainfalls, where the images featured large blank areas. To address this, we implemented random cropping (512x512 pixels) during the training. This technique aims to train the model to focus more on the characteristics of water movements, such as smooth curves, short vertical lines, and concentric circles, rather than the sparsity level. It not only enabled the use of high-resolution images (1852x1480 pixels) for training to prevent loss of detail but also allowed us to use low-resolution webcam videos as inputs to ensure smoothness.
-            </br></br>
+            </br>
+          </p>
+          <img src="images/Narcissus Machine/TheArchitectureofVGG16.jpg" style="width: 100%; grid-column: 1/span 1;">
+          <figcaption style="text-align: center;">
+          The architecture of VGG16
+          </br>
+          Source: Researchgate.net
+          </figcaption>
+          <p>
+          </br>
               We trained a VGG model on this dataset for 99 epochs, achieving an accuracy of 0.9753 and a loss of 0.0890 on the training set. When tested on a test set of 356 images, the model achieved 100% accuracy in classification.
             </p>
           </section>
         </section>
 
+
         <section class="imgholder">
           <h3 class="project-name">
             3. Real-time Classifier
           </h3>
+          <img src="images/Narcissus Machine/webcam_capture.jpg" style="width: 100%; grid-column: 1/span 1;">
+          <figcaption style="text-align: center;">Webcam Video Processed with Optical Flow </br>
+            Classified as “ocean wave”</figcaption>
+          <p>Utilizing Optical Flow in OpenCV (Python), we were able to convert each webcam frame into a color map, mirroring the approach taken during the training process. This enabled us to prompt the model to classify each frame accordingly. For instance, a frame capturing a person with their arms open and waving could be classified under the category of ocean waves, as it bears the closest resemblance to the images within that class.</p>
+        </section>
 
+
+        <section class="imgholder">
+          <h3 class="project-name">
+            4. Animation
+          </h3>
+          <p>We aimed to generate artistic animations of water that correspond to the outcomes of the real-time classifier. For instance, if the movements of an audience member are identified as resembling an "ocean wave," we anticipate the animation will display patterns of ocean waves. If the movements shift and are recognized as a different type of water motion, we likewise expect the animation to transition smoothly to reflect this change.</p>
+          <img src="images/Narcissus Machine/wave_animation.jpg" style="width: 100%; ">
+          <figcaption style="text-align: center;">Animation: ocean wave</figcaption>
+          <p></br></p>
+          <img src="images/Narcissus Machine/ripple_animation.jpg" style="width: 100%; ">
+          <figcaption style="text-align: center;">Animation: ripple</figcaption>
+          <p>
+          </br>
+            We designed a 50x50 grid, where each cell features a white dot. By parametrically adjusting the vertical movements of these dots, we created movement patterns that simulate various types of water motion.
+          </br></br>
+            The final challenge was seamlessly integrating the animation on the front-end server with the classifier on the back-end server. Overcoming the inherent time delays in data transmission was a complex task. Fortunately, WebSocket technology enabled us to significantly reduce this asynchrony. Establishing a bidirectional communication pathway between the front-end and back-end using WebSocket allowed the front-end to continuously listen to data from the back-end, and vice versa. This method proved to be more efficient than traditional HTTP approaches for real-time data exchange.
+          </p>
+        </section>
+
+
+        <section class="imgholder">
+          <h3 class="project-name">
+            5. Built Environment and Feedback Loop
+          </h3>
+          <img src="images/Narcissus Machine/built_env2.jpg" style="width: 100%; ">
+          <figcaption style="text-align: center;">Built environment: right view</figcaption>
+          <p></br></p>
+          <img src="images/Narcissus Machine/built_env1.jpg" style="width: 100%; ">
+          <figcaption style="text-align: center;">Built environment: top view</figcaption>
+          <p></br></p>
+          <img src="images/Narcissus Machine/built_env3.jpg" style="width: 100%; ">
+          <figcaption style="text-align: center;">Built environment: isometric view</figcaption>
+          <p>
+          </br>
+            The installation was configured in a dark space in the school building, featuring two intersecting projections and a white tulle dominating the center of the space. A projector was suspended from the ceiling at the rear, while the other was stationed on a table to one side. This arrangement facilitated an interplay of light upon the tulle, creating a dynamic pattern of illumination that penetrated the semi-transparent fabric and illuminated the opposite walls.
+          </br></br>
+            This setup created a highly immersive experience for participants, allowing for an interactive engagement with the space. In addition to human body movements, the projected animation was also captured by the webcam, consequently augmenting the subsequent animation. This process enriched the animation, leading to a cyclical interaction wherein participants, often subconsciously, adapted their movements in response to the visual stimuli. Consequently, a feedback loop emerged, illustrating a dynamic interplay between human participants and the technological components of the installation.
+          </br></br>
+            A notable observation was the participants' engagement with their shadows. Any movement close to the projector was significantly magnified, creating an enlarged silhouette on the walls. These silhouettes, once detected by the webcam, promptly influenced the subsequent animation. This feature was particularly well-received, allowing participants to experiment with their body movements in front of the projector and observe the resultant effects on the animation.
+          </p>
         </section>
 
       </article>
