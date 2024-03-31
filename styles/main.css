@@ -30,6 +30,15 @@ a:hover{
     margin-top: 3rem;
 }
 
+
+.title:hover span {
+  display: none
+}
+
+.title:hover:before {
+  content: "HaohengT"
+}
+
 .titlename{
   font-family: 'Noto Sans Bengali';
   font-size: 1.5vw;
@@ -160,7 +169,7 @@ figcaption{
   article{
     padding-left: 4vw; 
     padding-right: 4vw;
-    font-size: 1.2vh;
+    font-size: 1.4vh;
   }
 
   .title{

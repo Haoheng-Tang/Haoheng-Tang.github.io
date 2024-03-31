@@ -21,17 +21,21 @@
       </style>
   </head>
   <script src="https://kit.fontawesome.com/80b107c462.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="scripts/main.js"></script>
   
   <body>
       <header class="title">
+        <span>
           H______T
+        </span>
       </header>
 
       <nav class="nav navbar-light justify-content-center">
-          <li class="nav-item nav-item2">
+          <li class="nav-item nav-item2 navtop">
             <a class="nav-link" aria-current="page" href="index.html" style="color: rgb(110, 110, 110);">Home</a>
           </li>
-          <li class="nav-item nav-item2">
+          <li class="nav-item nav-item2 navtop">
             <a class="nav-link" href="aboutme.html" style="color: rgb(110, 110, 110);">About</a>
           </li>
       </nav>
@@ -248,20 +252,22 @@
     </main>
 
     <footer class="nav navbar-light justify-content-center" style="padding-top: 6rem;">
-      <li class="nav-item nav-item2">
+      <li class="nav-item nav-item2 navbottom">
         <a class="nav-link" aria-current="page" href="index.html" style="color: rgb(110, 110, 110);">Home</a>
       </li>
-      <li class="nav-item nav-item2">
+      <li class="nav-item nav-item2 navbottom">
         <a class="nav-link" href="aboutme.html" style="color: rgb(110, 110, 110);">About</a>
       </li>
     </footer>
 
-        <button onclick="topFunction()" id="myBtn" title="Go to top">↑</button>
+    
+
+    <button onclick="topFunction()" id="myBtn" title="Go to top">↑</button>
     <a href="https://www.linkedin.com/in/haoheng-tang-38b4131a3/" target="_blank"><i class="fa-brands fa-linkedin" id="myLink" style="bottom: 20%;"></i></a>
     <a href="https://github.com/Haoheng-Tang" target="_blank"><i class="fa-brands fa-github" id="myLink" style="bottom: 15%;"></i></a> 
     <a href="https://www.instagram.com/tanghownn/" target="_blank"><i class="fa-brands fa-instagram" id="myLink" style="bottom: 10%;"></i></a>
     <a href="https://www.youtube.com/channel/UC-qlML6fI94fiUZdij8MXTQ" target="_blank"><i class="fa-brands fa-youtube" id="myLink" style="bottom: 5%;"></i></a> 
-          
+
     <script>
       // Get the button:
       let mybutton = document.getElementById("myBtn");
@@ -283,5 +289,6 @@
         document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
       } 
     </script>
+
   </body>
 </html>
