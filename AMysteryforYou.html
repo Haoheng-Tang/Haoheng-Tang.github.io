@@ -22,7 +22,6 @@
   </head>
   <script src="https://kit.fontawesome.com/80b107c462.js" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="scripts/main.js"></script>
   
   <body>
       <header class="title">
@@ -122,7 +121,7 @@
           </p>
           <img src="images/A Mystery for You/data_communication.jpg" style="width: 100%;" alt="Diagram showing data transmission between game components: from ChatGPT to the Game Interface">
           <figcaption style="text-align: center;">Data transmission between game components.</figcaption>
-          <video autoplay muted loop style="width: 100%;">
+          <video autoplay muted loop style="width: 100%;" id="videoID">
             <source src="images/A Mystery for You/data_output.mp4" type="video/mp4">
           </video>
           <figcaption style="text-align: center;">Data transmission between game components.</figcaption>
@@ -275,27 +274,7 @@
     <a href="https://www.instagram.com/tanghownn/" target="_blank"><i class="fa-brands fa-instagram" id="myLink" style="bottom: 10%;"></i></a>
     <a href="https://www.youtube.com/channel/UC-qlML6fI94fiUZdij8MXTQ" target="_blank"><i class="fa-brands fa-youtube" id="myLink" style="bottom: 5%;"></i></a> 
 
-    <script>
-      // Get the button:
-      let mybutton = document.getElementById("myBtn");
-
-      // When the user scrolls down 20px from the top of the document, show the button
-      window.onscroll = function() {scrollFunction()};
-
-      function scrollFunction() {
-        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-          mybutton.style.display = "block";
-        } else {
-          mybutton.style.display = "none";
-        }
-      }
-
-      // When the user clicks on the button, scroll to the top of the document
-      function topFunction() {
-        document.body.scrollTop = 0; // For Safari
-        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-      } 
-    </script>
+    <script src="scripts/main.js"></script>
 
   </body>
 </html>
