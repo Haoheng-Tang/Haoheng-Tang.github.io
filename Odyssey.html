@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <title>Odyssey: AI Artist by Haoheng</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+      <link rel="stylesheet" type="text/css" href="styles/main.css">
+  </head>
+  <script src="https://kit.fontawesome.com/80b107c462.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <body style="background-color: rgb(23, 23, 23); color: white;">
+      <header class="title">
+        <span>
+          H______T
+        </span>
+      </header>
+
+      <nav class="nav navbar-light justify-content-center">
+          <li class="nav-item nav-item2 navtop">
+            <a class="nav-link" aria-current="page" href="index.html" style="color: rgb(110, 110, 110);">Home</a>
+          </li>
+          <li class="nav-item nav-item2 navtop">
+            <a class="nav-link" href="aboutme.html" style="color: rgb(110, 110, 110);">About</a>
+          </li>
+      </nav>
+
+      <video autoplay muted controls style="width: 100%; ">
+          <source src="images/Narcissus Machine/Narcissus_Machine_compressed.mp4" type="video/mp4">
+      </video>
+    
+    <main>
+      <article>
+        <header class="titlename">The Studio or: </br>How an AI Agent Learns to Create Artwork through Gameplay</header>
+        <p class="subtitle">
+          Academic Project</br>
+          Feb 2024 to May 2024</br>
+          Instructor: Allen Sayegh, Katarina Richter-Lunn
+        </p>
+        <section class="imgholder">
+          <h3 class="project-name">
+            1. Abstract
+          </h3>
+          <img src="images/Odyssey/aesthetic_latent_space.jpg" style="width: 100%; padding-left: 16%; padding-right: 16%;">
+          <figcaption style="color: rgb(219, 219, 219);text-align: center;">Walking through the latent space of aesthetic</figcaption>
+          <p>
+            The project revolutionizes the way art is created by introducing a game-like reward system. This system enables an AI agent to learn through reinforcement learning and generate art. 
+            Within this framework, humans establish aesthetic criteria as game rules, empowering the AI to optimize its actions to earn the maximum rewards, thereby producing extraordinary artwork. 
+            This project exemplifies a pioneering form of human-AI collaboration in the realm of art facilitated by contemporary advancements in AI technology. 
+            A particularly fascinating aspect of this algorithm-driven art is its existence in a nebulous intermediary space where the creator sets abstract aesthetic guidelines without directly crafting the artwork, 
+            and the audience can envision the potential artwork through these rules but must wait until the AI completes its training to see the final product. Under this framework, 
+            anyone can create artwork regardless of whether or not they have received art training. 
+            The project is also named Odyssey, symbolizing AI's journey into uncharted aesthetic territories.
+          </p>
+        </section>
+
+        <section style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;" class="imgholder">
+          <h3 class="project-name">
+            2. Concept
+          </h3>
+          <img src="images/Odyssey/MITpress.png" style="width: 100%; grid-column: 1/span 1; padding-left: 5%; padding-right: 5%;">
+          <img src="images/Odyssey/snakegame.png" style="width: 100%; grid-column: 2/span 1; padding-left: 5%; padding-right: 5%;">
+          <figcaption style="color: rgb(219, 219, 219);width: 100%; grid-column: 1/span 1; text-align: center;">MIT Press Logo</figcaption>
+          <figcaption style="color: rgb(219, 219, 219);width: 100%; grid-column: 2/span 1; text-align: center;">Snake (Video Game)</figcaption>
+        </section>
+
+        <section class="imgholder">
+          <p>
+            The concept of this project derives from a screenshot of the video game Snake, which I found similar to the MIT Press logo designed by Muriel Cooper. The aesthetics of a snake game screenshot are a result of its rules, 
+            which disallow the snake to hit itself or the border of the map, forcing the snake to find an optimal path to occupy the whole space without intersecting itself. 
+            This is a similar concept to space-filling curves, which are widely used in computational art or graphic design.
+          </p>
+        </section>
+
+        <section style="display: grid; grid-template-columns: repeat(8, 1fr); gap: 1rem;" class="imgholder">
+          <img src="images/Odyssey/TSP_art_god.jpg" style="width: 100%; grid-column: 1/span 6; padding-left: 5%; padding-right: 5%">
+          <img src="images/Odyssey/space-filling_curves.jpg" style="width: 100%; grid-column: 7/span 2;">
+          <figcaption style="color: rgb(219, 219, 219);width: 100%; grid-column: 1/span 6; text-align: center;">TSP Art</figcaption>
+          <figcaption style="color: rgb(219, 219, 219);width: 100%; grid-column: 7/span 2; text-align: center;">Space-Filling Curves</figcaption>
+        </section>
+
+        <section class="imgholder">
+          <p>
+            I got inspiration from this finding that we might be able to create artwork through playing games. In other words, by setting game rules or a reward-penalty mechanism, 
+            we can make art that corresponds to our aesthetic preferences.
+          </p>
+          <h3 class="project-name">
+            3. Video Game as a State Machine
+          </h3>
+          <section style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;" class="imgholder">
+            <img src="images/Odyssey/state_machine_diagram-01.png" style="width: 100%; grid-column: 1/span 1;">
+            <img src="images/Odyssey/super_mario_screenshot.jpg" style="width: 100%; grid-column: 2/span 1;">
+            <p style="width: 100%; grid-column: 1/span 2;"> 
+              Video games can indeed be viewed as state machines, which is a concept widely used in game development. A state machine, in the context of computer science and programming, 
+              is a model of computation consisting of a set of states, transitions between those states, and actions that depend on a state and cause transitions to other states.
+            </br>
+              Both state and action are clearly defined in a video game. Thus, audience or players and easily imagine what the scenes look like.
+            </p>
+          </section>
+
+
+
+          <section>
+            <h3 class="project-name">
+              4. Reward Mechanism as Quantitative Aesthetics
+            </h3>
+            <section class="imgholder">
+              <h5>4.1 Aesthetics: Radial Pattern</h5>
+              <p>
+              Reward mechanism:
+              <li>action= move left -> reward= -1</li>
+              <li>action= move right -> reward = -1</li>
+              <li>action= cast -> reward = 1</li>
+              </p>
+              <section style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;" class="imgholder">
+                <img src="images/Odyssey/radial_297.jpg" style="width: 100%; grid-column: 1/span 1;">
+                <img src="images/Odyssey/radial_397.jpg" style="width: 100%; grid-column: 2/span 1;">
+                <figcaption style="color: rgb(219, 219, 219);width: 100%; grid-column: 1/span 1; text-align: center;"> epoch = 1</figcaption>
+                <figcaption style="color: rgb(219, 219, 219);width: 100%; grid-column: 2/span 1; text-align: center;"> epoch = 100</figcaption>
+                <img src="images/Odyssey/radial_440.jpg" style="width: 100%; grid-column: 1/span 1;">
+                <img src="images/Odyssey/radial_569.jpg" style="width: 100%; grid-column: 2/span 1;">
+                <figcaption style="color: rgb(219, 219, 219);width: 100%; grid-column: 1/span 1; text-align: center;"> epoch = 450</figcaption>
+                <figcaption style="color: rgb(219, 219, 219);width: 100%; grid-column: 2/span 1; text-align: center;"> epoch = 580</figcaption>
+                <p style="width: 100%; grid-column: 1/span 2;"> 
+                  After 580 epochs of training, the AI agent learns the optimal policy, which is to stay at a single point and catch all the bitcoins. This forms a radial pattern, like a beam of light. 
+                </br>
+                As such, a simple reward function corresponds to a specific pattern which people usually describe with their languages like "radial", "light beam".
+              </p>
+              </section>
+            <h5>4.2 Aesthetics: Decentralization</h5>
+            <p>
+              In this case, the reward function is defined in such a way that the longer the average of casting lines, the lower the reward the agent will get.
+            </br>
+            The expression of the reward function is: <i>f(avg_length) = -log(avg_length/600)</i>. <i>f(avg_length)</i> is a monotone decreasing function. 
+            The AI agent gets a positive reward if the average length is smaller than 600, and a negative reward if the average length is larger than 600.
+            As is shown in the plot below:
+            </p>
+            <img src="images/Odyssey/logrithm_plot.png" style="width: 60%;">
+            <p>
+              After 700 epochs of training, the AI agent learned to capture the bitcoin from the spots closest to it. As a result, it learns to draw short radial lines from different points.
+            </br>The whole drawing looks like fireworks, with a emphasis on decentralization.
+            </p>
+            <img src="images/Odyssey/aesthetics_matrix-01.jpg" style="width: 100%; ">
+            <figcaption style="color: rgb(219, 219, 219);text-align: center;">epochs = 710</figcaption>
+    
+            <h5></br>4.3 Aesthetics: Diagonal</h5>
+            <p>
+              In this case, the reward function is defined in such a way that the closer the coefficient of the line is to 0.6, the higher the reward the agent will get.
+            </br> </p>
+            <img src="images/Odyssey/aesthetics_matrix-02.jpg" style="width: 100%; ">
+            <figcaption style="color: rgb(219, 219, 219);text-align: center;">epochs = 890</figcaption>
+            <p>After 890 epochs of training, the AI agent learns to fill the canvas with diagonal lines, creating a moment like grass blown by wind.</p>
+            <img src="images/Odyssey/grass_blown_wind.png" style="width: 100%; ">
+            
+            <h5></br>4.4 Aesthetics: Even Distribution</h5>
+          <img src="images/Odyssey/SolLeWitt_vs_gold_miner.png" style="width: 100%; grid-column: 1/span 1;">
+          <figcaption style="color: rgb(219, 219, 219);text-align: center;">
+          Sol LeWitt's work versus mine
+          </figcaption>
+
+          <section style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;" class="imgholder">
+            <p style="width: 100%; grid-column: 1/span 2;">
+              I found Sol LeWitt's drawing is cleaner than mine. The lines in his work are more evenly distributed, while mine seems like a mess.
+            </br>
+              I was trying to find out a way to determine such a difference. By marking the intersections of lines, I found the main identifier.
+            </br>
+            </p>
+
+            <img src="images/Odyssey/aesthetics_matrix-03.jpg" style="width: 100%; grid-column: 1/span 1;">
+            <img src="images/Odyssey/aesthetics_matrix-04.jpg" style="width: 100%; grid-column: 2/span 1;">
+            <figcaption style="color: rgb(219, 219, 219);width: 100%; grid-column: 1/span 1; text-align: center;">Sol LeWitt's</figcaption>
+          <figcaption style="color: rgb(219, 219, 219);width: 100%; grid-column: 2/span 1; text-align: center;">Mine</figcaption>
+
+            <p style="color: rgb(219, 219, 219);width: 100%; grid-column: 1/span 2; text-align: left;">
+              There is a thing called Moran's I, which is a measure of spatial autocorrelation.
+            </p>
+          </section>
+
+          <img src="images/Odyssey/Moran's_I_example.png" style="width: 100%; padding-left: 16%; padding-right: 16%;">
+
+          <p>
+             A Moran's I close to 1 indicates that the points in the space are clustered, while a Moran's I close to -1 indicates that the points are dispersed.
+             A Moran's I close to 0 means the points are randomly distributed.
+          </br>
+          So, to get an image closer to Sol LeWitt's work, we probably need to create lines in the space whose intersection points has a negative Moran's I. How can we do this? Luckily, reinforcement learning can help.
+          </p>
+
+
+        </section>
+
+
+        <section class="imgholder">
+          <h3 class="project-name">
+            5. AI Agent as Apprentice
+          </h3>
+          <img src="images/Odyssey/sollewitt_apprentice.jpeg" style="width: 100%;">
+          <img src="images/Odyssey/lewitt-wall-drawing-dia-beacon.jpg" style="width: 100%;">
+          <p>Do you know that Sol LeWitt's wall painting was not done by himself but by his apprentice?
+            Sol LeWitt's job is just to set some rules of drawing, based on which his apprentice will finish the drawing.
+          </br>
+          In this process, the apprentice applied their aesthetic preferences to the drawings. That's the reason why the their drawing, as is shown above, looks better mine generated with random function.
+        </br>
+        In this project, I am trying to follow the same path:
+        <li>Creating a game (setting rules, Sol LeWitt)</li>
+        <li>Determine a reward mechanism, which is also the criteria of aesthetics</li>
+        <li>Train an AI to learn this aesthetics, and let it draw for me. (apprentice)</li>
+          </br>
+          You get different output each time.
+          </br>
+          You can more or less imagine the output but cannot precisely predict.    
+          </p>
+        </section>
+
+
+        <section class="imgholder">
+          <video autoplay muted loop style="width: 100%;" id="videoID">
+            <source src="images/Odyssey/AI artist_reinforcement learning.mp4" type="video/mp4">
+          </video>
+          <figcaption style="color: rgb(219, 219, 219);text-align: center;">The algorithm behind: 
+          </br>How Deep Q-Learning Update Its Weights Through Back-propagation</figcaption>
+        </section>
+
+
+        <section class="imgholder">
+          <h3 class="project-name">
+            7. Gallery
+          </h3>
+          <video autoplay muted loop style="width: 100%;" id="videoID">
+            <source src="images/Odyssey/flowcolorfield.mp4" type="video/mp4">
+          </video>
+
+        </section>
+
+      </article>
+    </main>
+
+
+    <footer class="nav navbar-light justify-content-center" style="padding-top: 6rem;">
+      <li class="nav-item nav-item2 navbottom">
+        <a class="nav-link" aria-current="page" href="index.html" style="color: rgb(110, 110, 110);">Home</a>
+      </li>
+      <li class="nav-item nav-item2 navbottom">
+        <a class="nav-link" href="aboutme.html" style="color: rgb(110, 110, 110);">About</a>
+      </li>
+    </footer>
+
+        <button onclick="topFunction()" id="myBtn" title="Go to top">↑</button>
+    <a href="https://www.linkedin.com/in/haoheng-tang-38b4131a3/" target="_blank"><i class="fa-brands fa-linkedin" id="myLink" style="bottom: 20%;"></i></a>
+    <a href="https://github.com/Haoheng-Tang" target="_blank"><i class="fa-brands fa-github" id="myLink" style="bottom: 15%;"></i></a> 
+    <a href="https://www.instagram.com/tanghownn/" target="_blank"><i class="fa-brands fa-instagram" id="myLink" style="bottom: 10%;"></i></a>
+    <a href="https://www.youtube.com/channel/UC-qlML6fI94fiUZdij8MXTQ" target="_blank"><i class="fa-brands fa-youtube" id="myLink" style="bottom: 5%;"></i></a> 
+          
+    <script src="scripts/main.js"></script>
+  </body>
+</html>
