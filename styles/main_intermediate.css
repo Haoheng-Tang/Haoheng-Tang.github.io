@@ -11,10 +11,6 @@ article{
   margin-right: auto;
 }
 
-canvas { 
-  display: block; 
-}
-
 
 a{
   color: inherit; /* Inherit the color from the parent element */
@@ -31,7 +27,7 @@ a:hover{
     font-family: "Varela", serif;
     font-size: 3vw;
     text-align: center;
-    padding-top: 3rem;
+    margin-top: 3rem;
 }
 
 .logo {
@@ -49,7 +45,7 @@ a:hover{
 }
 
 .title:hover:before {
-  content: "Haoheng T."
+  content: "HaohengT"
 }
 
 .titlename{
@@ -71,10 +67,11 @@ figcaption{
 
 .nav {
     text-align: center;
-    font-size: 1.5vh;
+    font-size: 2.5vh;
     color: #000000;
-    padding-top: 2.5vh;
-    height: 8vh;
+    padding-top: 3vh;
+    height: 9vh;
+    border-bottom: 0.26rem solid #FC5B0B;
   }
 
 .nav-item2::after {
@@ -107,18 +104,12 @@ figcaption{
   object-fit: cover;
 }
 
-.teaser{
-  width: 100%;
-  top: 0; 
-}
 
 .gallery{
-  padding-left: 15%; 
-  padding-right: 15%; 
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   margin-top: 5rem;
-  grid-gap: 3rem;
+  grid-gap: 5rem;
 }
 
 .card{
@@ -138,6 +129,15 @@ figcaption{
 	filter: opacity(90%);
 }
 
+.popup {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%; /* Cover half of the image */
+  background: #FC5B0B;
+  transition: width 0.3s ease; /* Smooth transition */
+}
 
 .card-img-top:hover .popup {
   width: 18vw; /* Show the popup on hover */
@@ -184,7 +184,7 @@ figcaption{
   border: none; /* Remove borders */
   outline: none; /* Remove outline */
   background-color: rgba(0, 0, 0, 0); /* Set a background color */
-  color: #e0e0e0;
+  color: #FC5B0B; /* Text color */
   cursor: pointer; /* Add a mouse pointer on hover */
   padding: 15px; /* Some padding */
   border-radius: 10px; /* Rounded corners */
@@ -281,8 +281,8 @@ figcaption{
   .gallery{
     display:inline-block;
     margin-top: 5rem;
-    padding-left: 12%;
-    padding-right: 12%;
+    padding-left: 10%;
+    padding-right: 10%;
     gap: 1vh;
   }
 

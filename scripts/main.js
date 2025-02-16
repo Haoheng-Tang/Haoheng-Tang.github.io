@@ -23,7 +23,7 @@ document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 
 
 /* ************************
-        text opacity
+    scroll-opacity effect
 ************************** */
 $(window).scroll(function () {
     //title and navigation at the top
@@ -31,16 +31,20 @@ $(window).scroll(function () {
     let title = $(".title");
     let titlename = $(".titlename");
     let subtitle = $(".subtitle");
+    let teaser = $(".teaser");
     let scrollTop = $(window).scrollTop();
-    title.css("opacity", 1 - scrollTop / 150);
-    nav_top.css("opacity", 1 - scrollTop / 150);
+
+    title.css("opacity", 1 - scrollTop / 300);
+    teaser.css("opacity", scrollTop / 600);
+
+//     nav_top.css("opacity", 1 - scrollTop / 150);
     //titlename.css("opacity", 1 - (scrollTop-800) / 600);
     //subtitle.css("opacity", 1 - (scrollTop-800) / 600);
 
     //navigation at the bottom
-    let nav_bottom = $(".navbottom");
-    var scrollBottom = $(document).height() - $(window).height() - $(window).scrollTop();
-    nav_bottom.css("opacity", 1 - scrollBottom / 50);
+//     let nav_bottom = $(".navbottom");
+//     var scrollBottom = $(document).height() - $(window).height() - $(window).scrollTop();
+//     nav_bottom.css("opacity", 1 - scrollBottom / 50);
  });
 
 
@@ -73,6 +77,27 @@ $(window).scroll(function () {
 //         video.pause();
 //   }
 //  },100)
+
+/************************
+JavaScript for Dynamic Opacity Effect
+************************/
+window.addEventListener('scroll', function () {
+const videoContainer = document.getElementById('videoContainer');
+const scrollY = window.scrollY;            // Current scroll position
+const maxScroll = window.innerHeight;  // Maximum scroll distance for fading effect
+
+// Calculate opacity: 1 at the top, decreasing as you scroll
+let opacity = 1 - (scrollY / maxScroll);
+opacity = Math.max(opacity, 0); // Ensure opacity never goes below 0
+
+videoContainer.style.opacity = opacity;
+});
+
+
+
+/********************
+ Don't play video until I scroll to that place
+ *********************/
 
 const video= document.getElementById('videoID');
 let userScrolling = false;
