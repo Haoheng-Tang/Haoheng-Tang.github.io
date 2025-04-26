@@ -1,3 +1,33 @@
+/*****************
+ gradient effect
+ *****************/
+window.addEventListener('load', function() {
+    try {
+        // Check if Gradient is available
+        if (typeof Gradient === 'undefined') {
+            console.error('Gradient class not found. Make sure Gradient.js is loaded properly.');
+            return;
+        }
+
+        // Create your instance
+        const gradient = new Gradient();
+        
+        // Call `initGradient` with the selector to your canvas
+        const canvas = document.getElementById('gradient-canvas');
+        if (canvas) {
+            gradient.initGradient('#gradient-canvas');
+            console.log('Gradient initialized successfully');
+        } else {
+            console.error('Canvas element not found');
+        }
+    } catch (error) {
+        console.error('Error initializing gradient:', error);
+    }
+});
+
+
+
+
 /**************************
       go to top button
  **************************/
