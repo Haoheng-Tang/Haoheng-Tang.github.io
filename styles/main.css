@@ -121,6 +121,14 @@ figcaption{
   --gradient-color-4: #f4ddaf;
   /* position: relative; */
   margin-top: 9%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100vh;
+  z-index: 0;
+  opacity: 1;
+  pointer-events: none;
 }
 
 

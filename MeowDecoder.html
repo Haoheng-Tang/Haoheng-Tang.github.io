@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <title>A Mystery for You by Haoheng</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+      <link rel="stylesheet" type="text/css" href="styles/main.css">
+      <style>
+        .explode{
+          width: 100%;
+          height: 100vh;
+          background-image: url("images/A Mystery for You/explosion_drawing-01.png");
+          background-size: cover;
+          transition: background-image 0.3s ease-in-out;
+        }
+        .explode:hover{
+          background-image: url("images/A Mystery for You/explosion_drawing-02.png");
+        }
+      </style>
+  </head>
+  <script src="https://kit.fontawesome.com/80b107c462.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
+  <body>
+      <header class="title">
+        <span>
+          H.T.
+        </span>
+      </header>
+
+      <nav class="nav navbar-light justify-content-center">
+          <li class="nav-item nav-item2 navtop">
+            <a class="nav-link" aria-current="page" href="index.html" style="color: rgb(110, 110, 110);">Home</a>
+          </li>
+          <li class="nav-item nav-item2 navtop">
+            <a class="nav-link" href="aboutme.html" style="color: rgb(110, 110, 110);">About</a>
+          </li>
+      </nav>
+
+      <video autoplay muted loop controls style="width: 100%;">
+          <source src="images/A Mystery for You/AMysteryforYou_demo.mp4" type="video/mp4">
+      </video>
+    
+    <main>
+      <article>
+        <header class="titlename">A Decoder of Cats' Vocalizations</header>
+        <p class="subtitle">
+          Collaborative Academic Project</br>
+          Initiated in Apr 2024 and Refined in May 2025</br>
+          Teammate: Jiaai Shen, Ziqian Liao</br>
+          <br>
+          <a href="https://dl.acm.org/doi/10.1145/3613905.3648110" target="_blank" style="text-decoration:underline;">Our paper</a> was accepted at <a href="https://chi2024.acm.org/" target="_blank" style="text-decoration:underline;"><strong>CHI 2024 conference</strong></a> on Human Factors in Computing Systems and has been published in the <a href="https://dl.acm.org/doi/10.1145/3613905.3648110" target="_blank" style="text-decoration:underline;"><strong>ACM Digital Library</strong></a>.
+          <br>
+          Additionally, our project was accepted at <a a href="https://neurips.cc/" target="_blank" style="text-decoration:underline;"><strong>NeurIPS 2024</strong></a> and presented in the <a href="https://neurips-creative-ai.github.io/2024/" target="_blank" style="text-decoration:underline;">Creative AI track</a>.<br>
+          Last but not least, we extend our thanks to <a href="https://mad.mit.edu/news/mit-students-work-redefine-human-ai-collaboration-at-neurips" target="_blank" style="text-decoration: underline;">MIT Morningside Academy for Design (MAD)</a> for featuring our work!
+        </p>
+        <p>
+        </br><strong>
+            A Mystery for You is a misinformation-detecting game device powered by ChatGPT. </br>
+          </strong>
+          Fact-checking and critical thinking are essential life skills in an age of rampant misinformation. To cultivate these skills in young learners, we have developed ‘A Mystery for You’ – an educational game powered by a large language model (LLM) and a tangible interface. 
+          In this game, a player becomes a citizen fact-checker, responding to ‘news alerts’ printed out by the game interface. The player investigates various actors and evidence by inserting cartridge combinations into the game interface. Each move the player makes results 
+          in the generation and printing of a follow-up ‘news update,’ which they must use to make an informed verdict about the truth or falsehood of the news. This interactive process sharpens critical thinking skills and enhances familiarity with generative AI's misinformation capacities. 
+          This project contextualizes the game's relevance in today's media and politics, explores gameplay mechanics, and critically reflects on incorporating AI generation tools for educational gameplay.
+        </p>
+
+        <section  class="imgholder">
+          <img src="images/A Mystery for You/A Mystery for You Cover Image.jpg" style="width: 100%;" alt="Image showing a hand inputting an 'actor' cartridge into the tangible game interface.">
+          <p>
+          </br>
+            <strong>Keywords: </strong></br>
+              Misinformation, Digital Literacy, Young Learners, Role-Playing,
+              Investigation, Generative AI, Tangible Interface
+          </p>
+        </section>
+
+        <section class="imgholder">
+          <h3 class="project-name">
+            1. Introduction
+          </h3>
+          <p>
+            Fact-checking skills, critical thinking and an investigative bent of mind are essential life skills in an age of polarized media politics, hate-speech and rampant misinformation. Lack of digital literacy and an inability to identify misinformation has not only led to swaying of elections – such as the 2016 United States Presidential Elections [8] - but also mob lynching and communal violence in countries like India [13] and Bangladesh[9]. 
+            </br></br>
+            The scale and severity of misinformation propaganda are exacer-bated by the increasing access to and use of generative AI models. This could be seen in Argentina’s 2023 Presidential Election – ‘the first AI Election’ according to The New York Times [10]. In 2024, the misuse of AI-generated disinformation is immense as 76 coun- tries are scheduled to hold elections, constituting more than half the world’s population [7]. This is being seen not only in social media posts but also in the blatant emergence of websites hosting AI-generated false articles. NewsGuard, an organization dedicated to tracking misinformation, such websites saw an astonishing increase of over 1,000 percent between May and December 2023 – expanding from 49 sites to a staggering total of more than 600 [15]. 
+            </br></br>
+            In the face of these alarming trends, a pivotal question emerged for us: could we harness the very technology that is fueling misinformation to instead combat it? How might AI be repurposed as a tool for public education? Could we help foster critical thinking and empower the youth to become more informed consumers who are not only skilled in fact-checking but also aware of the pervasiveness of AI generated media? 
+            </br></br>
+            Addressing these questions, we have developed ‘A Mystery for You’ – an educational game for investigative role-play powered by a large language model (LLM) and a tangible interface.
+            This game targets elementary and middle-school children as a pedagogical tool for active learning. Studies show that despite being commonly described as ‘digital natives’, children are still extremely susceptible to misinformation online. The ability to decide whether a news story is true or false appears to develop sometime after elementary school, perhaps when children learn how to find and evaluate sources independently in the context of research projects[17]. 
+            </br></br>
+            The game-play is designed to engage children in problem solving and lateral reading from an early age. Children take on the role of citizen fact-checkers and respond to ‘news alerts’ printed out by the game interface. These ’news alerts’ and sequential story-lines are generated through carefully engineered and tested prompts. By investigating different ’actors’ using fact-checking ’actions’, children are encouraged to think critically through scenarios and ultimately make informed verdicts.
+          </br>
+          </p>
+          <img src="images/A Mystery for You/unique_tactile_fact-checking.jpg" style="width: 100%;" alt="Image showing a hand inputting an 'action' cartridge into the tangible game interface.">
+          <figcaption style="text-align: center;">A unique, tactile fact-checking experience enhanced by an LLM</figcaption>
+        </section>
+
+
+        <section class="imgholder">
+          <h3 class="project-name">
+            2. Related Work
+          </h3>
+          <p>
+            Studies have shown the benefits of using active learning strategies to tackle misinformation, 
+            such as through lateral reading assignments in civic courses [5] and gamification of the fact-checking process [3]. 
+            There have been multiple attempts at gamifying misinformation education, such as Bad News [6], Fake it to Make it [16], Fakey [11], and Escape the Fake [12]. 
+            Parallelly, there have also been attempts at making detective mystery-solving games using generative AI in non-educational scenarios, such as Vaudeville [1], Origins [2] and Detective GPT [14]. 
+            Keeping in mind the limitations and potential of these prior efforts, we decided to focus on the following during our game design process: 
+            <li>The game should challenge the player to actively investigate. </li>
+            <li>The game interface should offer immersive interaction and not encourage the player to just point, click and skim-read.</li>
+            <li>The game should be replayable, offering unique scenarios in every play-through.</li>
+            <li>The decisions made by the player should impact the sequential evolution of the game.</li>
+            To the best extent of our knowledge, A Mystery for You is the first media literacy game that addresses these design challenges using generative AI, tactile interface and pedagogical approach.
+          </p>
+        </section>
+
+
+        <section class="imgholder">
+          <h3 class="project-name">
+            3. Game Design
+          </h3>
+          <p>The primary objective was to develop a tangible game interface that enables interactions between players and a cloud-based Large Language Model (LLM), specifically ChatGPT. The communication infrastructure involves data transmission between the micro-controller and the web app on a computer via serial communication. The data transmission between the web app and ChatGPT is facilitated through the OpenAI API.
+          </p>
+          <img src="images/A Mystery for You/data_communication.jpg" style="width: 100%;" alt="Diagram showing data transmission between game components: from ChatGPT to the Game Interface">
+          <figcaption style="text-align: center;">Data transmission between game components.</figcaption>
+          <video autoplay muted loop style="width: 100%;" id="videoID">
+            <source src="images/A Mystery for You/data_output.mp4" type="video/mp4">
+          </video>
+          <figcaption style="text-align: center;">Data transmission between game components.</figcaption>
+
+
+          <h4 class="project-name">
+            3.1 Designing Player Moves
+          </h4>
+          <p>The Actions include: 1. Investigate, 2. Interview, 3. Check Whatsapp Messages of, 4. Reverse Image Search, 5. Check Social Media Account of</p>
+          <img src="images/A Mystery for You/mystery_for_you_action_cards.png" style="width: 100%;" alt="Image of 5 Action Move that players can use">
+          <figcaption style="text-align: center;">Action Moves</figcaption>
+
+          <p>The Actors include: A. Local Police, B. The Accused, C. Politicians, D. Journalists, E. Local Community, F. Protesters, G. Video Evidence, H. Photo Evidence, I. CCTV Footage, J. Local Authorities</p>
+          <img src="images/A Mystery for You/mystery_for_you_actor_cards.png" style="width: 100%;" alt="Image of 10 Actors that players can investigate.">
+          <figcaption style="text-align: center;">Actors to Investigate</figcaption>
+
+          <h4 class="project-name">
+            3.2 Tangible Input & Output Game Play
+          </h4>
+          <p>The design of our current-day smartphones, with their smooth touchscreens has conditioned us to keep scrolling mindlessly through high volumes of information being perpetually updated in real-time. This is an issue we have seen inadvertently being replicated in other educational games tackling misinformation. To address these issues in affordances, we took on the challenge to re-imagine what an interface for such a game could be. Thus, there is no screen or keyboard involved in playing A Mystery for You. Instead, our game is embodied in a tangible interface that celebrates analog mechanisms and slow media. 
+            Slow media focuses on pacing out media production and consumption, fostering intentionality and mindfulness [4].</p>
+            <img src="images/A Mystery for You/mystery_for_you_print.jpg" style="width: 100%;" alt="Two images showing the AI-generated news alerts and updates being printed on thermal paper.">
+            <figcaption style="text-align: center;">AI-generated news alerts and updates printed on thermal paper</figcaption>
+            <p>
+            </br>
+              The player needs to use cartridges and buttons as input, and the game interface, in turn, responds with outputs through a mini thermal receipt printer. News alerts are printed slowly with a meditative sound. This forces the player to pace their reading and gives them time to choose their investigative move. Players pick from a finite number of action-actor cartridges and insert a pair into the slots such as “Interview the Community” or “Check the Social Media Handle of the Politician”. This causes the indicative meter to progress from Day 1 to Day 2. The interface prints out another news alert from the next day with new insight based on the player's move.
+            </br></br>
+              The player gathers facts over seven game days. The dialectic interaction between the interface and the player speaks against the one-sided consumption of news media cycles. Once the player feels confident of their choice, they can choose from the true and false switch to make their verdict. This leads to the printing of a game result along with the reasoning for why that was the case and why it is important to fact-check. 
+            </br></br>
+              The printed receipts are a poetic documentation of the game-play and can be kept as a souvenir or collected by children, perhaps for creating an archive or storybook of the adventures with the game. 
+            </p>
+            <img src="images/A Mystery for You/mystery_for_you_printed_receipt.jpg" style="width: 100%;" alt="An image of the printed receipts, with illustrations and texts on them.">
+            <figcaption style="text-align: center;">Printed Receipts- A Poetic Documentation of the Game-play</figcaption>
+
+            <div class="explode"></div>
+            <figcaption style="text-align: center;">Explosion View </br>
+            Hover on the image to assemble the device!
+            </figcaption>
+
+            <p>
+            </br>
+            The trigger for the input mechanism is hidden at the base of the card slots. Each slot has five buttons, enabling up to 31 inputs through various combinations of pressed buttons. 
+            </p>
+            <img src="images/A Mystery for You/input_mechanism.gif" style="width: 100%" alt="Diagram of the cartridge-input mechanism inside the card slot.">
+            <figcaption style="text-align: center;">Cartridge Input Mechanism Inside a Card Slot</figcaption>
+        </section>
+
+        <section class="imgholder">
+          <h3 class="project-name">
+            4. User Study
+          </h3>
+          <p>
+            We conducted user experience studies with both general users as well as experts in the field of misinformation and fact-checking. We conducted a virtual study with the fact-checking and educational outreach wings of Alt News, an Indian fact-checking organization. This provided us with crucial feedback on whether the scenarios generated by our prompt engineering were realistic and had pedagogical value. Experts found the approach compelling and found multiple generated scenarios to be close to real incidents that they have dealt with. This included a new alert falsely accusing a minority community of a violent outbreak that ended up being an out-of-context video from a different part of the country. They found the action choices, such as ‘reverse image search’ and ‘interview’, to be closely aligned with their own methods. However, they also pointed to the challenges of scaling a tangible game such as this to a large audience, especially in developing countries such as India. 
+          </br></br>
+            We conducted our general user study with university-going adults but planned to do significant user testing with children of different age groups in the future. In our current study, we found that participants reacted positively to the design of the game. They are intrigued by the action and actor cartridges as well as the tactile nature of the game interface. However, some users found the range of cartridges limited and wondered about the potential for actions beyond those provided. While we have limited the choices of moves available to the player in the current version of the game, we plan to expand the range by creating additional cartridges to handle more diverse scenarios and settings.
+          </br>
+        </p>
+        <img src="images/A Mystery for You/mystery_for_you_gameplay.jpg" style="width: 100%;" alt="Image of a user reading the printed out receipt">
+        <figcaption style="text-align: center;">Game-play: reading the printed receipt</figcaption>
+        <p>
+        </br>
+            Despite lacking prior information about the game rules, users engaged with the device intuitively, expressing satisfaction with the tactile feedback, such as the button click and the LED lighting during cartridge insertion. The gradual printing process of the thermal printer encouraged the users to read the news updates line by line instead of skimming as they likely would have on a digital screen. We observed users contemplating their next move, experimenting with different cartridge pairings to observe their impact on the game. Some users inquired about the possibility of pressing a red button midway through the game. Hearing that it would conclude the game and provide the answer, most of them opted to continue inserting cartridges until they completed the "action" on "the last day." A small subset of users, however, completed the game early upon reading news updates on day three or day four. 
+          </br></br>
+            Participants described the game device as cute and nostalgic, comparing it to an old Macintosh computer. Notably, each testing participant was offered the opportunity to retain the printed receipt as a gift, highlighting their appreciation for the narratives on the small receipts and their desire to take them home. 
+          </p>
+        <img src="images/A Mystery for You/receipt.jpg" style="width: 100%;" alt="Image of a user reading the printed out receipt">
+        <figcaption style="text-align: center;">Retaining the printed receipt as a gift</figcaption>  
+        </section>
+
+        
+        <section class="imgholder">
+          <h3 class="project-name">
+            5. Critical Reflection
+          </h3>
+          <h4 class="project-name">
+            5.1 Tangible Interface, Slow Media and Content Moderation
+          </h4>
+          <p>The tangible interface and analog mechanisms of our game afford a slow media experience that celebrates the pacing out of media production and consumption, fostering intentionality and mindfulness. Additionally, the tangible interface also serves as a content moderation strategy, preventing players from engaging with the LLM via inappropriate responses. This game is thus an example of how new and generative media can be combined with old and slow media to create more thoughtful and enjoyable interactions and news consumption.</p>
+
+          <h4 class="project-name">
+            5.2 AI Generated Gameplay in Educational Games
+          </h4>
+          <p>The game fosters critical thinking while avoiding partisan, offering post-game reflection while avoiding the creation of actual fake news. It encourages thoughtful decision-making and shields children from online ads and harmful information. 
+            As game designers using generative AI, we are cognizant of the risks of using black-box AI models. These models are trained by using large data sets which can have inherent biases embedded in them. Further, the outputs of LLMs are often subject to content moderation policies of the platforms providing API services. These moderation policies can strongly impact the scenarios generated for our game. We aim to conduct further research into these implicit biases and how they impact our game. We also believe our game can provide a way to analyze biases embedded in these systems and the players' decision-making process. </p>
+        </section>
+
+        <section class="imgholder">
+          <h3 class="project-name">
+            6. Conclusion
+          </h3>
+          <p>“A Mystery for You” encapsulates a novel blend of educational significance and technological integration that empowers children to critically engage with misinformation through investigative role-play. The tangible nature of the game device elicits thoughtful play in a world saturated by the never-ending flux of news cycles and media production. Through its carefully engineered and tested prompts that, A Mystery for You provides engaging and unique play-through in each round. The AI-generated scenarios allow for sequential play in dialog with the player, and the thermal printing nature of the interface allows for slow and mindful responses. The poetic receipt prints collectables of the game play are ideal for children to create archives or storybooks of the adventures.
+          </br></br>
+            Thus, A Mystery for You introduces a new educational game paradigm that offers rich non-screen based immersive interactions, sequential, generative and dialectic game-play, as well demonstrates the potential for harnessing generative AI for tackling misinformation. </p>
+        </section>
+
+
+        <section class="imgholder">
+          <h3 class="project-name">
+            Acknowledgments
+          </h3>
+          <p>This project began as a part of Prof. Marcelo Coelho’s course 4.043/4.044 Design Studio: Interaction Intelligence. We thank him for his mentorship. We thank Vishrant Tripathi (PhD, EECS, MIT.) for his advice and constant support through this process. We also thank all our friends and user study participants who played this game. Finally, we thank Pratik Sinha, Mahaprajna Nayak and the Alt News Team for their feedback and for all the incredible work that they and fact-checkers around the world do to uphold truth.
+          </p>
+        </section>
+
+
+        <section class="imgholder">
+          <h3 class="project-name">
+            References
+          </h3>
+          <p class="subtitle">
+          </br>[1] BBS Games AB. 2023. Vaudeville. Retrieved Feb 20 2024 from https://store.steampowered.com/app/2240920/Vaudeville/
+          </br>[2] Inworld AI. 2023. Inworld Origins. Retrieved Feb 20 2024 from https://store.steampowered.com/app/2199920/Inworld_Origins/
+          </br>  [3] Melisa Basol, Jon Roozenbeek, and Sander Van der Linden. 2020. Good news about bad news: Gamified inoculation boosts confidence and cognitive immunity against fake news. Journal of cognition 3, 1 (2020).
+          </br>  [4] et al. Blumtritt, Jörg. 2010. The Slow Media Manifesto. https://en.slow-media.net/manifesto
+          </br> [5] Jessica E Brodsky, Patricia J Brooks, Donna Scimeca, Ralitsa Todorova, Peter Galati, Michael Batson, Robert Grosso, Michael Matthews, Victor Miller, and Michael Caulfield. 2021. Improving college students’ fact-checking strategies through lateral reading instruction in a general education civics course. Cognitive Research: Principles and Implications 6 (2021), 1–18.
+          </br>  [6] Cambridge Social Decision-Making Lab DROG, Gusmanson. 2018. Bad News Game. Retrieved Feb 29 2024 from https://www.getbadnews.com/en
+          </br>  [7] The Economist. 2023. 2024 is the biggest election year in history.https://www.economist.com/interactive/the-world-ahead/2023/11/13/2024-isthe-
+          </br>  biggest-election-year-in-history
+          </br>  [8] Andrew M Guess, Brendan Nyhan, and Jason Reifler. 2020. Exposure to untrustworthy websites in the 2016 US election. Nature human behaviour 4, 5 (2020),472–480.
+          </br>  [9] BBC News. 2019. Bangladesh lynchings: Eight killed by mobs over false child abduction rumours. https://www.bbc.com/news/world-asia-49102074
+          </br>  [10] Jack Nicas Nicas and Lucía Cholakian Herrera. 2023. Is Argentina the First A.I. Election?https://www.nytimes.com/2023/11/15/world/americas/argentinaelection-ai-milei-massa.html
+          </br>  [11] OSoMe. 2018. Fakey. Retrieved Feb 20 2024 from https://fakey.osome.iu.edu/
+          </br>  [12] Polycular. 2021. Escape Fake. Retrieved Feb 20 2024 from https://escapefake.org/
+          </br>  [13] Elyse Samuels. 2020. How misinformation on WhatsApp led to a deadly mob lynching in India. https://www.washingtonpost.com/politics/2020/02/21/howmisinformation-whatsapp-led-deathly-mob-lynching-india/
+          </br>  [14] Pet Vacuum. 2023. Detective GPT. Retrieved Feb 20 2024 from https://www.detectivegpt.online/
+          </br>  [15] Pranshu Verma. 2023. The rise of AI fake news is creating a ’misinformation superspreader’. https://www.washingtonpost.com/technology/2023/12/17/aifake-news-misinformation/
+          </br>  [16] Amanda Warner. 2017. Fake it to Make It. Retrieved Feb 20 2024 from https://www.fakeittomakeitgame.com/
+          </br>  [17] Shiao Xu, Andrew Shtulman, and Andrew G Young. 2022. Can Children Detect Fake News?. In Proceedings of the Annual Meeting of the Cognitive Science Society, Vol. 44.
+          </p>
+        </section>
+
+
+      </article>
+    </main>
+
+    <footer class="nav navbar-light justify-content-center" style="padding-top: 6rem;">
+      <li class="nav-item nav-item2 navbottom">
+        <a class="nav-link" aria-current="page" href="index.html" style="color: rgb(110, 110, 110);">Home</a>
+      </li>
+      <li class="nav-item nav-item2 navbottom">
+        <a class="nav-link" href="aboutme.html" style="color: rgb(110, 110, 110);">About</a>
+      </li>
+    </footer>
+
+    
+
+    <button onclick="topFunction()" id="myBtn" title="Go to top">↑</button>
+    <a href="https://www.linkedin.com/in/haoheng-tang-38b4131a3/" target="_blank"><i class="fa-brands fa-linkedin" id="myLink" style="bottom: 20%;"></i></a>
+    <a href="https://github.com/Haoheng-Tang" target="_blank"><i class="fa-brands fa-github" id="myLink" style="bottom: 15%;"></i></a> 
+    <a href="https://www.instagram.com/tanghownn/" target="_blank"><i class="fa-brands fa-instagram" id="myLink" style="bottom: 10%;"></i></a>
+    <a href="https://www.youtube.com/channel/UC-qlML6fI94fiUZdij8MXTQ" target="_blank"><i class="fa-brands fa-youtube" id="myLink" style="bottom: 5%;"></i></a> 
+
+    <script src="scripts/main.js"></script>
+
+  </body>
+</html>
